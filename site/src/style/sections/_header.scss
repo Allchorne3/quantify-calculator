@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as *;
+
+/* //////////////////////
+  Header
+  /////////////////////// */
+
+.page-header {
+  padding: 2em 0;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  font-family: $ff-heading;
+
+  a {
+    color: $clr-primary;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+[aria-current="page"] {
+  font-weight: bold;
+}

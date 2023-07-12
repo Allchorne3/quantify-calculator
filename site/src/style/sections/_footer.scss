@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as *;
+
+/* //////////////////////
+  Footer
+  /////////////////////// */
+
+  .site-footer {
+    padding: 2em 0;
+    background-color: $clr-primary;
+    text-align: center;
+  }

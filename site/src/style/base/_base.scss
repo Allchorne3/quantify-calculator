@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as *;
+
+/* //////////////////////
+  General styling
+  /////////////////////// */
+
+body {
+  font-family: $ff-body;
+  font-size: $fs-6;
+}

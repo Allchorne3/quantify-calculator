@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as *;
+
+/* typgraphy */
+
+h1,
+h2,
+h3,
+h4, 
+h5 {
+  font-family: $ff-heading;
+  font-weight: $fw-400;
+  line-height: 1.1;
+}
+
+p {
+  font-weight: $fw-400;
+  font-size: 1.3rem;
+}
+
+strong {
+  font-weight: $fw-700;
+}
