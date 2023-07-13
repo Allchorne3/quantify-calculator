@@ -2,63 +2,65 @@
 layout: base.njk 
 title: Example
 ---
-
 <h1>Stakify Calculator</h1>
 <h2 class="subtitle">Use the options below to showcase how much money you will earn. The day option will allow you to see how much money you have earned over your chosen number of days and when you have hit your limit depending on your VIP level. The Amount option will show you the date that you will reach your specified amount.</h2>
-<div class="container">
-  <div class="tabs">
-    <ul>
-      <li><a href="#" data-target="days" class="active">Days</a></li>
-      <li><a href="#" data-target="amount">Amount</a></li>
-      <li><button class="clear">Clear</button></li>
-    </ul>
-  </div>
-  
-  <div class="content">
-    <div id="days">
-      <form>
-        <select id="user-level">
-          <option value="1">VIP1: 35.00-500.00</option>
-          <option value="2">VIP2: 501.00-2000.00</option>
-        </select>
-        <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
-        <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
-        <input type="number" id="user-iterations" placeholder="How many days?" required>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
 
-    <div id="amount" class="hidden">
-      <form>
-        <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
-        <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
-        <input type="number" id="user-limit" placeholder="Earnings Aim" required>
-        <input type="submit" value="Submit">
-      </form>
+<div class="wrapper">  
+  <div class="container">
+    <div class="tabs">
+      <ul>
+        <li><a href="#" data-target="days" class="active">Days</a></li>
+        <li><a href="#" data-target="amount">Amount</a></li>
+        <li><button class="clear">Clear</button></li>
+      </ul>
     </div>
+    
+    <div class="content">
+      <div id="days">
+        <form>
+          <select id="user-level">
+            <option value="1">VIP1: 35.00-500.00</option>
+            <option value="2">VIP2: 501.00-2000.00</option>
+          </select>
+          <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
+          <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
+          <input type="number" id="user-iterations" placeholder="How many days?" required>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+      <div id="amount" class="hidden">
+        <form>
+          <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
+          <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
+          <input type="number" id="user-limit" placeholder="Earnings Aim" required>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    
+    <button id="downloadExcel" class="hidden">Export to Excel</button>
+    
+    <p class="standby"></p>
+    
+    <table class="hidden">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Daily</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+    </table>
   </div>
-  
-  <button id="downloadExcel" class="hidden">Export to Excel</button>
-  
-  <p class="standby"></p>
-  
-  <table class="hidden">
-    <thead>
-      <tr>
-        <th>Day</th>
-        <th>Date</th>
-        <th>Daily</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-  </table>
+
+  <!--
+  TODO
+  - Add checker in AMOUNT to see if earnings aim is > amount (brings up blank table)
+  - Add accumlated earnings as well as the total earnings on AMOUNT
+  - Export to excel - DONE
+  -->
 </div>
 
-<!--
-TODO
- - Add checker in AMOUNT to see if earnings aim is > amount (brings up blank table)
- - Add accumlated earnings as well as the total earnings on AMOUNT
- - Export to excel - DONE
--->
-
-<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>
