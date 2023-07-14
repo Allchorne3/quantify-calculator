@@ -57,18 +57,30 @@ button#downloadExcel {
     }
 }
 
-input[type="submit"] {
-  $color: $gold;
+input {
   transition: all .3s ease-in-out;
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
-  background: $color;
   color: $blue;
- 
-  &:hover {
-    background: darken($color, 5%);
+
+  &[type="submit"] {
+    $color: $green;
+    background: $color;
+   
+    &:hover {
+      background: darken($color, 5%);
+    }
+  }
+
+  &[type="reset"] {
+    $color: $gold;
+    background: $color;
+   
+    &:hover {
+      background: darken($grey, 5%);
+    }
   }
 }
 
@@ -167,12 +179,6 @@ form {
   }
   
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
-
-  input[type="submit"] {
-    grid-column: 1 / span 2;
-    grid-row: 3;
-  }
 }
 
 .hidden {
@@ -180,17 +186,8 @@ form {
 }
 
 @media only screen and (max-width: 449px) {
-  #days form,
-  #amount form {
+  form {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  #days form {
-    input[type="submit"] {
-      grid-column: unset;
-      grid-row: unset;
-    }
   }
 
   .content {
