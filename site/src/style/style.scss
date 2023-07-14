@@ -185,6 +185,11 @@ form {
   display: none;
 }
 
+.row-active {
+  background: orange;
+  color: $blue;
+}
+
 @media only screen and (max-width: 449px) {
   form {
     grid-template-columns: 1fr;

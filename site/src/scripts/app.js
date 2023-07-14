@@ -63,15 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			switch (level) {
 				case 1:
 				  if (amount >= lvl1Limit && counter === 0) {
-                    highlightRow(newRow) 
-					counter++;
-                }
+                        newRow.classList.add('row-active');
+                        counter++;
+                    }
                 break;
 				case 2:
                     if (amount >= lvl2Limit && counter === 0) {
-                    highlightRow(newRow) 
-					counter++;
-				  }
+                        newRow.classList.add('row-active');
+                        counter++;
+				    }
 				  break;
 				default:
 				  break;
@@ -128,15 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
           switch (level) {
             case 1:
               if (amount >= lvl1Limit && counter === 0) {
-                highlightRow(newRow) 
+                newRow.classList.add('row-active');
                 counter++;
-            }
+                }
             break;
             case 2:
                 if (amount >= lvl2Limit && counter === 0) {
-                highlightRow(newRow) 
-                counter++;
-              }
+                    newRow.classList.add('row-active');
+                    counter++;
+                }
               break;
             default:
               break;
@@ -207,10 +207,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		let futureDate = currentDate.toDateString();
 		return futureDate;
 	}
-
-    // Highlight a table tow
-    function highlightRow(row) {
-        row.style.background = "orange";
-        row.style.color = "navy";
-    }
 })
