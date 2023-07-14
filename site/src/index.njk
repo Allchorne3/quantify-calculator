@@ -25,15 +25,21 @@ title: Example
           <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
           <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
           <input type="number" id="user-iterations" placeholder="How many days?" required>
+          <input type="reset" value="Clear Form">
           <input type="submit" value="Submit">
         </form>
       </div>
 
       <div id="amount" class="hidden">
         <form>
+          <select id="user-level">
+            <option value="1">VIP1: 35.00-500.00</option>
+            <option value="2">VIP2: 501.00-2000.00</option>
+          </select>
           <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
           <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
           <input type="number" id="user-limit" placeholder="Earnings Aim" required>
+          <input type="reset" value="Clear Form">
           <input type="submit" value="Submit">
         </form>
       </div>
