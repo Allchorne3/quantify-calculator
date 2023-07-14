@@ -166,17 +166,12 @@ form {
     }
   }
   
-  #days &,
-  #amount & {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-  }
-  
-  #days &{
-    input[type="submit"] {
-      grid-column: 1 / span 2;
-      grid-row: 3;
-    }
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+
+  input[type="submit"] {
+    grid-column: 1 / span 2;
+    grid-row: 3;
   }
 }
 
