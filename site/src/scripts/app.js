@@ -63,15 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			switch (level) {
 				case 1:
 				  if (amount >= lvl1Limit && counter === 0) {
-                        newRow.classList.add('row-active');
-                        counter++;
-                    }
-                break;
+						newRow.classList.add('row-active');
+						counter++;
+					}
+				break;
 				case 2:
-                    if (amount >= lvl2Limit && counter === 0) {
-                        newRow.classList.add('row-active');
-                        counter++;
-				    }
+					if (amount >= lvl2Limit && counter === 0) {
+						newRow.classList.add('row-active');
+						counter++;
+					}
 				  break;
 				default:
 				  break;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Submit the form on the amount program
 	amountSubmit.addEventListener('submit', (e) => {
-        const level = Number(document.querySelector('#amount #user-level').value);
+		const level = Number(document.querySelector('#amount #user-level').value);
 		let amount = parseFloat(document.querySelector('#amount #user-amount').value);
 		const percentage = parseFloat(document.querySelector('#amount #user-percentage').value / 100);
 		const aim = Number(document.querySelector('#amount #user-limit').value);
@@ -96,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		overview.textContent = `Starting Amount: $${amount} | Percentage: ${percentage}% | Limit: $${aim}`
 		
 		for (let i = 0; amount <= aim; i++) {
-            switch (level) {
-                case 1:
-                    earnings = amount >= 500 ? 500 * percentage : amount * percentage;
-                    break;
-                case 2:
-                    earnings = amount >= 2000 ? 2000 * percentage : amount * percentage;
-                    break;
-                default:
-                    break;
-            }
+			switch (level) {
+				case 1:
+					earnings = amount >= 500 ? 500 * percentage : amount * percentage;
+					break;
+				case 2:
+					earnings = amount >= 2000 ? 2000 * percentage : amount * percentage;
+					break;
+				default:
+					break;
+			}
 
 		  amount += earnings;
 		  
@@ -125,22 +125,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		  
 		  table.appendChild(newRow);
 
-          switch (level) {
-            case 1:
-              if (amount >= lvl1Limit && counter === 0) {
-                newRow.classList.add('row-active');
-                counter++;
-                }
-            break;
-            case 2:
-                if (amount >= lvl2Limit && counter === 0) {
-                    newRow.classList.add('row-active');
-                    counter++;
-                }
-              break;
-            default:
-              break;
-          }
+		  switch (level) {
+			case 1:
+			  if (amount >= lvl1Limit && counter === 0) {
+				newRow.classList.add('row-active');
+				counter++;
+				}
+			break;
+			case 2:
+				if (amount >= lvl2Limit && counter === 0) {
+					newRow.classList.add('row-active');
+					counter++;
+				}
+			  break;
+			default:
+			  break;
+		  }
 		  
 		  if(amount >= aim) {
 			newRow.style.background = "green";
