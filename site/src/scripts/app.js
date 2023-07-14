@@ -7,11 +7,12 @@ const daysSubmit = document.querySelector('#days form');
 const amountSubmit = document.querySelector('#amount form');
 const exportBtn = document.querySelector('#downloadExcel');
 const forms = document.querySelectorAll('form');
+const tbody = document.createElement('tbody');
 const lvl1Limit = 500;
 const lvl2Limit = 2000;
+let totalEarnings;
+let earnings;	 
 let counter = 0;
-let totalEarnings = 0;
-let earnings;		 
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -21,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		let balance = parseFloat(document.querySelector('#days #user-balance').value);
 		const percentage = parseFloat(document.querySelector('#days #user-percentage').value / 100);
 		const iterations = Number(document.querySelector('#days #user-iterations').value);
-		
+		totalEarnings = 0
+
 		e.preventDefault();
 		clearTable();
 		document.querySelector('#days form').reset();
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			cell4.textContent = `$${balance.toFixed(2)}`;
 			newRow.appendChild(cell4);
 			
-			table.appendChild(newRow);
+			tbody.appendChild(newRow);
 			
 			switch (level) {
 				case 1:
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					break;
 			}
 
+			table.appendChild(tbody);
 			exportBtn.classList.remove('hidden');
 		}
 		
@@ -92,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		let balance = parseFloat(document.querySelector('#amount #user-balance').value);
 		const percentage = parseFloat(document.querySelector('#amount #user-percentage').value / 100);
 		const aim = Number(document.querySelector('#amount #user-limit').value);
+		totalEarnings = 0
+
 		e.preventDefault();
 
 		const errorMessage = document.querySelector('.tabs .error-message');
@@ -120,10 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			for (let i = 0; balance <= aim; i++) {
 				switch (level) {
 					case 1:
-						earnings = balance >= 500 ? 500 * percentage : balance * percentage;
+						earnings = balance >= lvl1Limit ? lvl1Limit * percentage : balance * percentage;
 						break;
 					case 2:
-						earnings = balance >= 2000 ? 2000 * percentage : balance * percentage;
+						earnings = balance >= lvl2Limit ? lvl2Limit * percentage : balance * percentage;
 						break;
 					default:
 						break;
@@ -150,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				cell4.textContent = `$${balance.toFixed(2)}`;
 				newRow.appendChild(cell4);
 				
-				table.appendChild(newRow);
+				tbody.appendChild(newRow);
 
 				switch (level) {
 				case 1:
@@ -174,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					counter++;
 				}
 			}
-			
+
+			table.appendChild(tbody);
 			exportBtn.classList.remove('hidden');
 		}
 	})
@@ -190,6 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		XLSX.writeFile(wb, "SheetJSTable.xlsx");
 	});
 
+	// Function to clear the table
+	function clearTable() {
+		while (table.rows.length > 1) {
+			table.deleteRow(table.rows.length - 1);
+		}
+	
+		overview.textContent = "";
+		exportBtn.classList.add('hidden');
+		table.classList.add('hidden');
+		counter = 0;
+	}
+
 	// Show active tab
 	for(const tab of tabs) {
 		tab.addEventListener('click', e => {
@@ -203,18 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			const target = tab.dataset.target;
 			showTabContent(target);
 		})
-	}
-
-	// Clear the table
-	function clearTable() {
-		while (table.rows.length > 1) {
-			table.deleteRow(table.rows.length - 1);
-		}
-	
-		overview.textContent = "";
-		exportBtn.classList.add('hidden');
-		table.classList.add('hidden');
-		counter = 0;
 	}
 
 	// Show tabbed content
