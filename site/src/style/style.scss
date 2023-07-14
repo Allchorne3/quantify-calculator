@@ -165,12 +165,19 @@ form {
   margin-top: 1rem;
   margin-bottom: .6rem;
   
+  input {
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
   input[type="number"],
   select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    background: rgba(255,255,255,.6);
+    background: rgba(255,255,255,.6); 
       
     &::placeholder,
     option {
@@ -183,6 +190,20 @@ form {
 
 .hidden {
   display: none;
+}
+
+.error-message {
+  background: crimson;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  max-width: 354px;
+  margin: 0 auto 1rem;
+}
+
+.error {
+  border: solid 1px red !important;
 }
 
 .row-active {
