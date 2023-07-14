@@ -11,7 +11,7 @@ title: Example
       <ul>
         <li><a href="#" data-target="days" class="active">Days</a></li>
         <li><a href="#" data-target="amount">Amount</a></li>
-        <li><button class="clear">Clear</button></li>
+        <li><button class="clear">Clear Table</button></li>
       </ul>
     </div>
     
@@ -22,7 +22,7 @@ title: Example
             <option value="1">VIP1: 35.00-500.00</option>
             <option value="2">VIP2: 501.00-2000.00</option>
           </select>
-          <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
+          <input type="number" id="user-balance" step="0.01" placeholder="Balance" required>
           <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
           <input type="number" id="user-iterations" placeholder="How many days?" required>
           <input type="reset" value="Clear Form">
@@ -36,7 +36,7 @@ title: Example
             <option value="1">VIP1: 35.00-500.00</option>
             <option value="2">VIP2: 501.00-2000.00</option>
           </select>
-          <input type="number" id="user-amount" step="0.01" placeholder="Amount" required>
+          <input type="number" id="user-balance" step="0.01" placeholder="Balance" required>
           <input type="number" id="user-percentage" step="0.1" placeholder="Percentage" required>
           <input type="number" id="user-limit" placeholder="Earnings Aim" required>
           <input type="reset" value="Clear Form">
@@ -62,9 +62,7 @@ title: Example
 
   <!--
   TODO
-  - Add checker in AMOUNT to see if earnings aim is > amount (brings up blank table)
   - Add accumlated earnings as well as the total earnings on AMOUNT (earnings += earnings)
-  - Export to excel - DONE
   -->
 </div>
 

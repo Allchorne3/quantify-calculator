@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Submit the form on the days program
 	daysSubmit.addEventListener('submit', (e) => {
 		const level = Number(document.querySelector('#days #user-level').value);
-		let amount = parseFloat(document.querySelector('#days #user-amount').value);
+		let balance = parseFloat(document.querySelector('#days #user-balance').value);
 		const percentage = parseFloat(document.querySelector('#days #user-percentage').value / 100);
 		const iterations = Number(document.querySelector('#days #user-iterations').value);
 		
@@ -26,21 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector('#days form').reset();
 		table.classList.remove('hidden');
 		
-		overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${amount} | Percentage: ${percentage}% | Days: ${iterations}`
+		overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage}% | Days: ${iterations}`
 		
 		for (let i = 0; i < iterations; i++) {
 			switch (level) {
 				case 1:
-					earnings = amount >= lvl1Limit ? lvl1Limit * percentage : amount * percentage;
+					earnings = balance >= lvl1Limit ? lvl1Limit * percentage : balance * percentage;
 					break;
 				case 2:
-					earnings = amount >= lvl2Limit ? lvl2Limit * percentage : amount * percentage;
+					earnings = balance >= lvl2Limit ? lvl2Limit * percentage : balance * percentage;
 					break;
 				default:
 					break;
 			}
 			
-			amount += earnings;
+			balance += earnings;
 			const newRow = document.createElement("tr");
 			
 			// Day
@@ -55,20 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			// Total money
 			const cell3 = document.createElement("td");
-			cell3.textContent = `$${amount.toFixed(2)}`;
+			cell3.textContent = `$${balance.toFixed(2)}`;
 			newRow.appendChild(cell3);
 			
 			table.appendChild(newRow);
 			
 			switch (level) {
 				case 1:
-				  if (amount >= lvl1Limit && counter === 0) {
+				  if (balance >= lvl1Limit && counter === 0) {
 						newRow.classList.add('row-active');
 						counter++;
 					}
 				break;
 				case 2:
-					if (amount >= lvl2Limit && counter === 0) {
+					if (balance >= lvl2Limit && counter === 0) {
 						newRow.classList.add('row-active');
 						counter++;
 					}
@@ -84,71 +84,88 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Submit the form on the amount program
 	amountSubmit.addEventListener('submit', (e) => {
 		const level = Number(document.querySelector('#amount #user-level').value);
-		let amount = parseFloat(document.querySelector('#amount #user-amount').value);
+		let balance = parseFloat(document.querySelector('#amount #user-balance').value);
 		const percentage = parseFloat(document.querySelector('#amount #user-percentage').value / 100);
 		const aim = Number(document.querySelector('#amount #user-limit').value);
-		
-		e.preventDefault();
-		clearTable();
-		document.querySelector('#amount form').reset();
-		table.classList.remove('hidden');
-		
-		overview.textContent = `Starting Amount: $${amount} | Percentage: ${percentage}% | Limit: $${aim}`
-		
-		for (let i = 0; amount <= aim; i++) {
-			switch (level) {
-				case 1:
-					earnings = amount >= 500 ? 500 * percentage : amount * percentage;
-					break;
-				case 2:
-					earnings = amount >= 2000 ? 2000 * percentage : amount * percentage;
-					break;
-				default:
-					break;
-			}
+        e.preventDefault();
 
-		  amount += earnings;
-		  
-		  const newRow = document.createElement("tr");
-		  
-		  const cell1 = document.createElement("td");
-		  cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
-		  newRow.appendChild(cell1);
-		  
-		  const cell2 = document.createElement("td");
-		  cell2.textContent = `$${earnings.toFixed(2)}`;
-		  newRow.appendChild(cell2);
-		  
-		  const cell3 = document.createElement("td");
-		  cell3.textContent = `$${amount.toFixed(2)}`;
-		  newRow.appendChild(cell3);
-		  
-		  table.appendChild(newRow);
+        const errorMessage = document.querySelector('.tabs .error-message');
+        if(balance > aim) {
+            if(!errorMessage) {
+                const errorMessage = document.createElement("p");
+                errorMessage.textContent = `Aim should be higher than balance!`;
+                errorMessage.classList.add("error-message");
+                document.querySelector('.tabs').appendChild(errorMessage);
+                document.querySelector('#user-limit').classList.add('error');
+                
+            }
+        } else {
+            if(errorMessage) {
+                errorMessage.remove();
+                document.querySelector('#user-limit').classList.remove('error');
+            }
 
-		  switch (level) {
-			case 1:
-			  if (amount >= lvl1Limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
-				}
-			break;
-			case 2:
-				if (amount >= lvl2Limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				}
-			  break;
-			default:
-			  break;
-		  }
-		  
-		  if(amount >= aim) {
-			newRow.style.background = "green";
-			counter++;
-		  }
-		}
-		
-		exportBtn.classList.remove('hidden');
+            clearTable();
+            document.querySelector('#amount form').reset();
+            table.classList.remove('hidden');
+            
+            overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage}% | Limit: $${aim}`
+            
+            for (let i = 0; balance <= aim; i++) {
+                switch (level) {
+                    case 1:
+                        earnings = balance >= 500 ? 500 * percentage : balance * percentage;
+                        break;
+                    case 2:
+                        earnings = balance >= 2000 ? 2000 * percentage : balance * percentage;
+                        break;
+                    default:
+                        break;
+                }
+    
+              balance += earnings;
+              
+              const newRow = document.createElement("tr");
+              
+              const cell1 = document.createElement("td");
+              cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
+              newRow.appendChild(cell1);
+              
+              const cell2 = document.createElement("td");
+              cell2.textContent = `$${earnings.toFixed(2)}`;
+              newRow.appendChild(cell2);
+              
+              const cell3 = document.createElement("td");
+              cell3.textContent = `$${balance.toFixed(2)}`;
+              newRow.appendChild(cell3);
+              
+              table.appendChild(newRow);
+    
+              switch (level) {
+                case 1:
+                  if (balance >= lvl1Limit && counter === 0) {
+                    newRow.classList.add('row-active');
+                    counter++;
+                    }
+                break;
+                case 2:
+                    if (balance >= lvl2Limit && counter === 0) {
+                        newRow.classList.add('row-active');
+                        counter++;
+                    }
+                  break;
+                default:
+                  break;
+              }
+              
+              if(balance >= aim) {
+                newRow.style.background = "green";
+                counter++;
+              }
+            }
+            
+            exportBtn.classList.remove('hidden');
+        }
 	})
 
 	// Clear the table
