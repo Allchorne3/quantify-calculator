@@ -10,6 +10,7 @@ const forms = document.querySelectorAll('form');
 const lvl1Limit = 500;
 const lvl2Limit = 2000;
 let counter = 0;
+let totalEarnings = 0;
 let earnings;		 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,28 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 			
 			balance += earnings;
+			totalEarnings += earnings;
+
 			const newRow = document.createElement("tr");
 			
-			// Day
 			const cell1 = document.createElement("td");
 			cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
 			newRow.appendChild(cell1);
 			
-			// Earnings
 			const cell2 = document.createElement("td");
 			cell2.textContent = `$${earnings.toFixed(2)}`;
 			newRow.appendChild(cell2);
 			
-			// Total money
 			const cell3 = document.createElement("td");
-			cell3.textContent = `$${balance.toFixed(2)}`;
+			cell3.textContent = `$${totalEarnings.toFixed(2)}`;
 			newRow.appendChild(cell3);
+			
+			const cell4 = document.createElement("td");
+			cell4.textContent = `$${balance.toFixed(2)}`;
+			newRow.appendChild(cell4);
 			
 			table.appendChild(newRow);
 			
 			switch (level) {
 				case 1:
-				  if (balance >= lvl1Limit && counter === 0) {
+					if (balance >= lvl1Limit && counter === 0) {
 						newRow.classList.add('row-active');
 						counter++;
 					}
@@ -72,13 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
 						newRow.classList.add('row-active');
 						counter++;
 					}
-				  break;
+					break;
 				default:
-				  break;
-			  }
+					break;
+			}
+
+			exportBtn.classList.remove('hidden');
 		}
 		
-		exportBtn.classList.remove('hidden');
 	})
 
 	// Submit the form on the amount program
@@ -87,85 +92,91 @@ document.addEventListener('DOMContentLoaded', () => {
 		let balance = parseFloat(document.querySelector('#amount #user-balance').value);
 		const percentage = parseFloat(document.querySelector('#amount #user-percentage').value / 100);
 		const aim = Number(document.querySelector('#amount #user-limit').value);
-        e.preventDefault();
+		e.preventDefault();
 
-        const errorMessage = document.querySelector('.tabs .error-message');
-        if(balance > aim) {
-            if(!errorMessage) {
-                const errorMessage = document.createElement("p");
-                errorMessage.textContent = `Aim should be higher than balance!`;
-                errorMessage.classList.add("error-message");
-                document.querySelector('.tabs').appendChild(errorMessage);
-                document.querySelector('#user-limit').classList.add('error');
-                
-            }
-        } else {
-            if(errorMessage) {
-                errorMessage.remove();
-                document.querySelector('#user-limit').classList.remove('error');
-            }
+		const errorMessage = document.querySelector('.tabs .error-message');
 
-            clearTable();
-            document.querySelector('#amount form').reset();
-            table.classList.remove('hidden');
-            
-            overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage}% | Limit: $${aim}`
-            
-            for (let i = 0; balance <= aim; i++) {
-                switch (level) {
-                    case 1:
-                        earnings = balance >= 500 ? 500 * percentage : balance * percentage;
-                        break;
-                    case 2:
-                        earnings = balance >= 2000 ? 2000 * percentage : balance * percentage;
-                        break;
-                    default:
-                        break;
-                }
-    
-              balance += earnings;
-              
-              const newRow = document.createElement("tr");
-              
-              const cell1 = document.createElement("td");
-              cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
-              newRow.appendChild(cell1);
-              
-              const cell2 = document.createElement("td");
-              cell2.textContent = `$${earnings.toFixed(2)}`;
-              newRow.appendChild(cell2);
-              
-              const cell3 = document.createElement("td");
-              cell3.textContent = `$${balance.toFixed(2)}`;
-              newRow.appendChild(cell3);
-              
-              table.appendChild(newRow);
-    
-              switch (level) {
-                case 1:
-                  if (balance >= lvl1Limit && counter === 0) {
-                    newRow.classList.add('row-active');
-                    counter++;
-                    }
-                break;
-                case 2:
-                    if (balance >= lvl2Limit && counter === 0) {
-                        newRow.classList.add('row-active');
-                        counter++;
-                    }
-                  break;
-                default:
-                  break;
-              }
-              
-              if(balance >= aim) {
-                newRow.style.background = "green";
-                counter++;
-              }
-            }
-            
-            exportBtn.classList.remove('hidden');
-        }
+		if(balance >= aim) {
+			if(!errorMessage) {
+				const errorMessage = document.createElement("p");
+				errorMessage.textContent = `Aim should be higher than balance!`;
+				errorMessage.classList.add("error-message");
+				document.querySelector('.tabs').appendChild(errorMessage);
+				document.querySelector('#user-limit').classList.add('error');
+				
+			}
+		} else {
+			if(errorMessage) {
+				errorMessage.remove();
+				document.querySelector('#user-limit').classList.remove('error');
+			}
+
+			clearTable();
+			document.querySelector('#amount form').reset();
+			table.classList.remove('hidden');
+			
+			overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage}% | Limit: $${aim}`
+			
+			for (let i = 0; balance <= aim; i++) {
+				switch (level) {
+					case 1:
+						earnings = balance >= 500 ? 500 * percentage : balance * percentage;
+						break;
+					case 2:
+						earnings = balance >= 2000 ? 2000 * percentage : balance * percentage;
+						break;
+					default:
+						break;
+				}
+
+				balance += earnings;
+				totalEarnings += earnings;
+				
+				const newRow = document.createElement("tr");
+				
+				const cell1 = document.createElement("td");
+				cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
+				newRow.appendChild(cell1);
+				
+				const cell2 = document.createElement("td");
+				cell2.textContent = `$${earnings.toFixed(2)}`;
+				newRow.appendChild(cell2);
+			
+				const cell3 = document.createElement("td");
+				cell3.textContent = `$${totalEarnings.toFixed(2)}`;
+				newRow.appendChild(cell3);
+			
+				const cell4 = document.createElement("td");
+				cell4.textContent = `$${balance.toFixed(2)}`;
+				newRow.appendChild(cell4);
+				
+				table.appendChild(newRow);
+
+				switch (level) {
+				case 1:
+					if (balance >= lvl1Limit && counter === 0) {
+						newRow.classList.add('row-active');
+						counter++;
+					}
+				break;
+				case 2:
+					if (balance >= lvl2Limit && counter === 0) {
+							newRow.classList.add('row-active');
+							counter++;
+					}
+					break;
+				default:
+					break;
+				}
+				
+				if(balance >= aim && counter === 0) {
+					newRow.style.background = "green";
+					counter++;
+				}
+			}
+			
+			exportBtn.classList.remove('hidden');
+		}
 	})
 
 	// Clear the table
