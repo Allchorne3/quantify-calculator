@@ -15,7 +15,7 @@ let earnings;
 let counter = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-
+	
 	// Submit the form on the days program
 	daysSubmit.addEventListener('submit', (e) => {
 		const level = Number(document.querySelector('#days #user-level').value);
@@ -49,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const newRow = document.createElement("tr");
 			
 			const cell1 = document.createElement("td");
-			cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
-			cell1.setAttribute('data-label', 'Day');
+			cell1.textContent = `Day ${i + 1} - ${currentDate(i)}`;
 			newRow.appendChild(cell1);
 			
 			const cell2 = document.createElement("td");
@@ -144,8 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				const newRow = document.createElement("tr");
 				
 				const cell1 = document.createElement("td");
-				cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
-				cell1.setAttribute('data-label', 'Day');
+				cell1.textContent = `Day ${i + 1} - ${currentDate(i)}`;
 				newRow.appendChild(cell1);
 				
 				const cell2 = document.createElement("td");
@@ -171,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						newRow.classList.add('row-active');
 						counter++;
 					}
-				break;
+					break;
 				case 2:
 					if (balance >= lvl2Limit && counter === 0) {
 							newRow.classList.add('row-active');
@@ -182,8 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					break;
 				}
 				
-				if(balance >= aim && counter === 0) {
-					newRow.style.background = "green";
+				if(balance >= aim && counter === 1) {
+					newRow.classList.add('row-aim');
 					counter++;
 				}
 			}

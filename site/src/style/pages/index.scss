@@ -155,11 +155,62 @@ p.subtitle {
         margin-bottom: 3rem;
         width: 600px;
         border-spacing: 5px;
+
+		
+		@include m.tablet-portrait-max {
+			width: 100%;
+		}
+		
+		@include m.mobile-max {
+			// table-layout: fixed;
+			border-collapse: collapse;
+			border: 0;
+
+			thead {
+				border: none;
+				clip: rect(0 0 0 0);
+				height: 1px;
+				margin: -1px;
+				overflow: hidden;
+				padding: 0;
+				position: absolute;
+				width: 1px;
+			}
+
+			tbody {
+				tr {
+					display: block;
+					margin-bottom: 1.5rem;
+					border-radius: 5px;
+				}
+			}
+
+			td {
+				border-bottom: 1px solid rgba(white, .4);
+				display: block;
+				text-align: right !important;
+
+				&::before {
+					content: attr(data-label);
+					float: left;
+					font-weight: bold;
+				}
+
+				&:first-child {
+					text-align: center !important;
+					font-weight: bold;
+				}
+
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+		}
         
         &.overview {
-        th {
-            background: rgba(white, 0.5);
-        }
+			th {
+				background: rgba(white, 0.5);
+			}
         }
         
         th, td {
@@ -168,18 +219,20 @@ p.subtitle {
         }
         
         th {
-        background: lighten($blue, 10%);
-        color: $gold;
-        font-weight: bold;
+			background: lighten($blue, 10%);
+			color: $gold;
+			font-weight: bold;
         }
         
-        tr {
-        background: rgba(254.9,255,255, 0.35);
-        
-        &:nth-child(odd) {
-            background: rgba(254.9,255,255, 0.2);
-        }
-        }
+		tbody {
+			tr {
+				background: rgba(254.9,255,255, .1);
+				
+				&:nth-child(odd) {
+					background: rgba(254.9,255,255, .2);
+				}
+			}
+		}
     }
 
     form {
