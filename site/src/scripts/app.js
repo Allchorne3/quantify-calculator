@@ -1,6 +1,6 @@
 const clearButton = document.querySelector('.clear');
 const table = document.querySelector('table');
-const overview = document.querySelector('p');
+const overview = document.querySelector('p.overview');
 const tabs = document.querySelectorAll('.tabs li a');
 const contents = document.querySelectorAll('.content > div');
 const daysSubmit = document.querySelector('#days form');
