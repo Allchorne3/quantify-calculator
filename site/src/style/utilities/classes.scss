@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as *;
+
+.hidden {
+    display: none;
+}
+
+.error-message {
+    background: crimson;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    max-width: 354px;
+    margin: 0 auto 1rem;
+}
+
+.error {
+    border: solid 1px red !important;
+}
+
+.row-active {
+    background: orange !important;
+    color: $blue;
+}

@@ -50,18 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			const cell1 = document.createElement("td");
 			cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
+			cell1.setAttribute('data-label', 'Day');
 			newRow.appendChild(cell1);
 			
 			const cell2 = document.createElement("td");
 			cell2.textContent = `$${earnings.toFixed(2)}`;
+			cell2.setAttribute('data-label', 'Daily');
 			newRow.appendChild(cell2);
 			
 			const cell3 = document.createElement("td");
 			cell3.textContent = `$${totalEarnings.toFixed(2)}`;
+			cell3.setAttribute('data-label', 'Acc Earnings');
 			newRow.appendChild(cell3);
 			
 			const cell4 = document.createElement("td");
 			cell4.textContent = `$${balance.toFixed(2)}`;
+			cell4.setAttribute('data-label', 'Balance');
 			newRow.appendChild(cell4);
 			
 			tbody.appendChild(newRow);
@@ -141,18 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
 				
 				const cell1 = document.createElement("td");
 				cell1.textContent = `Day ${i + 1}: ${currentDate(i)}`;
+				cell1.setAttribute('data-label', 'Day');
 				newRow.appendChild(cell1);
 				
 				const cell2 = document.createElement("td");
 				cell2.textContent = `$${earnings.toFixed(2)}`;
+				cell2.setAttribute('data-label', 'Daily');
 				newRow.appendChild(cell2);
 			
 				const cell3 = document.createElement("td");
 				cell3.textContent = `$${totalEarnings.toFixed(2)}`;
+				cell3.setAttribute('data-label', 'Acc Earning');
 				newRow.appendChild(cell3);
 			
 				const cell4 = document.createElement("td");
 				cell4.textContent = `$${balance.toFixed(2)}`;
+				cell4.setAttribute('data-label', 'balance');
 				newRow.appendChild(cell4);
 				
 				tbody.appendChild(newRow);

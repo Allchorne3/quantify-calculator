@@ -1,0 +1,49 @@
+@use '../abstracts/variables' as *;
+
+@mixin desktop-max() {
+    @media screen and (max-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-min() {
+    @media screen and (min-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin tablet-max() {
+    @media screen and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-min() {
+    @media screen and (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-portrait-max() {
+    @media screen and (max-width: $tablet-portrait) {
+        @content;
+    }
+}
+
+@mixin tablet-portrait-min() {
+    @media screen and (min-width: $tablet-portrait) {
+        @content;
+    }
+}
+
+@mixin mobile-max() {
+    @media screen and (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin mobile-min() {
+    @media screen and (min-width: $mobile) {
+        @content;
+    }
+}
