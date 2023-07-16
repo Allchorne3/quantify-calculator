@@ -6,6 +6,7 @@ const contents = document.querySelectorAll('.content > div');
 const daysSubmit = document.querySelector('#days form');
 const amountSubmit = document.querySelector('#amount form');
 const exportBtn = document.querySelector('#downloadExcel');
+const aimInput = document.querySelector('#user-limit');
 const forms = document.querySelectorAll('form');
 const tbody = document.createElement('tbody');
 const lvl1Limit = 500;
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector('#days form').reset();
 		table.classList.remove('hidden');
 		
-		overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage}% | Days: ${iterations}`
+		overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Days: ${iterations}`
 		
 		for (let i = 0; i < iterations; i++) {
 			switch (level) {
@@ -110,20 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
 				errorMessage.textContent = `Aim should be higher than balance!`;
 				errorMessage.classList.add("error-message");
 				document.querySelector('.tabs').appendChild(errorMessage);
-				document.querySelector('#user-limit').classList.add('error');
+				aimInput.classList.add('error');
 				
 			}
 		} else {
 			if(errorMessage) {
+				// removeError();
 				errorMessage.remove();
-				document.querySelector('#user-limit').classList.remove('error');
+				aimInput.classList.remove('error');
 			}
 
 			clearTable();
 			document.querySelector('#amount form').reset();
 			table.classList.remove('hidden');
 			
-			overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage}% | Limit: $${aim}`
+			overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Limit: $${aim}`
 			
 			for (let i = 0; balance <= aim; i++) {
 				switch (level) {
@@ -191,6 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
+	// Remove the error message when the amount form is reset
+	// amountSubmit.addEventListener('reset', removeError);
+
 	// Clear the table
 	clearButton.addEventListener('click', clearTable);
 
@@ -247,4 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		let futureDate = currentDate.toDateString();
 		return futureDate;
 	}
+
+	// Remove the error message
+	// function removeError() {
+	// 	if(errorMessage) {
+	// 		errorMessage.remove();
+	// 		aimInput.classList.remove('error');
+	// 	}
+	// }
 })
