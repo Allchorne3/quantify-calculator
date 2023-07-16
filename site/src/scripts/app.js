@@ -9,6 +9,7 @@ const exportBtn = document.querySelector('#downloadExcel');
 const aimInput = document.querySelector('#user-limit');
 const forms = document.querySelectorAll('form');
 const tbody = document.createElement('tbody');
+const resetButton = document.querySelector('#amount form [type="reset"]');
 const lvl1Limit = 500;
 const lvl2Limit = 2000;
 let totalEarnings;
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		e.preventDefault();
 
 		const errorMessage = document.querySelector('.tabs .error-message');
-
+		
 		if(balance >= aim) {
 			if(!errorMessage) {
 				const errorMessage = document.createElement("p");
@@ -112,13 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				errorMessage.classList.add("error-message");
 				document.querySelector('.tabs').appendChild(errorMessage);
 				aimInput.classList.add('error');
-				
 			}
 		} else {
 			if(errorMessage) {
-				// removeError();
-				errorMessage.remove();
-				aimInput.classList.remove('error');
+				removeError();
 			}
 
 			clearTable();
@@ -193,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-	// Remove the error message when the amount form is reset
-	// amountSubmit.addEventListener('reset', removeError);
+	// Reset button event listener
+	resetButton.addEventListener('click', removeError);
 
 	// Clear the table
 	clearButton.addEventListener('click', clearTable);
@@ -217,6 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		exportBtn.classList.add('hidden');
 		table.classList.add('hidden');
 		counter = 0;
+	}
+
+	// Remove the error message
+	function removeError() {
+		const errorMessage = document.querySelector('.tabs .error-message');
+		if (errorMessage) {
+			errorMessage.remove();
+			aimInput.classList.remove('error');
+		}
 	}
 
 	// Show active tab
@@ -252,12 +259,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		let futureDate = currentDate.toDateString();
 		return futureDate;
 	}
-
-	// Remove the error message
-	// function removeError() {
-	// 	if(errorMessage) {
-	// 		errorMessage.remove();
-	// 		aimInput.classList.remove('error');
-	// 	}
-	// }
 })
