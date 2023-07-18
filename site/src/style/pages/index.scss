@@ -60,33 +60,6 @@ p.subtitle {
         }
     }
 
-    input {
-        transition: all .3s ease-in-out;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 3px;
-        cursor: pointer;
-        color: $blue;
-
-        &[type="submit"] {
-            $color: $green;
-            background: $color;
-            
-            &:hover {
-                background: darken($color, 5%);
-            }
-        }
-
-        &[type="reset"] {
-            $color: $gold;
-            background: $color;
-        
-            &:hover {
-                background: darken($grey, 5%);
-            }
-        }
-    }
-
     .tabs {
 		@include m.mobile-max {
 			width: 100%;
@@ -240,33 +213,49 @@ p.subtitle {
         gap: 10px;
         margin-top: 1rem;
         margin-bottom: .6rem;
-        
-        input {
-        &:focus,
-        &:active {
-            outline: none;
-        }
-        }
 
-        input[type="number"],
+        input,
         select {
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        background: rgba(255,255,255,.6); 
-            
-        &::placeholder,
-        option {
-            color: black;
+			padding: 5px 10px;
+			border-radius: 3px;
+			background: rgba(255,255,255,.6); 
+			transition: all .3s ease-in-out;
+			border: none;
+			cursor: pointer;
+			color: $blue;
+				
+			&::placeholder,
+			option {
+				color: black;
+			}
         }
+		
+		input {
+			&:focus,
+			&:active {
+				outline: none;
+			}
+
+			&[type="submit"] {
+				$color: $green;
+				background: $color;
+				
+				&:hover {
+					background: darken($color, 5%);
+				}
+			}
+	
+			&[type="reset"] {
+				$color: $gold;
+				background: $color;
+			
+				&:hover {
+					background: darken($grey, 5%);
+				}
+			}
         }
         
         grid-template-columns: 1fr 1fr;
-
-		& #user-iterations,
-		& #user-limit {
-			grid-column: 1 / -1;
-		}
 
         @include m.mobile-max {
 			grid-template-columns: 1fr;
