@@ -263,8 +263,13 @@ p.subtitle {
         
         grid-template-columns: 1fr 1fr;
 
+		& #user-iterations,
+		& #user-limit {
+			grid-column: 1 / -1;
+		}
+
         @include m.mobile-max {
-        grid-template-columns: 1fr;
+			grid-template-columns: 1fr;
         }
     }
 }
