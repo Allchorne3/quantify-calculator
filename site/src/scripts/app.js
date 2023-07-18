@@ -11,341 +11,212 @@ const forms = document.querySelectorAll('form');
 const tbody = document.createElement('tbody');
 const resetButton = document.querySelector('#amount form [type="reset"]');
 
-const lvl1Percentage = document.querySelector('select option[value="1"]').dataset.percentage / 100;
-const lvl2Percentage = document.querySelector('select option[value="2"]').dataset.percentage / 100;
-const lvl3Percentage = document.querySelector('select option[value="3"]').dataset.percentage / 100;
+const levelSelectOptions = {
+  1: {
+    limit: 501,
+    percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
+  },
+  2: {
+    limit: 2001,
+    percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
+  },
+  3: {
+    limit: 5001,
+    percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
+  }
+};
 
-const lvl1Limit = 501;
-const lvl2Limit = 2001;
-const lvl3Limit = 5001;
+const currentDate = (dayNumber, dateInputValue) => {
+  const currentDate = dateInputValue ? new Date(dateInputValue) : new Date();
+  currentDate.setDate(currentDate.getDate() + dayNumber);
+  return currentDate.toDateString();
+};
 
-let totalEarnings;
-let earnings;	 
-let counter = 0;
+const calculateEarnings = (level, balance) => {
+  const levelData = levelSelectOptions[level];
+  let earnings;
+
+  if (balance >= levelData.limit) {
+    earnings = levelData.limit * levelData.percentage;
+  } else {
+    earnings = balance * levelData.percentage;
+  }
+
+  return earnings;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-	
-	// Submit the form on the days program
-	daysSubmit.addEventListener('submit', (e) => {
-		const level = Number(document.querySelector('#days #user-level').value);
-		let balance = parseFloat(document.querySelector('#days #user-balance').value);
-		const iterations = Number(document.querySelector('#days #user-iterations').value);
+  daysSubmit.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-		totalEarnings = 0
+    const levelInput = document.querySelector('#days #user-level');
+    const balanceInput = document.querySelector('#days #user-balance');
+    const iterationsInput = document.querySelector('#days #user-iterations');
+    const dayDateInput = document.querySelector('#day-date');
 
-		e.preventDefault();
-		clearTable();
-		document.querySelector('#days form').reset();
-		table.classList.remove('hidden');
-		
-		// overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Days: ${iterations}`
-		
-		for (let i = 0; i < iterations; i++) {
-			switch (level) {
-				case 1:
-					// if balance >= 501
-					if(balance >= lvl1Limit) {
-						// you get 501 x 2.5%
-						earnings = lvl1Limit * lvl1Percentage
-					} else {
-						// balance will be below 501, so you get your balance x 2.5%
-						earnings = balance * lvl1Percentage
-					}
-					break;
-				case 2:
-					// if balance is >= 2001
-					if(balance >= lvl2Limit) {
-						// you get $2000 x 2.8
-						earnings = lvl2Limit * lvl2Percentage
-					// if balance is >= 501
-					} else if(balance >= lvl1Limit) {
-						// you get vip2 percentages up to 2k | earnings = balance x 2.8%
-						earnings = balance * lvl2Percentage
-					} else { 
-						// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
-						earnings = balance * lvl1Percentage
-					}
-					break;
-				case 3:
-					// if balance >= 5001
-					if(balance > lvl3Limit) {
-						// you get $5000 x 3.0
-						earnings = lvl3Limit * lvl3Percentage
-					// if balance is >= 2001
-					} else if(balance > lvl2Limit) {
-						// you get balance x 3.0
-						earnings = balance * lvl3Percentage
-					// if balance is >= 501
-					} else if(balance > lvl1Limit) {
-						// you get vip2 percentages up to 2k | earnings = balance x 2.8%
-						earnings = balance * lvl2Percentage
-					} else { 
-						// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
-						earnings = balance * lvl1Percentage
-					}
-					break;
-				default:
-					break;
-			}
-			
-			balance += earnings;
-			totalEarnings += earnings;
+    const level = Number(levelInput.value);
+    let balance = parseFloat(balanceInput.value);
+    const iterations = Number(iterationsInput.value);
+    const dayDate = dayDateInput.value;
 
-			const newRow = document.createElement("tr");
-			
-			const cell1 = document.createElement("td");
-			cell1.textContent = `Day ${i + 1} - ${currentDate(i)}`;
-			newRow.appendChild(cell1);
-			
-			const cell2 = document.createElement("td");
-			cell2.textContent = `$${earnings.toFixed(2)}`;
-			cell2.setAttribute('data-label', 'Daily');
-			newRow.appendChild(cell2);
-			
-			const cell3 = document.createElement("td");
-			cell3.textContent = `$${totalEarnings.toFixed(2)}`;
-			cell3.setAttribute('data-label', 'Acc Earnings');
-			newRow.appendChild(cell3);
-			
-			const cell4 = document.createElement("td");
-			cell4.textContent = `$${balance.toFixed(2)}`;
-			cell4.setAttribute('data-label', 'Balance');
-			newRow.appendChild(cell4);
-			
-			tbody.appendChild(newRow);
-			
-			switch (level) {
-				case 1:
-					if (balance >= lvl1Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-				break;
-				case 2:
-					if (balance >= lvl2Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-					break;
-				case 3:
-					if (balance >= lvl3Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-					break;
-				default:
-					break;
-			}
+    clearTable();
+    daysSubmit.reset();
+    table.classList.remove('hidden');
 
-			table.appendChild(tbody);
-			exportBtn.classList.remove('hidden');
-		}
-		
-	})
+    let totalEarnings = 0;
+    let earnings;
+    let counter = 0;
 
-	// Submit the form on the amount program
-	amountSubmit.addEventListener('submit', (e) => {
-		const level = Number(document.querySelector('#amount #user-level').value);
-		let balance = parseFloat(document.querySelector('#amount #user-balance').value);
-		const aim = Number(document.querySelector('#amount #user-limit').value);
-		const errorMessage = document.querySelector('.tabs .error-message');
-		totalEarnings = 0
-		e.preventDefault();
-		
-		if(balance >= aim) {
-			if(!errorMessage) {
-				const errorMessage = document.createElement("p");
-				errorMessage.textContent = `Aim should be higher than balance!`;
-				errorMessage.classList.add("error-message");
-				document.querySelector('.tabs').appendChild(errorMessage);
-				aimInput.classList.add('error');
-			}
-		} else {
-			if(errorMessage) {
-				removeError();
-			}
+    for (let i = 0; i < iterations; i++) {
+      earnings = calculateEarnings(level, balance);
+      balance += earnings;
+      totalEarnings += earnings;
 
-			clearTable();
-			document.querySelector('#amount form').reset();
-			table.classList.remove('hidden');
-			
-			// overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Limit: $${aim}`
-			
-			for (let i = 0; balance <= aim; i++) {
-				switch (level) {
-					case 1:
-						// if balance >= 501
-						if(balance >= lvl1Limit) {
-							// you get 501 x 2.5%
-							earnings = lvl1Limit * lvl1Percentage
-						} else {
-							// balance will be below 501, so you get your balance x 2.5%
-							earnings = balance * lvl1Percentage
-						}
-						break;
-					case 2:
-						// if balance is >= 2001
-						if(balance >= lvl2Limit) {
-							// you get $2000 x 2.8
-							earnings = lvl2Limit * lvl2Percentage
-						// if balance is >= 501
-						} else if(balance >= lvl1Limit) {
-							// you get vip2 percentages up to 2k | earnings = balance x 2.8%
-							earnings = balance * lvl2Percentage
-						} else { 
-							// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
-							earnings = balance * lvl1Percentage
-						}
-						break;
-					case 3:
-						// if balance >= 5001
-						if(balance > lvl3Limit) {
-							// you get $5000 x 3.0
-							earnings = lvl3Limit * lvl3Percentage
-						// if balance is >= 2001
-						} else if(balance > lvl2Limit) {
-							// you get balance x 3.0
-							earnings = balance * lvl3Percentage
-						// if balance is >= 501
-						} else if(balance > lvl1Limit) {
-							// you get vip2 percentages up to 2k | earnings = balance x 2.8%
-							earnings = balance * lvl2Percentage
-						} else { 
-							// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
-							earnings = balance * lvl1Percentage
-						}
-						break;
-					default:
-						break;
-				}
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
+        <td data-label="Daily">$${earnings.toFixed(2)}</td>
+        <td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
+        <td data-label="Balance">$${balance.toFixed(2)}</td>
+      `;
 
-				balance += earnings;
-				totalEarnings += earnings;
-				
-				const newRow = document.createElement("tr");
-				
-				const cell1 = document.createElement("td");
-				cell1.textContent = `Day ${i + 1} - ${currentDate(i)}`;
-				newRow.appendChild(cell1);
-				
-				const cell2 = document.createElement("td");
-				cell2.textContent = `$${earnings.toFixed(2)}`;
-				cell2.setAttribute('data-label', 'Daily');
-				newRow.appendChild(cell2);
-			
-				const cell3 = document.createElement("td");
-				cell3.textContent = `$${totalEarnings.toFixed(2)}`;
-				cell3.setAttribute('data-label', 'Acc Earning');
-				newRow.appendChild(cell3);
+      tbody.appendChild(newRow);
 
-				const cell4 = document.createElement("td");
-				cell4.textContent = `$${balance.toFixed(2)}`;
-				cell4.setAttribute('data-label', 'balance');
-				newRow.appendChild(cell4);
+      if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
+        newRow.classList.add('row-active');
+        counter++;
+      } else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
+        newRow.classList.add('row-active');
+        counter++;
+      } else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
+        newRow.classList.add('row-active');
+        counter++;
+      }
+    }
 
-				
-				tbody.appendChild(newRow);
+    table.appendChild(tbody);
+    exportBtn.classList.remove('hidden');
+  });
 
-				switch (level) {
-				case 1:
-					if (balance >= lvl1Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-					break;
-				case 2:
-					if (balance >= lvl2Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-					break;
-				case 3:
-					if (balance >= lvl3Limit && counter === 0) {
-						newRow.classList.add('row-active');
-						counter++;
-					}
-					break;
-				default:
-					break;
-				}
-				
-				if(balance >= aim && counter === 1) {
-					newRow.classList.add('row-aim');
-					counter++;
-				}
-			}
+  amountSubmit.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-			table.appendChild(tbody);
-			exportBtn.classList.remove('hidden');
-		}
-	})
+    const levelInput = document.querySelector('#amount #user-level');
+    const balanceInput = document.querySelector('#amount #user-balance');
+    const aimInput = document.querySelector('#amount #user-limit');
+    const amountDateInput = document.querySelector('#amount-date');
 
-	// Reset button event listener
-	resetButton.addEventListener('click', removeError);
+    const level = Number(levelInput.value);
+    let balance = parseFloat(balanceInput.value);
+    const aim = Number(aimInput.value);
+    const amountDate = amountDateInput.value;
 
-	// Clear the table
-	clearButton.addEventListener('click', clearTable);
+    if (balance >= aim) {
+      if (!document.querySelector('.tabs .error-message')) {
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Aim should be higher than balance!';
+        errorMessage.classList.add('error-message');
+        document.querySelector('.tabs').appendChild(errorMessage);
+        aimInput.classList.add('error');
+      }
+    } else {
+      if (document.querySelector('.tabs .error-message')) {
+        document.querySelector('.tabs .error-message').remove();
+        aimInput.classList.remove('error');
+      }
 
-	// Export to Excel
-	exportBtn.addEventListener('click', () => {
-		/* Create worksheet from HTML DOM TABLE */
-		var wb = XLSX.utils.table_to_book(table);
-		/* Export to file (start a download) */
-		XLSX.writeFile(wb, "SheetJSTable.xlsx");
-	});
+      clearTable();
+      amountSubmit.reset();
+      table.classList.remove('hidden');
 
-	// Function to clear the table
-	function clearTable() {
-		while (table.rows.length > 1) {
-			table.deleteRow(table.rows.length - 1);
-		}
-	
-		overview.textContent = "";
-		exportBtn.classList.add('hidden');
-		table.classList.add('hidden');
-		counter = 0;
-	}
+      let totalEarnings = 0;
+      let earnings;
+      let counter = 0;
 
-	// Remove the error message
-	function removeError() {
-		const errorMessage = document.querySelector('.tabs .error-message');
-		if (errorMessage) {
-			errorMessage.remove();
-			aimInput.classList.remove('error');
-		}
-	}
+      for (let i = 0; balance <= aim; i++) {
+        earnings = calculateEarnings(level, balance);
+        balance += earnings;
+        totalEarnings += earnings;
 
-	// Show active tab
-	for(const tab of tabs) {
-		tab.addEventListener('click', e => {
-			e.preventDefault();
-			
-			for (const tab of tabs) {
-				tab.classList.remove('active')
-			}
-			
-			tab.classList.add('active');
-			const target = tab.dataset.target;
-			showTabContent(target);
-		})
-	}
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
+          <td data-label="Daily">$${earnings.toFixed(2)}</td>
+          <td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
+          <td data-label="Balance">$${balance.toFixed(2)}</td>
+        `;
 
-	// Show tabbed content
-	function showTabContent(el) {
-		for(content of contents) {
-			if(content.getAttribute('id') === el) {
-				content.classList.remove('hidden');
-			} else {
-				content.classList.add('hidden');
-			}
-		}
-	}
+        tbody.appendChild(newRow);
 
-	// Calculate the day in words
-	function currentDate(dayNumber) {
-		let currentDate = new Date();
-		currentDate.setDate(currentDate.getDate() + (dayNumber));
-		let futureDate = currentDate.toDateString();
-		return futureDate;
-	}
-})
+        if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
+          newRow.classList.add('row-active');
+          counter++;
+        } else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
+          newRow.classList.add('row-active');
+          counter++;
+        } else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
+          newRow.classList.add('row-active');
+          counter++;
+        }
+
+        if (balance >= aim && counter === 1) {
+          newRow.classList.add('row-aim');
+          counter++;
+        }
+      }
+
+      table.appendChild(tbody);
+      exportBtn.classList.remove('hidden');
+    }
+  });
+
+  resetButton.addEventListener('click', removeError);
+  clearButton.addEventListener('click', clearTable);
+
+  exportBtn.addEventListener('click', () => {
+    const wb = XLSX.utils.table_to_book(table);
+    XLSX.writeFile(wb, 'SheetJSTable.xlsx');
+  });
+
+  function clearTable() {
+    while (table.rows.length > 1) {
+      table.deleteRow(table.rows.length - 1);
+    }
+
+    overview.textContent = '';
+    exportBtn.classList.add('hidden');
+    table.classList.add('hidden');
+  }
+
+  function removeError() {
+    const errorMessage = document.querySelector('.tabs .error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+      aimInput.classList.remove('error');
+    }
+  }
+
+  for (const tab of tabs) {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      for (const tab of tabs) {
+        tab.classList.remove('active');
+      }
+
+      tab.classList.add('active');
+      const target = tab.dataset.target;
+      showTabContent(target);
+    });
+  }
+
+  function showTabContent(el) {
+    for (const content of contents) {
+      if (content.getAttribute('id') === el) {
+        content.classList.remove('hidden');
+      } else {
+        content.classList.add('hidden');
+      }
+    }
+  }
+});
