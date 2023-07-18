@@ -10,8 +10,15 @@ const aimInput = document.querySelector('#user-limit');
 const forms = document.querySelectorAll('form');
 const tbody = document.createElement('tbody');
 const resetButton = document.querySelector('#amount form [type="reset"]');
-const lvl1Limit = 500;
-const lvl2Limit = 2000;
+
+const lvl1Percentage = document.querySelector('select option[value="1"]').dataset.percentage / 100;
+const lvl2Percentage = document.querySelector('select option[value="2"]').dataset.percentage / 100;
+const lvl3Percentage = document.querySelector('select option[value="3"]').dataset.percentage / 100;
+
+const lvl1Limit = 501;
+const lvl2Limit = 2001;
+const lvl3Limit = 5001;
+
 let totalEarnings;
 let earnings;	 
 let counter = 0;
@@ -22,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	daysSubmit.addEventListener('submit', (e) => {
 		const level = Number(document.querySelector('#days #user-level').value);
 		let balance = parseFloat(document.querySelector('#days #user-balance').value);
-		const percentage = parseFloat(document.querySelector('#days #user-percentage').value / 100);
 		const iterations = Number(document.querySelector('#days #user-iterations').value);
+
 		totalEarnings = 0
 
 		e.preventDefault();
@@ -31,15 +38,51 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector('#days form').reset();
 		table.classList.remove('hidden');
 		
-		overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Days: ${iterations}`
+		// overview.textContent = `VIP Lvl: ${level} | Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Days: ${iterations}`
 		
 		for (let i = 0; i < iterations; i++) {
 			switch (level) {
 				case 1:
-					earnings = balance >= lvl1Limit ? lvl1Limit * percentage : balance * percentage;
+					// if balance >= 501
+					if(balance >= lvl1Limit) {
+						// you get 501 x 2.5%
+						earnings = lvl1Limit * lvl1Percentage
+					} else {
+						// balance will be below 501, so you get your balance x 2.5%
+						earnings = balance * lvl1Percentage
+					}
 					break;
 				case 2:
-					earnings = balance >= lvl2Limit ? lvl2Limit * percentage : balance * percentage;
+					// if balance is >= 2001
+					if(balance >= lvl2Limit) {
+						// you get $2000 x 2.8
+						earnings = lvl2Limit * lvl2Percentage
+					// if balance is >= 501
+					} else if(balance >= lvl1Limit) {
+						// you get vip2 percentages up to 2k | earnings = balance x 2.8%
+						earnings = balance * lvl2Percentage
+					} else { 
+						// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
+						earnings = balance * lvl1Percentage
+					}
+					break;
+				case 3:
+					// if balance >= 5001
+					if(balance > lvl3Limit) {
+						// you get $5000 x 3.0
+						earnings = lvl3Limit * lvl3Percentage
+					// if balance is >= 2001
+					} else if(balance > lvl2Limit) {
+						// you get balance x 3.0
+						earnings = balance * lvl3Percentage
+					// if balance is >= 501
+					} else if(balance > lvl1Limit) {
+						// you get vip2 percentages up to 2k | earnings = balance x 2.8%
+						earnings = balance * lvl2Percentage
+					} else { 
+						// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
+						earnings = balance * lvl1Percentage
+					}
 					break;
 				default:
 					break;
@@ -84,6 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
 						counter++;
 					}
 					break;
+				case 3:
+					if (balance >= lvl3Limit && counter === 0) {
+						newRow.classList.add('row-active');
+						counter++;
+					}
+					break;
 				default:
 					break;
 			}
@@ -98,13 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	amountSubmit.addEventListener('submit', (e) => {
 		const level = Number(document.querySelector('#amount #user-level').value);
 		let balance = parseFloat(document.querySelector('#amount #user-balance').value);
-		const percentage = parseFloat(document.querySelector('#amount #user-percentage').value / 100);
 		const aim = Number(document.querySelector('#amount #user-limit').value);
-		totalEarnings = 0
-
-		e.preventDefault();
-
 		const errorMessage = document.querySelector('.tabs .error-message');
+		totalEarnings = 0
+		e.preventDefault();
 		
 		if(balance >= aim) {
 			if(!errorMessage) {
@@ -123,15 +169,51 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.querySelector('#amount form').reset();
 			table.classList.remove('hidden');
 			
-			overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Limit: $${aim}`
+			// overview.textContent = `Starting Amount: $${balance} | Percentage: ${percentage * 100}% | Limit: $${aim}`
 			
 			for (let i = 0; balance <= aim; i++) {
 				switch (level) {
 					case 1:
-						earnings = balance >= lvl1Limit ? lvl1Limit * percentage : balance * percentage;
+						// if balance >= 501
+						if(balance >= lvl1Limit) {
+							// you get 501 x 2.5%
+							earnings = lvl1Limit * lvl1Percentage
+						} else {
+							// balance will be below 501, so you get your balance x 2.5%
+							earnings = balance * lvl1Percentage
+						}
 						break;
 					case 2:
-						earnings = balance >= lvl2Limit ? lvl2Limit * percentage : balance * percentage;
+						// if balance is >= 2001
+						if(balance >= lvl2Limit) {
+							// you get $2000 x 2.8
+							earnings = lvl2Limit * lvl2Percentage
+						// if balance is >= 501
+						} else if(balance >= lvl1Limit) {
+							// you get vip2 percentages up to 2k | earnings = balance x 2.8%
+							earnings = balance * lvl2Percentage
+						} else { 
+							// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
+							earnings = balance * lvl1Percentage
+						}
+						break;
+					case 3:
+						// if balance >= 5001
+						if(balance > lvl3Limit) {
+							// you get $5000 x 3.0
+							earnings = lvl3Limit * lvl3Percentage
+						// if balance is >= 2001
+						} else if(balance > lvl2Limit) {
+							// you get balance x 3.0
+							earnings = balance * lvl3Percentage
+						// if balance is >= 501
+						} else if(balance > lvl1Limit) {
+							// you get vip2 percentages up to 2k | earnings = balance x 2.8%
+							earnings = balance * lvl2Percentage
+						} else { 
+							// balance is < 501 so you get vip1 percentages | earnings = balance x 2.5%
+							earnings = balance * lvl1Percentage
+						}
 						break;
 					default:
 						break;
@@ -155,11 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				cell3.textContent = `$${totalEarnings.toFixed(2)}`;
 				cell3.setAttribute('data-label', 'Acc Earning');
 				newRow.appendChild(cell3);
-			
+
 				const cell4 = document.createElement("td");
 				cell4.textContent = `$${balance.toFixed(2)}`;
 				cell4.setAttribute('data-label', 'balance');
 				newRow.appendChild(cell4);
+
 				
 				tbody.appendChild(newRow);
 
@@ -172,8 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
 					break;
 				case 2:
 					if (balance >= lvl2Limit && counter === 0) {
-							newRow.classList.add('row-active');
-							counter++;
+						newRow.classList.add('row-active');
+						counter++;
+					}
+					break;
+				case 3:
+					if (balance >= lvl3Limit && counter === 0) {
+						newRow.classList.add('row-active');
+						counter++;
 					}
 					break;
 				default:
