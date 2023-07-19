@@ -44,7 +44,7 @@ p.subtitle {
         }
     }
 
-    button#downloadExcel {
+    button #downloadExcel {
         $color: green;
         border: none;
         padding: 5px 10px;
@@ -187,8 +187,8 @@ p.subtitle {
         }
         
         th, td {
-        padding: .5rem 1rem;
-        text-align: left;
+			padding: .5rem 1rem;
+			text-align: left;
         }
         
         th {
@@ -199,10 +199,71 @@ p.subtitle {
         
 		tbody {
 			tr {
+				position: relative;
 				background: rgba(254.9,255,255, .1);
 				
 				&:nth-child(odd) {
 					background: rgba(254.9,255,255, .2);
+				}
+
+				td {
+					position: relative;
+					z-index: 1;
+					isolation: isolate;
+					transition: all .2s ease-in-out;
+					// transition-delay: .1s;
+					
+					&::after {
+						content: "";
+						position: absolute;
+						inset: 0;
+						background: $highlight;
+						width: 100%;
+						height: 100%;
+						transform: scaleY(0);
+						transform-origin: bottom;
+						opacity: 0;
+						z-index: -1;
+						transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+					}
+					
+					&:last-child {
+						position: relative;
+						
+						span {
+							position: absolute;
+							right: -12.5px;
+							top: 17%;
+							width: 25px;
+							height: 25px;
+							border-radius: 50%;
+							background: $coral;
+							display: grid;
+							place-items: center;
+							padding: 1px;
+							font-weight: bold;
+							transition: all .3s ease-in-out;
+							transform-origin: center;
+							color: white;
+						}
+					}
+				}
+				
+				&.highlighted {
+					td {
+						&:not(span) {
+							color: $blue;
+						}
+
+						span {
+							transform: rotate(45deg);
+						}
+
+						&::after {
+							transform: scaleY(1);
+							opacity: 1;
+						}
+					} 
 				}
 			}
 		}
