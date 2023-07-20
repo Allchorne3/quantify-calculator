@@ -47,11 +47,15 @@ title: Example
         </form>
       </div>
     </div>
-    
-    <button id="downloadExcel" class="hidden">Export to Excel</button>
-    
+
+    <div class="buttons">
+      <button id="downloadExcel" class="disabled">Export to Excel</button>
+      <button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
+      <button id="remove-highlights" class="disabled">Clear highlights</button>
+    </div>
+
     <p class="overview"></p>
-    
+
     <table class="hidden">
       <thead>
         <tr>
@@ -63,12 +67,6 @@ title: Example
       </thead>
     </table>
   </div>
-
-  <!--
-  FEATURES:
-   - Allow user to highlight any table row with a little + that appears on hover
-   - automatic percentage that on level 2, changes from 2.5% to 2.8% from 501 earnings 
-  -->
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>
