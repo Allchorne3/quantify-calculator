@@ -253,19 +253,15 @@ const init = () => {
 	});
 
 	exportHighlightsBtn.addEventListener('click', () => {
-		// Select rows with class "highlighted"
 		const highlightedRows = table.querySelectorAll('tr.highlighted');
 		
 		// Create a new table to contain only the highlighted rows
-		const newTable = document.createElement('table');
-		highlightedRows.forEach(row => newTable.appendChild(row.cloneNode(true)));
-	  
-		// Convert the new table to an Excel workbook
-		const wb = XLSX.utils.table_to_book(newTable);
-	  
-		// Save the Excel workbook to a file
+		const hightlightsTable = document.createElement('table');
+		highlightedRows.forEach(row => hightlightsTable.appendChild(row.cloneNode(true)));
+		
+		const wb = XLSX.utils.table_to_book(hightlightsTable);
 		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
-	  });
+	});
 	
 	for (const tab of tabs) {
 		tab.addEventListener('click', (e) => {
