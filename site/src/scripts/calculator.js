@@ -6,10 +6,11 @@ let contents;
 let daysSubmit;
 let amountSubmit;
 let exportBtn;
+let exportHighlightsBtn;
+let clearHighlightButton;
 let aimInput;
 let tbody;
 let resetButton;
-let clearHighlightButton;
 
 const levelSelectOptions = {
 	1: {
@@ -70,6 +71,8 @@ const clearTable = () => {
 
     overview.textContent = '';
     exportBtn.classList.add('disabled');
+	exportHighlightsBtn.classList.add('disabled');
+	clearHighlightButton.classList.add('disabled');
     table.classList.add('hidden');
 }
 
@@ -79,10 +82,9 @@ const clearHighlights = () => {
 			row.classList.remove('highlighted')
 		}
 	}
-	
-	setTimeout(() => {
-		clearHighlightButton.classList.add('disabled');
-	}, 400)
+
+	clearHighlightButton.classList.add('disabled');
+	exportHighlightsBtn.classList.add('disabled');
 }
 
 // Event delegation for "Highlight" buttons
@@ -93,6 +95,7 @@ function highlightRow(parentElement, targetSelector) {
 		if (target.tagName === targetSelector) {
 			const row = target.closest('tr');
 			clearHighlightButton.classList.remove('disabled');
+			exportHighlightsBtn.classList.remove('disabled');
 
 			if (row) {
 				row.classList.toggle("highlighted");
@@ -110,6 +113,7 @@ const init = () => {
 	daysSubmit = document.querySelector('#days form');
 	amountSubmit = document.querySelector('#amount form');
 	exportBtn = document.querySelector('#downloadExcel');
+	exportHighlightsBtn = document.querySelector('#downloadExcelRows');
 	aimInput = document.querySelector('#user-limit');
 	tbody = document.createElement('tbody');
 	resetButton = document.querySelector('#amount form [type="reset"]');
@@ -247,6 +251,21 @@ const init = () => {
 		const wb = XLSX.utils.table_to_book(table);
 		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
 	});
+
+	exportHighlightsBtn.addEventListener('click', () => {
+		// Select rows with class "highlighted"
+		const highlightedRows = table.querySelectorAll('tr.highlighted');
+		
+		// Create a new table to contain only the highlighted rows
+		const newTable = document.createElement('table');
+		highlightedRows.forEach(row => newTable.appendChild(row.cloneNode(true)));
+	  
+		// Convert the new table to an Excel workbook
+		const wb = XLSX.utils.table_to_book(newTable);
+	  
+		// Save the Excel workbook to a file
+		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
+	  });
 	
 	for (const tab of tabs) {
 		tab.addEventListener('click', (e) => {
