@@ -69,7 +69,7 @@ const clearTable = () => {
     }
 
     overview.textContent = '';
-    exportBtn.classList.add('dieabled');
+    exportBtn.classList.add('disabled');
     table.classList.add('hidden');
 }
 
