@@ -47,12 +47,15 @@ title: Example
         </form>
       </div>
     </div>
-    
-    <button id="downloadExcel" class="hidden">Export to Excel</button>
-    
+
+    <div class="buttons">
+      <button id="downloadExcel" class="disabled">Export to Excel</button>
+      <button id="remove-highlights" class="disabled">Clear highlights</button>
+    </div>
+
     <p class="overview"></p>
-    
-    <table class="hiden">
+
+    <table class="hidden">
       <thead>
         <tr>
           <th>Day</th>
@@ -61,27 +64,8 @@ title: Example
           <th>Balance</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1<div><span>+</span></div></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2<div><span>+</span></div></td>
-        </tr>
-      </tbody>
     </table>
   </div>
-
-  <!--
-  FEATURES:
-   - Allow user to highlight any table row with a little + that appears on hover
-  -->
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>

@@ -44,21 +44,55 @@ p.subtitle {
         }
     }
 
-    button #downloadExcel {
-        $color: green;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 3px;
-        cursor: pointer;
-        background: $color;
-        color: white;
-        padding-inline: 20px;
-        margin-bottom: 2rem;
-        
-        &:hover {
-            background: darken($color, 5%);
-        }
-    }
+	.buttons {
+		display: flex;
+		margin-bottom: 2rem;
+		gap: 1rem;
+		
+		button {
+			cursor: pointer;
+			transition: all .3s ease-in-out;
+
+			&#downloadExcel,
+			&#remove-highlights {
+				border: none;
+				padding: 5px 10px;
+				border-radius: 3px;
+				color: white;
+				padding-inline: 20px;
+				
+				&.disabled {
+					pointer-events: none;
+					background: $grey;
+					color: darken($grey, 20%);
+				}
+			}
+			
+			&#downloadExcel {
+				$color: green;
+				background: $color;
+				
+				&:hover {
+					background: darken($color, 5%);
+				}
+			}
+			
+			&#remove-highlights {
+				$color: $coral;
+				background: $color;
+
+				&:hover {
+					background: darken($color, 5%);
+				}
+				// background: transparent;
+				// border: solid 2px white;
+				// color: white;
+				// padding: 4px 15px;
+				// border-radius: 18px;
+			}
+
+		}
+	}
 
     .tabs {
 		@include m.mobile-max {
@@ -233,6 +267,7 @@ p.subtitle {
 						div {
 							position: absolute;
 							right: -12.5px;
+							right: -15px;
 							top: 17%;
 							width: 25px;
 							height: 25px;
@@ -240,11 +275,13 @@ p.subtitle {
 							background: $coral;
 							display: grid;
 							place-items: center;
-							transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+							transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
 							transform-origin: center;
 							color: $blue;
 							font-size: 15px;
-
+							cursor: pointer;
+							opacity: 0;
+							
 							span {
 								font-size: 23px;
 								line-height: 1;
@@ -253,14 +290,24 @@ p.subtitle {
 					}
 				}
 				
+				&:hover td {
+					&:last-child div {
+						opacity: 1;
+						right: -12.5px;
+						transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+					}
+				}
+				
 				&.highlighted {
 					td {
 						&:not(span) {
 							color: $blue;
 						}
-
+						
 						div {
 							transform: rotate(45deg);
+							opacity: 1;
+							right: -12.5px;
 						}
 
 						&::after {

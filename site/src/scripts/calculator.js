@@ -7,9 +7,9 @@ let daysSubmit;
 let amountSubmit;
 let exportBtn;
 let aimInput;
-// let forms;
 let tbody;
 let resetButton;
+let clearHighlightButton;
 
 const levelSelectOptions = {
 	1: {
@@ -69,31 +69,37 @@ const clearTable = () => {
     }
 
     overview.textContent = '';
-    exportBtn.classList.add('hidden');
+    exportBtn.classList.add('dieabled');
     table.classList.add('hidden');
 }
 
-// const addHighlightButton = (tr) => {
-// 	let button = tr.querySelector("button");
+const clearHighlights = () => {
+	for(const row of table.rows) {
+		if(row.classList.contains('highlighted')) {
+			row.classList.remove('highlighted')
+		}
+	}
+	
+	setTimeout(() => {
+		clearHighlightButton.classList.add('disabled');
+	}, 400)
+}
 
-// 	if(button) {
-// 		// Reveal the button when hovering on the table row
-// 		tr.addEventListener("mouseover", () => {
-// 			button.classList.add("reveal");
-// 		});
+// Event delegation for "Highlight" buttons
+function highlightRow(parentElement, targetSelector) {
+	parentElement.addEventListener('click', (event) => {
+		const target = event.target;
 		
-// 		// Remove the button when leaving the table row
-// 		tr.addEventListener("mouseleave", () => {
-// 			button.classList.remove("reveal");
-// 		});
-		
-// 		table.addEventListener('click', (event) => {
-// 			if (event.target === button) {
-// 			  tr.classList.toggle("highlighted");
-// 			}
-// 		});
-// 	}
-// }
+		if (target.tagName === targetSelector) {
+			const row = target.closest('tr');
+			clearHighlightButton.classList.remove('disabled');
+
+			if (row) {
+				row.classList.toggle("highlighted");
+			}
+		}
+	});
+}
 
 const init = () => {
 	clearButton = document.querySelector('.clear');
@@ -105,9 +111,9 @@ const init = () => {
 	amountSubmit = document.querySelector('#amount form');
 	exportBtn = document.querySelector('#downloadExcel');
 	aimInput = document.querySelector('#user-limit');
-	// forms = document.querySelectorAll('form');
 	tbody = document.createElement('tbody');
 	resetButton = document.querySelector('#amount form [type="reset"]');
+	clearHighlightButton = document.querySelector('#remove-highlights');
 
 	daysSubmit.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -140,7 +146,7 @@ const init = () => {
 			<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 			<td data-label="Daily">$${earnings.toFixed(2)}</td>
 			<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-			<td data-label="Balance">$${balance.toFixed(2)}<span>+</span></td>
+			<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
 			`;
 
 			tbody.appendChild(newRow);
@@ -158,7 +164,7 @@ const init = () => {
 		}
 
 		table.appendChild(tbody);
-		exportBtn.classList.remove('hidden');
+		exportBtn.classList.remove('disabled');
 	});
 	
 	amountSubmit.addEventListener('submit', (e) => {
@@ -206,8 +212,7 @@ const init = () => {
 				<td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
 				<td data-label="Daily">$${earnings.toFixed(2)}</td>
 				<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-				<td data-label="Balance">$${balance.toFixed(2)}</td>
-				<td><button>Highlight</button></td>
+				<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
 			`;
 
 			tbody.appendChild(newRow);
@@ -230,46 +235,34 @@ const init = () => {
 			}
 
 			table.appendChild(tbody);
-			exportBtn.classList.remove('hidden');
+			exportBtn.classList.remove('disabled');
 		}
 	});
 
 	resetButton.addEventListener('click', removeError);
 	clearButton.addEventListener('click', clearTable);
-
+	clearHighlightButton.addEventListener('click', clearHighlights);
+	
 	exportBtn.addEventListener('click', () => {
 		const wb = XLSX.utils.table_to_book(table);
 		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
 	});
-
-
+	
 	for (const tab of tabs) {
 		tab.addEventListener('click', (e) => {
 			e.preventDefault();
-
+			
 			for (const tab of tabs) {
-			tab.classList.remove('active');
+				tab.classList.remove('active');
 			}
-
+			
 			tab.classList.add('active');
 			const target = tab.dataset.target;
 			showTabContent(target);
 		});
 	}
 
-
-	// Event delegation for "Highlight" buttons
-	table.addEventListener('click', (event) => {
-		const target = event.target;
-		
-		if (target.tagName === 'SPAN') {
-			const row = target.closest('tr');
-			
-			if (row) {
-				row.classList.toggle("highlighted");
-			}
-		}
-	});
+	highlightRow(table, 'SPAN');
 }
 
 export default {
