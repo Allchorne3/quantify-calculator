@@ -1,1 +1,1 @@
-{% if uniqueTitle %}{{uniqueTitle}}{% else %}{{title}} | {% if slogan !== false %}{{site.slogan}} | {% endif %}{% if siteName %}{{siteName}}{% else %}{{site.name}}{% endif %}{% endif %}
+{% if uniqueTitle %}{{uniqueTitle}}{% else %}{{title}} | {% if not slogan == "false" %}{{site.slogan}} | {% endif %}{% if siteName %}{{siteName}}{% else %}{{site.name}}{% endif %}{% endif %}

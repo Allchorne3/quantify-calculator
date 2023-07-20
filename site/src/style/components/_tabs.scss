@@ -1,0 +1,65 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.tabs {
+    @include m.mobile-max {
+        width: 100%;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        gap: 1rem;
+        padding-left: 0;
+        margin-bottom: 1rem;
+
+        @include m.mobile-max {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        li {
+            list-style: none;
+            
+            a, 
+            button {
+                display: block;
+                text-decoration: none;
+                color: white;
+                padding: 10px 25px;
+                background: none;
+                color: $gold;
+                font-weight: bold;
+                border: solid 2px $gold;
+                border-radius: 1.8rem;
+                transition: all .3s ease-in-out;
+            
+                &.active {
+                    background: $gold;
+                    color: $blue
+                }
+            }
+
+            &:last-child {
+                @include m.mobile-max {
+                    grid-column: 1 / -1;
+                }
+            }
+            
+            button.clear {
+                background: $coral;
+                border: none;
+                color: $blue;
+
+                @include m.mobile-max {
+                    width: 100%;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    background: darken($coral, 5%);
+                }
+            }
+        }
+    }
+}

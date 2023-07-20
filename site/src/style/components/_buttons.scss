@@ -1,0 +1,52 @@
+@use '../abstracts/variables' as *;
+
+.buttons {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    
+    button {
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        
+        &#remove-highlights {
+            $color: $coral;
+            background: $color;
+
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+
+        &#downloadExcel,
+        &#downloadExcelRows,
+        &#remove-highlights {
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: white;
+            padding-inline: 20px;
+            
+            &.disabled {
+                pointer-events: none;
+                background: $grey;
+                color: darken($grey, 20%);
+            }
+        }
+
+        &#remove-highlights {
+            color: $blue;
+        }
+        
+        &#downloadExcel,
+        &#downloadExcelRows {
+            $color: green;
+            background: $color;
+            
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+
+    }
+}

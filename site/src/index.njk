@@ -1,72 +1,64 @@
 ---
 layout: base.njk 
-title: Example
+title: Quantify Calculator
+slogan: false
 ---
 
-<div class="wrapper">  
-  <h1>Quantify Calculator</h1>
-  <p class="subtitle">Use the options below to showcase how much money you will earn. The day option will allow you to see how much money you have earned over your chosen number of days and when you have hit your limit depending on your VIP level. The Amount option will show you the date that you will reach your specified amount.</p>
+<div class="wrapper">
+	<div class="columns">
+		<div class="column is-left">
+			<div class="container">
+				<div class="tabs">
+					<ul>
+						<li><a href="#" data-target="days" class="active">Days</a></li>
+						<li><a href="#" data-target="amount">Amount</a></li>
+						<li><button class="clear">Clear Table</button></li>
+					</ul>
+				</div>
+				
+				<div class="content">
+					<div id="days">
+						<form>
+							<select id="user-level">
+								<option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
+								<option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
+								<option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
+							</select>
+							<input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
+							<input type="number" id="user-iterations" placeholder="How many days?*" required>
+							<input type="date" id="day-date">
+							<input type="reset" value="Clear Form">
+							<input type="submit" value="Submit">
+						</form>
+					</div>
 
-  <div class="container">
-    <div class="tabs">
-      <ul>
-        <li><a href="#" data-target="days" class="active">Days</a></li>
-        <li><a href="#" data-target="amount">Amount</a></li>
-        <li><button class="clear">Clear Table</button></li>
-      </ul>
-    </div>
-    
-    <div class="content">
-      <div id="days">
-        <form>
-          <select id="user-level">
-            <option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
-            <option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
-            <option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
-          </select>
-          <input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
-          <input type="number" id="user-iterations" placeholder="How many days?*" required>
-          <input type="date" id="day-date">
-          <input type="reset" value="Clear Form">
-          <input type="submit" value="Submit">
-        </form>
-      </div>
+					<div id="amount" class="hidden">
+						<form>
+							<select id="user-level">
+								<option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
+								<option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
+								<option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
+							</select>
+							<input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
+							<input type="number" id="user-limit" placeholder="Earnings Aim*" required>
+							<input type="date" id="amount-date">
+							<input type="reset" value="Clear Form">
+							<input type="submit" value="Submit">
+						</form>
+					</div>
+				</div>
 
-      <div id="amount" class="hidden">
-        <form>
-          <select id="user-level">
-            <option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
-            <option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
-            <option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
-          </select>
-          <input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
-          <input type="number" id="user-limit" placeholder="Earnings Aim*" required>
-          <input type="date" id="amount-date">
-          <input type="reset" value="Clear Form">
-          <input type="submit" value="Submit">
-        </form>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button id="downloadExcel" class="disabled">Export to Excel</button>
-      <button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
-      <button id="remove-highlights" class="disabled">Clear highlights</button>
-    </div>
-
-    <p class="overview"></p>
-
-    <table class="hidden">
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Daily</th>
-          <th>Acc Earnings</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
+				<div class="buttons">
+					<button id="downloadExcel" class="disabled">Export to Excel</button>
+					<button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
+					<button id="remove-highlights" class="disabled">Clear highlights</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="column is-right">
+			<div class="box">2</div>
+		</div>
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>

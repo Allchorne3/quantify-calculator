@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+form {
+    display: grid;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+
+    input,
+    select {
+        padding: 5px 10px;
+        border-radius: 3px;
+        background: rgba(255,255,255,.6); 
+        transition: all .3s ease-in-out;
+        border: none;
+        cursor: pointer;
+        color: $blue;
+            
+        &::placeholder,
+        option {
+            color: black;
+        }
+    }
+    
+    input {
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &[type="submit"] {
+            $color: $green;
+            background: $color;
+            
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+
+        &[type="reset"] {
+            $color: $gold;
+            background: $color;
+        
+            &:hover {
+                background: darken($grey, 5%);
+            }
+        }
+    }
+}

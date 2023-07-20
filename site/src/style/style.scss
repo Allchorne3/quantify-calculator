@@ -1,13 +1,42 @@
 @use 'abstracts/variables';
 
 @use 'base/reset';
-@use 'base/typography';
 @use 'base/base';
+@use 'base/typography';
+
+@use 'components/buttons';
+@use 'components/form';
+@use 'components/table';
+@use 'components/tabs';
 
 @use 'sections/header';
 @use 'sections/footer';
 
-@use 'pages/index';
-
-@use 'utilities/mixins';
 @use 'utilities/classes';
+@use 'utilities/mixins';
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+
+    .column {
+        background: yellowgreen;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
+
+        &.is-left {
+            width: 100vw;
+
+            &.reveal {
+                width: 50vw;
+            }
+        }
+
+        &.is-right {
+            background: greenyellow;
+        }
+    }
+}
