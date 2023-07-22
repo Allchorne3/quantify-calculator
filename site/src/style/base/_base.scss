@@ -8,7 +8,7 @@
 body {
 	font-size: .9rem;
 	font-family: $ff-main;
-	background: $blue;
+	background: $navy-dark;
 	color: white;
 	text-align: center;
 }
@@ -19,6 +19,6 @@ body {
 	height: 100vh;
 }
 
-// .container {
-
-// }
+.container {
+	max-width: 382px;
+}

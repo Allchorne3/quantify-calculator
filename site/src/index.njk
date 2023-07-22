@@ -12,39 +12,17 @@ slogan: false
 					<ul>
 						<li><a href="#" data-target="days" class="active">Days</a></li>
 						<li><a href="#" data-target="amount">Amount</a></li>
-						<li><button class="clear">Clear Table</button></li>
 					</ul>
+					<div id="tab-indicator"></div>
 				</div>
 				
 				<div class="content">
 					<div id="days">
-						<form>
-							<select id="user-level">
-								<option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
-								<option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
-								<option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
-							</select>
-							<input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
-							<input type="number" id="user-iterations" placeholder="How many days?*" required>
-							<input type="date" id="day-date">
-							<input type="reset" value="Clear Form">
-							<input type="submit" value="Submit">
-						</form>
+						{% include "forms/days-form.njk" %}
 					</div>
 
 					<div id="amount" class="hidden">
-						<form>
-							<select id="user-level">
-								<option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
-								<option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
-								<option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
-							</select>
-							<input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
-							<input type="number" id="user-limit" placeholder="Earnings Aim*" required>
-							<input type="date" id="amount-date">
-							<input type="reset" value="Clear Form">
-							<input type="submit" value="Submit">
-						</form>
+						{% include "forms/amount-form.njk" %}
 					</div>
 				</div>
 
@@ -53,11 +31,21 @@ slogan: false
 					<button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
 					<button id="remove-highlights" class="disabled">Clear highlights</button>
 				</div>
+				<li><button class="clear">Clear Table</button></li>
 			</div>
 		</div>
 		
 		<div class="column is-right">
-			<div class="box">2</div>
+			<table class="hidde">
+				<thead>
+					<tr>
+					<th>Day</th>
+					<th>Daily</th>
+					<th>Acc Earnings</th>
+					<th>Balance</th>
+					</tr>
+				</thead>
+			</table>
 		</div>
 </div>
 

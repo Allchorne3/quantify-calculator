@@ -1,0 +1,11 @@
+<form>
+	{% include "./vip-levels.njk" %}
+	<input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
+	<input type="number" id="user-iterations" placeholder="How many days?*" required>
+	<input type="date" id="day-date">
+	<div class="form-buttons">
+		<input type="reset" value="Reset">
+		<input type="submit" value="Submit">
+	</div>
+	{% include "./form-disclaimer.njk" %}
+</form>

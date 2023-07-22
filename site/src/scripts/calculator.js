@@ -1,6 +1,6 @@
 let clearButton;
 let table;
-let overview;
+// let overview;
 let tabs;
 let contents;
 let daysSubmit;
@@ -47,11 +47,11 @@ const calculateEarnings = (level, balance) => {
 };
 
 const showTabContent = (el) => {
-for (const content of contents) {
-	if (content.getAttribute('id') === el) {
-		content.classList.remove('hidden');
+	for (const content of contents) {
+		if (content.getAttribute('id') === el) {
+			content.classList.remove('hidden');
 		} else {
-		content.classList.add('hidden');
+			content.classList.add('hidden');
 		}
 	}
 }
@@ -69,11 +69,13 @@ const clearTable = () => {
       table.deleteRow(table.rows.length - 1);
     }
 
-    overview.textContent = '';
+    // overview.textContent = '';
     exportBtn.classList.add('disabled');
 	exportHighlightsBtn.classList.add('disabled');
 	clearHighlightButton.classList.add('disabled');
     table.classList.add('hidden');
+
+	document.querySelector('.is-left').classList.remove('reveal');
 }
 
 const clearHighlights = () => {
@@ -89,25 +91,27 @@ const clearHighlights = () => {
 
 // Event delegation for "Highlight" buttons
 function highlightRow(parentElement, targetSelector) {
-	parentElement.addEventListener('click', (event) => {
-		const target = event.target;
-		
-		if (target.tagName === targetSelector) {
-			const row = target.closest('tr');
-			clearHighlightButton.classList.remove('disabled');
-			exportHighlightsBtn.classList.remove('disabled');
-
-			if (row) {
-				row.classList.toggle("highlighted");
+	if(table) {
+		parentElement.addEventListener('click', (event) => {
+			const target = event.target;
+			
+			if (target.tagName === targetSelector) {
+				const row = target.closest('tr');
+				clearHighlightButton.classList.remove('disabled');
+				exportHighlightsBtn.classList.remove('disabled');
+				
+				if (row) {
+					row.classList.toggle("highlighted");
+				}
 			}
-		}
-	});
+		});
+	}
 }
 
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
-	overview = document.querySelector('p.overview');
+	// overview = document.querySelector('p.overview');
 	tabs = document.querySelectorAll('.tabs li a');
 	contents = document.querySelectorAll('.content > div');
 	daysSubmit = document.querySelector('#days form');
@@ -265,19 +269,15 @@ const init = () => {
 	
 	for (const tab of tabs) {
 		tab.addEventListener('click', (e) => {
-			e.preventDefault();
-			
-			for (const tab of tabs) {
-				tab.classList.remove('active');
-			}
-			
-			tab.classList.add('active');
 			const target = tab.dataset.target;
 			showTabContent(target);
 		});
 	}
 
 	highlightRow(table, 'SPAN');
+
+
+
 }
 
 export default {

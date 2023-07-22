@@ -70,7 +70,7 @@ table {
     }
     
     th {
-        background: lighten($blue, 10%);
+        background: lighten($navy-dark, 10%);
         color: $gold;
         font-weight: bold;
     }
@@ -121,7 +121,7 @@ table {
                         place-items: center;
                         transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
                         transform-origin: center;
-                        color: $blue;
+                        color: $navy-dark;
                         font-size: 15px;
                         cursor: pointer;
                         opacity: 0;
@@ -145,7 +145,7 @@ table {
             &.highlighted {
                 td {
                     &:not(span) {
-                        color: $blue;
+                        color: $navy-dark;
                     }
                     
                     div {

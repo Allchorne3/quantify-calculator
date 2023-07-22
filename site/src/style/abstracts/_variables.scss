@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap');
 
-$blue: #152238;
-$gold: #fdc763;
+$navy-dark: #00072E;
+$gold: #FFD35A;
 $coral: #FF7F50;
-$grey: #B2BEB5;
+$light-grey: #B2BEB5;
 $green: #4CBB17;
 $highlight: #FCF0DD;
+$mid-grey: #9B9B9B;
+$grey: #797979;
+$white-ter: #F7F7F7;
+$white: #FFFFFF;
 
 $fs-0: 3.75rem; //60px
 $fs-1: 2.5rem; //40px
@@ -18,14 +22,10 @@ $fs-7: .875rem; //14px
 
 $ff-main: "Josefin Sans", sans-serif;
 
-$fw-300: 300;
-$fw-400: 400;
-$fw-500: 500;
-$fw-700: 700;
-$fw-900: 900;
-
-$clr-primary: coral;
-$clr-secondry: navy;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semi-bold: 600;
+$fw-bold: 700;
 
 $desktop: 1230px;
 $tablet: 1023px;

@@ -1,4 +1,4 @@
-@use 'abstracts/variables';
+@use 'abstracts/variables' as *;
 
 @use 'base/reset';
 @use 'base/base';
@@ -21,7 +21,7 @@
     height: 100%;
 
     .column {
-        background: yellowgreen;
+        background: $white;
         display: grid;
         place-items: center;
         padding: 2rem;

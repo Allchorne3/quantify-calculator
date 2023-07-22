@@ -35,7 +35,7 @@
         }
 
         &#remove-highlights {
-            color: $blue;
+            color: $navy-dark;
         }
         
         &#downloadExcel,
@@ -48,5 +48,15 @@
             }
         }
 
+        &.clear {
+            background: $coral;
+            border: none;
+            color: $navy-dark;
+
+            &:hover {
+                cursor: pointer;
+                background: darken($coral, 5%);
+            }
+        }
     }
 }

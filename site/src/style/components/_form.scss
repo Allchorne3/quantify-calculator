@@ -3,26 +3,40 @@
 
 form {
     display: grid;
-    gap: 10px;
-    margin-top: 1rem;
-    margin-bottom: .6rem;
+    gap: 15px;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 3rem;
+
+    .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+
+        input {
+            width: 100%;
+        }
+    }
 
     input,
     select {
-        padding: 5px 10px;
-        border-radius: 3px;
-        background: rgba(255,255,255,.6); 
-        transition: all .3s ease-in-out;
         border: none;
         cursor: pointer;
-        color: $blue;
+        background: $white-ter;
+        padding: 15px;
+        color: $grey !important;
+        font-size: $fs-4;
             
         &::placeholder,
         option {
-            color: black;
+            color: $grey !important;
         }
     }
-    
+
+    input[type="submit"],
+    input[type="reset"] {
+        text-transform: uppercase;
+    }
+
     input {
         &:focus,
         &:active {
@@ -30,8 +44,9 @@ form {
         }
 
         &[type="submit"] {
-            $color: $green;
+            $color: $gold;
             background: $color;
+            color: $navy-dark !important;
             
             &:hover {
                 background: darken($color, 5%);
@@ -39,12 +54,21 @@ form {
         }
 
         &[type="reset"] {
-            $color: $gold;
+            $color: $navy-dark;
             background: $color;
+            color: $white !important;
         
             &:hover {
-                background: darken($grey, 5%);
+                background: lighten($navy-dark, 5%);
             }
         }
+
+        transition: all .3s ease-in-out;
+    }
+
+    .form-disclaimer {
+        font-weight: $fw-light;
+        text-align: left;
+        color: $navy-dark;
     }
 }
