@@ -10,12 +10,12 @@
     padding: 10px;
     font-weight: bold;
     border-radius: 3px;
-    max-width: 354px;
-    margin: 0 auto 1rem;
+    margin: 1rem auto 0;
 }
 
 .error {
-    border: solid 1px red !important;
+    border: solid 2px red !important;
+    color: red;
 }
 
 .row-active {

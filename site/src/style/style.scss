@@ -26,17 +26,34 @@
         place-items: center;
         padding: 2rem;
         transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
-
+        
         &.is-left {
             width: 100vw;
-
+            max-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            
             &.reveal {
                 width: 50vw;
+                
+                & + .is-right {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 50vw;
+                    transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
+                }
             }
         }
-
+        
         &.is-right {
-            background: greenyellow;
+            background: $gold-dull;
+            width: 0vw;
+            padding-top: 10rem;
+            transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
+            min-height: 100vh;
         }
     }
 }

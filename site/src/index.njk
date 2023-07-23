@@ -25,28 +25,32 @@ slogan: false
 						{% include "forms/amount-form.njk" %}
 					</div>
 				</div>
-
-				<div class="buttons">
-					<button id="downloadExcel" class="disabled">Export to Excel</button>
-					<button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
-					<button id="remove-highlights" class="disabled">Clear highlights</button>
-				</div>
-				<li><button class="clear">Clear Table</button></li>
 			</div>
 		</div>
 		
 		<div class="column is-right">
-			<table class="hidde">
-				<thead>
-					<tr>
-					<th>Day</th>
-					<th>Daily</th>
-					<th>Acc Earnings</th>
-					<th>Balance</th>
-					</tr>
-				</thead>
-			</table>
+			<div class="table-container">
+				<div class="buttons">
+					<button class="clear">Clear Table</button>
+					<button id="downloadExcel" class="disabled">Export to Excel</button>
+					<button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
+					<button id="remove-highlights" class="disabled">Clear highlights</button>
+				</div>
+
+
+				<table class="hidde">
+					<thead>
+						<tr>
+						<th>Day</th>
+						<th>Daily</th>
+						<th>Acc Earnings</th>
+						<th>Balance</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
 		</div>
+	</div>
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>

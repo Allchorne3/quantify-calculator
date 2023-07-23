@@ -11,6 +11,8 @@ let clearHighlightButton;
 let aimInput;
 let tbody;
 let resetButton;
+let formContainer;
+let highlightedRows;
 
 const levelSelectOptions = {
 	1: {
@@ -75,7 +77,7 @@ const clearTable = () => {
 	clearHighlightButton.classList.add('disabled');
     table.classList.add('hidden');
 
-	document.querySelector('.is-left').classList.remove('reveal');
+	formContainer.classList.remove('reveal');
 }
 
 const clearHighlights = () => {
@@ -90,19 +92,37 @@ const clearHighlights = () => {
 }
 
 // Event delegation for "Highlight" buttons
-function highlightRow(parentElement, targetSelector) {
+const highlightRow = (parentElement, targetSelector) => {
 	if(table) {
 		parentElement.addEventListener('click', (event) => {
+
 			const target = event.target;
+			const tableRows = document.querySelectorAll('table tr');
 			
 			if (target.tagName === targetSelector) {
 				const row = target.closest('tr');
+
+				// Enable the buttons
 				clearHighlightButton.classList.remove('disabled');
 				exportHighlightsBtn.classList.remove('disabled');
-				
+
+				// If there is a TR
 				if (row) {
-					row.classList.toggle("highlighted");
+					// add the highlighted class, or if its alrady got highlighted class then remove it
+					row.classList.toggle('highlighted');
+					if(!highlightedRows.includes(row)) {
+						highlightedRows.push(row);
+					} else {
+						highlightedRows.splice(highlightedRows.indexOf(row), 1);
+						// arr.splice(arr.indexOf(newId), 1);
+					}
 				}
+			}
+
+			console.log(highlightedRows);
+			if(!highlightedRows.length) {
+				clearHighlightButton.classList.add('disabled');
+				exportHighlightsBtn.classList.add('disabled');
 			}
 		});
 	}
@@ -122,6 +142,8 @@ const init = () => {
 	tbody = document.createElement('tbody');
 	resetButton = document.querySelector('#amount form [type="reset"]');
 	clearHighlightButton = document.querySelector('#remove-highlights');
+	formContainer = document.querySelector('.is-left');
+	highlightedRows = [];
 
 	daysSubmit.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -173,6 +195,7 @@ const init = () => {
 
 		table.appendChild(tbody);
 		exportBtn.classList.remove('disabled');
+		formContainer.classList.add('reveal');
 	});
 	
 	amountSubmit.addEventListener('submit', (e) => {
@@ -244,6 +267,7 @@ const init = () => {
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
+			formContainer.classList.add('reveal');
 		}
 	});
 
@@ -257,11 +281,11 @@ const init = () => {
 	});
 
 	exportHighlightsBtn.addEventListener('click', () => {
-		const highlightedRows = table.querySelectorAll('tr.highlighted');
+		const rowHighlights = table.querySelectorAll('tr.highlighted');
 		
 		// Create a new table to contain only the highlighted rows
 		const hightlightsTable = document.createElement('table');
-		highlightedRows.forEach(row => hightlightsTable.appendChild(row.cloneNode(true)));
+		rowHighlights.forEach(row => hightlightsTable.appendChild(row.cloneNode(true)));
 		
 		const wb = XLSX.utils.table_to_book(hightlightsTable);
 		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
