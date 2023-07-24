@@ -71,9 +71,6 @@ const clearTable = () => {
 	clearHighlightButton.classList.add('hidden');
 	clearButton.classList.add('hidden');
     table.classList.add('hidden');
-
-	setTimeout(function() {
-	}, 500)
 	formContainer.classList.remove('reveal');
 }
 
@@ -85,48 +82,52 @@ const showTableButtons = () => {
 }
 
 const clearHighlights = () => {
-	for(const row of table.rows) {
-		if(row.classList.contains('highlighted')) {
-			row.classList.remove('highlighted')
-		}
-	}
+    for (const row of highlightedRows) {
+        row.classList.remove('highlighted');
+    }
 
-	clearHighlightButton.classList.add('disabled');
-	exportHighlightsBtn.classList.add('disabled');
-}
+    // Clear the array
+    highlightedRows = [];
+
+    // Update buttons state
+    updateButtonsState();
+};
+
+const updateButtonsState = () => {
+    if (!highlightedRows.length) {
+        clearHighlightButton.classList.add('disabled');
+        exportHighlightsBtn.classList.add('disabled');
+    } else {
+        clearHighlightButton.classList.remove('disabled');
+        exportHighlightsBtn.classList.remove('disabled');
+    }
+};
 
 const highlightRow = (parentElement, targetSelector) => {
-	if(table) {
-		parentElement.addEventListener('click', (event) => {
-			const target = event.target;
-			
-			if (target.tagName === targetSelector) {
-				const row = target.closest('tr');
+    if (table) {
+        parentElement.addEventListener('click', (event) => {
+            const target = event.target;
 
-				// Enable the buttons
-				clearHighlightButton.classList.remove('disabled');
-				exportHighlightsBtn.classList.remove('disabled');
+            if (target.tagName === targetSelector) {
+                const row = target.closest('tr');
 
-				// If there is a TR
-				if (row) {
-					// add the highlighted class, or if its alrady got highlighted class then remove it
-					row.classList.toggle('highlighted');
-					if(!highlightedRows.includes(row)) {
-						highlightedRows.push(row);
-					} else {
-						highlightedRows.splice(highlightedRows.indexOf(row), 1);
-						// arr.splice(arr.indexOf(newId), 1);
-					}
-				}
-			}
+                // If there is a TR
+                if (row) {
+                    // add the highlighted class, or if it's already got highlighted class then remove it
+                    row.classList.toggle('highlighted');
+                    if (!highlightedRows.includes(row)) {
+                        highlightedRows.push(row);
+                    } else {
+                        highlightedRows.splice(highlightedRows.indexOf(row), 1);
+                    }
+                }
 
-			if(!highlightedRows.length) {
-				clearHighlightButton.classList.add('disabled');
-				exportHighlightsBtn.classList.add('disabled');
-			}
-		});
-	}
-}
+                // Update buttons state
+                updateButtonsState();
+            }
+        });
+    }
+};
 
 const removeError = () => {
 	const errorMessage = document.querySelector('.tabs .error-message');

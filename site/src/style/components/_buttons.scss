@@ -2,61 +2,46 @@
 
 .buttons {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 2rem;
     gap: 1rem;
     
     button {
+        border: none;
+        padding: 13px 13px 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
         cursor: pointer;
         transition: all .3s ease-in-out;
         
-        &#remove-highlights {
-            $color: $coral;
-            background: $color;
-
-            &:hover {
-                background: darken($color, 5%);
-            }
-        }
-
-        &#downloadExcel,
-        &#downloadExcelRows,
-        &#remove-highlights {
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            color: $white;
-            padding-inline: 20px;
-            
-            &.disabled {
-                pointer-events: none;
-                background: $grey;
-                color: darken($grey, 20%);
-            }
-        }
-
-        &#remove-highlights {
-            color: $navy-dark;
-        }
-        
         &#downloadExcel,
         &#downloadExcelRows {
-            $color: green;
+            $color: $bright-green;
             background: $color;
             
             &:hover {
                 background: darken($color, 5%);
             }
         }
-
+        
+        
+        &#remove-highlights,
         &.clear {
-            background: $coral;
-            border: none;
-            color: $navy-dark;
-
+            $color: $orange;
+            background: $color;
+            
             &:hover {
                 cursor: pointer;
-                background: darken($coral, 5%);
+                background: darken($color, 5%);
             }
         }
+
+        &.disabled {
+            pointer-events: none !important;
+            background: $grey !important;
+            color: darken($grey, 20%) !important;
+        }
+
     }
 }
