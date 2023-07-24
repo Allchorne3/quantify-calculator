@@ -37,13 +37,10 @@
             
             &.reveal {
                 width: 50vw;
+                transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
                 
                 & + .is-right {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    width: 50vw;
-                    transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
+                   right: 0;
                 }
             }
         }
@@ -54,6 +51,11 @@
             padding-top: 10rem;
             transition: all .65s cubic-bezier(0.22, 1, 0.36, 1);
             min-height: 100vh;
+            
+            width: 50vw;
+            position: absolute;
+            top: 0;
+            right: -50%;
         }
     }
 }

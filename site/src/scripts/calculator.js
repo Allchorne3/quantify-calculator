@@ -66,12 +66,22 @@ const clearTable = () => {
     }
 
     // overview.textContent = '';
-    exportBtn.classList.add('disabled');
-	exportHighlightsBtn.classList.add('disabled');
-	clearHighlightButton.classList.add('disabled');
+    exportBtn.classList.add('hidden');
+	exportHighlightsBtn.classList.add('hidden');
+	clearHighlightButton.classList.add('hidden');
+	clearButton.classList.add('hidden');
     table.classList.add('hidden');
 
+	setTimeout(function() {
+	}, 500)
 	formContainer.classList.remove('reveal');
+}
+
+const showTableButtons = () => {
+	exportBtn.classList.remove('hidden');
+	exportHighlightsBtn.classList.remove('hidden');
+	clearHighlightButton.classList.remove('hidden');
+	clearButton.classList.remove('hidden');
 }
 
 const clearHighlights = () => {
@@ -184,7 +194,6 @@ const init = () => {
 				iterationsInput.classList.remove('error');
 			}		
 
-			clearTable();
 			daysSubmit.reset();
 			table.classList.remove('hidden');
 
@@ -221,6 +230,7 @@ const init = () => {
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
+			showTableButtons();
 			formContainer.classList.add('reveal');
 		}
 	});
@@ -252,7 +262,6 @@ const init = () => {
 				aimInput.classList.remove('error');
 			}
 
-			clearTable();
 			amountSubmit.reset();
 			table.classList.remove('hidden');
 
@@ -294,6 +303,7 @@ const init = () => {
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
+			showTableButtons();
 			formContainer.classList.add('reveal');
 		}
 	});
