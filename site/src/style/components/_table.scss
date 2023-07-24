@@ -38,7 +38,7 @@ table {
         }
 
         td {
-            border-bottom: 1px solid rgba(white, .4);
+            border-bottom: 1px solid rgba($white, .4);
             display: block;
             text-align: right !important;
 
@@ -61,7 +61,7 @@ table {
     
     &.overview {
         th {
-            background: rgba(white, 0.5);
+            background: rgba($white, 0.5);
         }
     }
     

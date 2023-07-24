@@ -3,7 +3,7 @@
 
 form {
     display: grid;
-    gap: 15px;
+    gap: 20px;
     grid-template-columns: repeat(1, 1fr);
     margin-top: 3rem;
 
@@ -21,7 +21,7 @@ form {
     select {
         border: none;
         cursor: pointer;
-        background: $white-ter;
+        background: $white;
         padding: 15px;
         color: $grey !important;
         font-size: $fs-4;
@@ -70,5 +70,6 @@ form {
         font-weight: $fw-light;
         text-align: left;
         color: $navy-dark;
+        margin-top: 1rem;
     }
 }

@@ -128,6 +128,16 @@ const removeError = () => {
 	}
 }
 
+const viewTabs = items => {
+	// Show content on tab click
+	for (const item of items) {
+		item.addEventListener('click', (e) => {
+			const target = item.dataset.target;
+			showTabContent(target);
+		});
+	}
+}
+
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
@@ -145,13 +155,8 @@ const init = () => {
 	formContainer = document.querySelector('.is-left');
 	highlightedRows = [];
 
-	// Show content on tab click
-	for (const tab of tabs) {
-		tab.addEventListener('click', (e) => {
-			const target = tab.dataset.target;
-			showTabContent(target);
-		});
-	}
+	// Swtich Tabs
+	viewTabs(tabs)
 
 	daysSubmit.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -160,7 +165,6 @@ const init = () => {
 		const balanceInput = document.querySelector('#days #user-balance');
 		const iterationsInput = document.querySelector('#days #user-iterations');
 		const dayDateInput = document.querySelector('#day-date');
-
 		const level = Number(levelInput.value);
 		let balance = parseFloat(balanceInput.value);
 		const iterations = Number(iterationsInput.value);
@@ -195,23 +199,23 @@ const init = () => {
 
 				const newRow = document.createElement('tr');
 				newRow.innerHTML = `
-				<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
-				<td data-label="Daily">$${earnings.toFixed(2)}</td>
-				<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-				<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
+					<td data-label="Daily">$${earnings.toFixed(2)}</td>
+					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
 				`;
 
 				tbody.appendChild(newRow);
 
 				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
+					newRow.classList.add('row-active');
+					counter++;
 				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
+					newRow.classList.add('row-active');
+					counter++;
 				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
+					newRow.classList.add('row-active');
+					counter++;
 				}
 			}
 
@@ -257,35 +261,35 @@ const init = () => {
 			let counter = 0;
 
 			for (let i = 0; balance <= aim; i++) {
-			earnings = calculateEarnings(level, balance);
-			balance += earnings;
-			totalEarnings += earnings;
+				earnings = calculateEarnings(level, balance);
+				balance += earnings;
+				totalEarnings += earnings;
 
-			const newRow = document.createElement('tr');
-			newRow.innerHTML = `
-				<td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
-				<td data-label="Daily">$${earnings.toFixed(2)}</td>
-				<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-				<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
-			`;
+				const newRow = document.createElement('tr');
+				newRow.innerHTML = `
+					<td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
+					<td data-label="Daily">$${earnings.toFixed(2)}</td>
+					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+				`;
 
-			tbody.appendChild(newRow);
+				tbody.appendChild(newRow);
 
-			if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
-			} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
-			} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-				newRow.classList.add('row-active');
-				counter++;
-			}
+				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
+					newRow.classList.add('row-active');
+					counter++;
+				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
+					newRow.classList.add('row-active');
+					counter++;
+				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
+					newRow.classList.add('row-active');
+					counter++;
+				}
 
-			if (balance >= aim && counter === 1) {
-				newRow.classList.add('row-aim');
-				counter++;
-			}
+				if (balance >= aim && counter === 1) {
+					newRow.classList.add('row-aim');
+					counter++;
+				}
 			}
 
 			table.appendChild(tbody);
@@ -294,10 +298,12 @@ const init = () => {
 		}
 	});
 
+	// Event listeners
 	resetButton.addEventListener('click', removeError);
 	clearButton.addEventListener('click', clearTable);
 	clearHighlightButton.addEventListener('click', clearHighlights);
-	
+
+	// Run functions
 	exportTable.exportTables(table);
 	highlightRow(table, 'SPAN');
 }
