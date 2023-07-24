@@ -1,3 +1,5 @@
+import exportTable from './exportTable';
+
 let clearButton;
 let table;
 // let overview;
@@ -58,14 +60,6 @@ const showTabContent = (el) => {
 	}
 }
 
-const removeError = () => {
-	const errorMessage = document.querySelector('.tabs .error-message');
-	if (errorMessage) {
-		errorMessage.remove();
-		aimInput.classList.remove('error');
-	}
-}
-
 const clearTable = () => {
     while (table.rows.length > 1) {
       table.deleteRow(table.rows.length - 1);
@@ -91,13 +85,10 @@ const clearHighlights = () => {
 	exportHighlightsBtn.classList.add('disabled');
 }
 
-// Event delegation for "Highlight" buttons
 const highlightRow = (parentElement, targetSelector) => {
 	if(table) {
 		parentElement.addEventListener('click', (event) => {
-
 			const target = event.target;
-			const tableRows = document.querySelectorAll('table tr');
 			
 			if (target.tagName === targetSelector) {
 				const row = target.closest('tr');
@@ -119,12 +110,21 @@ const highlightRow = (parentElement, targetSelector) => {
 				}
 			}
 
-			console.log(highlightedRows);
 			if(!highlightedRows.length) {
 				clearHighlightButton.classList.add('disabled');
 				exportHighlightsBtn.classList.add('disabled');
 			}
 		});
+	}
+}
+
+const removeError = () => {
+	const errorMessage = document.querySelector('.tabs .error-message');
+
+	if (errorMessage) {
+		errorMessage.remove();
+		aimInput.classList.remove('error');
+		aimInput.classList.remove('error');
 	}
 }
 
@@ -145,6 +145,14 @@ const init = () => {
 	formContainer = document.querySelector('.is-left');
 	highlightedRows = [];
 
+	// Show content on tab click
+	for (const tab of tabs) {
+		tab.addEventListener('click', (e) => {
+			const target = tab.dataset.target;
+			showTabContent(target);
+		});
+	}
+
 	daysSubmit.addEventListener('submit', (e) => {
 		e.preventDefault();
 
@@ -158,44 +166,59 @@ const init = () => {
 		const iterations = Number(iterationsInput.value);
 		const dayDate = dayDateInput.value;
 
-		clearTable();
-		daysSubmit.reset();
-		table.classList.remove('hidden');
-
-		let totalEarnings = 0;
-		let earnings;
-		let counter = 0;
-
-		for (let i = 0; i < iterations; i++) {
-			earnings = calculateEarnings(level, balance);
-			balance += earnings;
-			totalEarnings += earnings;
-
-			const newRow = document.createElement('tr');
-			newRow.innerHTML = `
-			<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
-			<td data-label="Daily">$${earnings.toFixed(2)}</td>
-			<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-			<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
-			`;
-
-			tbody.appendChild(newRow);
-
-			if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-			newRow.classList.add('row-active');
-			counter++;
-			} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-			newRow.classList.add('row-active');
-			counter++;
-			} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-			newRow.classList.add('row-active');
-			counter++;
+		if (iterations <= 0) {
+			if (!document.querySelector('.tabs .error-message')) {
+				const errorMessage = document.createElement('p');
+				errorMessage.textContent = 'Need a minimum of 1 day';
+				errorMessage.classList.add('error-message');
+				document.querySelector('.tabs').appendChild(errorMessage);
+				iterationsInput.classList.add('error');
 			}
-		}
+		} else {
+			if (document.querySelector('.tabs .error-message')) {
+				document.querySelector('.tabs .error-message').remove();
+				iterationsInput.classList.remove('error');
+			}		
 
-		table.appendChild(tbody);
-		exportBtn.classList.remove('disabled');
-		formContainer.classList.add('reveal');
+			clearTable();
+			daysSubmit.reset();
+			table.classList.remove('hidden');
+
+			let totalEarnings = 0;
+			let earnings;
+			let counter = 0;
+
+			for (let i = 0; i < iterations; i++) {
+				earnings = calculateEarnings(level, balance);
+				balance += earnings;
+				totalEarnings += earnings;
+
+				const newRow = document.createElement('tr');
+				newRow.innerHTML = `
+				<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
+				<td data-label="Daily">$${earnings.toFixed(2)}</td>
+				<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
+				<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+				`;
+
+				tbody.appendChild(newRow);
+
+				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
+				newRow.classList.add('row-active');
+				counter++;
+				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
+				newRow.classList.add('row-active');
+				counter++;
+				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
+				newRow.classList.add('row-active');
+				counter++;
+				}
+			}
+
+			table.appendChild(tbody);
+			exportBtn.classList.remove('disabled');
+			formContainer.classList.add('reveal');
+		}
 	});
 	
 	amountSubmit.addEventListener('submit', (e) => {
@@ -213,16 +236,16 @@ const init = () => {
 
 		if (balance >= aim) {
 			if (!document.querySelector('.tabs .error-message')) {
-			const errorMessage = document.createElement('p');
-			errorMessage.textContent = 'Aim should be higher than balance!';
-			errorMessage.classList.add('error-message');
-			document.querySelector('.tabs').appendChild(errorMessage);
-			aimInput.classList.add('error');
+				const errorMessage = document.createElement('p');
+				errorMessage.textContent = 'Aim should be higher than balance!';
+				errorMessage.classList.add('error-message');
+				document.querySelector('.tabs').appendChild(errorMessage);
+				aimInput.classList.add('error');
 			}
 		} else {
 			if (document.querySelector('.tabs .error-message')) {
-			document.querySelector('.tabs .error-message').remove();
-			aimInput.classList.remove('error');
+				document.querySelector('.tabs .error-message').remove();
+				aimInput.classList.remove('error');
 			}
 
 			clearTable();
@@ -275,33 +298,8 @@ const init = () => {
 	clearButton.addEventListener('click', clearTable);
 	clearHighlightButton.addEventListener('click', clearHighlights);
 	
-	exportBtn.addEventListener('click', () => {
-		const wb = XLSX.utils.table_to_book(table);
-		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
-	});
-
-	exportHighlightsBtn.addEventListener('click', () => {
-		const rowHighlights = table.querySelectorAll('tr.highlighted');
-		
-		// Create a new table to contain only the highlighted rows
-		const hightlightsTable = document.createElement('table');
-		rowHighlights.forEach(row => hightlightsTable.appendChild(row.cloneNode(true)));
-		
-		const wb = XLSX.utils.table_to_book(hightlightsTable);
-		XLSX.writeFile(wb, 'SheetJSTable.xlsx');
-	});
-	
-	for (const tab of tabs) {
-		tab.addEventListener('click', (e) => {
-			const target = tab.dataset.target;
-			showTabContent(target);
-		});
-	}
-
+	exportTable.exportTables(table);
 	highlightRow(table, 'SPAN');
-
-
-
 }
 
 export default {
