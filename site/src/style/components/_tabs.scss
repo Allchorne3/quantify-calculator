@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.tabs {
+    @include m.mobile-max {
+        width: 100%;
+    }
+
+    max-width: 420px;
+    width: 100%;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-left: 0;
+        margin-bottom: 1.5rem;
+
+        @include m.mobile-max {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        li {
+            list-style: none;
+            flex: 1;
+            
+            a {
+                display: block;
+                text-decoration: none;
+                color: $dull-grey;
+                padding: 10px 25px;
+                background: none;
+                font-weight: bold;
+                border: solid 2px $dull-grey;
+                text-transform: uppercase;
+                transition: all .3s ease-in-out;
+            
+                &.active {
+                    border-color: $gold;
+                    color: $gold;
+                }
+            }
+        }
+    }
+}

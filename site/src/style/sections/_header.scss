@@ -17,10 +17,9 @@
 .nav-list {
   margin: 0;
   padding: 0;
-  font-family: $ff-heading;
+  font-family: $ff-main;
 
   a {
-    color: $clr-primary;
     text-decoration: none;
 
     &:focus,

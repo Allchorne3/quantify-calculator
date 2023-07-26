@@ -16,7 +16,6 @@ const runTabs = () => {
     }
 }
 
-
 export default {
     runTabs,
 }

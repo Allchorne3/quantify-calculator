@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+form {
+    display: grid;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+
+    grid-template-columns: 1fr 1fr;
+
+    @include m.mobile-max {
+        grid-template-columns: 1fr;
+    }
+
+    input,
+    select {
+        padding: 10px 15px;
+        background: rgba($white, .95);
+        transition: all 0.3s ease-in-out;
+        border: none;
+        cursor: pointer;
+        color: $blue;
+            
+        &::placeholder,
+        option {
+            color: black;
+        }
+    }
+    
+    input {
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &[type="submit"],
+        &[type="reset"] {
+            font-weight: $fw-black;
+            font-size: $fs-7;
+        }
+
+        &[type="submit"] {
+            $color: $green;
+            background: $color;
+            
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+
+        &[type="reset"] {
+            $color: $gold;
+            background: $color;
+        
+            &:hover {
+                background: darken($grey, 5%);
+            }
+        }
+    }
+}

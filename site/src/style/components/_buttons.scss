@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.buttons {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    
+    button {
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        border: none;
+        padding: 10px 15px;
+        color: $white;
+        padding-inline: 20px;
+        text-transform: uppercase;
+        font-weight: $fw-semi-bold;
+        
+        &.clear,
+        &#remove-highlights {
+            $color: $crimson;
+            background: $color;
+
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+        
+        &#downloadExcel,
+        &#downloadExcelRows {
+            $color: green;
+            background: $color;
+            
+            &:hover {
+                background: darken($color, 5%);
+            }
+        }
+
+        &.disabled {
+            pointer-events: none;
+            background: $grey !important;
+            color: darken($grey, 20%);
+        }
+    }
+}

@@ -14,6 +14,7 @@ let aimInput;
 let tbody;
 let resetButton;
 let highlightedRows;
+let tableButtons;
 
 const levelSelectOptions = {
 	1: {
@@ -65,18 +66,21 @@ const clearTable = () => {
     }
 
     // overview.textContent = '';
-    exportBtn.classList.add('hidden');
-	exportHighlightsBtn.classList.add('hidden');
-	clearHighlightButton.classList.add('hidden');
-	clearButton.classList.add('hidden');
+	clearTableButtons();
+
     table.classList.add('hidden');
 }
 
+const clearTableButtons = () => {
+	for(const buttons of tableButtons) {
+		buttons.classList.add('hidden');
+	}
+}
+
 const showTableButtons = () => {
-	exportBtn.classList.remove('hidden');
-	exportHighlightsBtn.classList.remove('hidden');
-	clearHighlightButton.classList.remove('hidden');
-	clearButton.classList.remove('hidden');
+	for(const buttons of tableButtons) {
+		buttons.classList.remove('hidden');
+	}
 }
 
 const clearHighlights = () => {
@@ -147,8 +151,39 @@ const viewTabs = items => {
 	}
 }
 
-const getPercentageForLevel = (level) => {
-    return levelSelectOptions[level].percentage * 100;
+// const getPercentageForLevel = (level) => {
+//     return levelSelectOptions[level].percentage * 100;
+// };
+
+const getPercentageForLevel = (balance, level) => {
+	let percentage;
+
+	// > 5001 & level 3
+	if(balance > levelSelectOptions[3].limit && level === 3) {
+		percentage = levelSelectOptions[3].percentage
+	
+	// > 2001 & < 5001 & level 3
+	} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
+		percentage = levelSelectOptions[2].percentage
+	
+	// >= 2001 & < 5001 & level 2
+	} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
+		percentage = levelSelectOptions[2].percentage
+
+	// > 501 & < 2001 & level 3
+	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 3) {
+		percentage = levelSelectOptions[2].percentage
+	
+	// > 501 & < 2001 & level 2
+	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 2) {
+		percentage = levelSelectOptions[2].percentage
+	
+	// < 501
+	} else {
+		percentage = levelSelectOptions[1].percentage
+	}
+
+    return percentage * 100;
 };
 
 const init = () => {
@@ -156,6 +191,7 @@ const init = () => {
 	table = document.querySelector('table');
 	// overview = document.querySelector('p.overview');
 	tabs = document.querySelectorAll('.tabs li a');
+	tableButtons = document.querySelectorAll('.buttons button');
 	contents = document.querySelectorAll('.content > div');
 	daysSubmit = document.querySelector('#days form');
 	amountSubmit = document.querySelector('#amount form');
@@ -214,7 +250,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-                    <td data-label="Percentage">${getPercentageForLevel(level)}%</td>
+                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
 				`;
 
@@ -283,7 +319,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-					<td data-label="Percentage">${getPercentageForLevel(level)}%</td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
 				`;
 

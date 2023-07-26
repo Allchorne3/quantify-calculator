@@ -4,7 +4,7 @@ title: Example
 ---
 
 <div class="wrapper">  
-  <h1>Quantify Calculator</h1>
+  <h1>Quantify<span>Calculator</span></h1>
   <p class="subtitle">Use the options below to showcase how much money you will earn. The day option will allow you to see how much money you have earned over your chosen number of days and when you have hit your limit depending on your VIP level. The Amount option will show you the date that you will reach your specified amount.</p>
 
   <div class="container">
@@ -12,9 +12,8 @@ title: Example
       <ul>
         <li><a href="#" data-target="days" class="active">Days</a></li>
         <li><a href="#" data-target="amount">Amount</a></li>
-        <li><button class="clear">Clear Table</button></li>
       </ul>
-    </div>
+    </div>    
     
     <div class="content">
       <div id="days">
@@ -49,9 +48,10 @@ title: Example
     </div>
 
     <div class="buttons">
-      <button id="downloadExcel" class="disabled">Export to Excel</button>
-      <button id="downloadExcelRows" class="disabled">Export Highlighted Rows</button>
-      <button id="remove-highlights" class="disabled">Clear highlights</button>
+      <button class="clear hidden">Clear Table</button>
+      <button id="downloadExcel" class="disabled hidden">Export to Excel</button>
+      <button id="downloadExcelRows" class="disabled hidden">Export Highlighted Rows</button>
+      <button id="remove-highlights" class="disabled hidden">Clear highlights</button>
     </div>
 
     <p class="overview"></p>

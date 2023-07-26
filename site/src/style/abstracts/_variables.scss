@@ -1,11 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Josefin+Sans:wght@300;400;600;700;900&display=swap');
 
+$navy-dark: #00072E;
 $blue: #152238;
-$gold: #fdc763;
+$gold: #FFD35A;
+$gold-dull: #FDC763;
 $coral: #FF7F50;
-$grey: #B2BEB5;
+$orange: #FA5B06;
+$crimson: #DC143C;
+$light-grey: #B2BEB5;
 $green: #4CBB17;
+$bright-green: #0FC100;
 $highlight: #FCF0DD;
+$mid-grey: #9B9B9B;
+$grey: #797979;
+$dull-grey: #454E5E;
+$white-ter: #F7F7F7;
+$white: #FFFFFF;
 
 $fs-0: 3.75rem; //60px
 $fs-1: 2.5rem; //40px
@@ -16,20 +26,17 @@ $fs-5: 1.125rem; //18px
 $fs-6: 1rem; //16px
 $fs-7: .875rem; //14px
 
+$ff-main: "Josefin Sans", sans-serif;
 $ff-body: "Poppins", sans-serif;
-$ff-heading: "Poppins", serif;
 
-$fw-300: 300;
-$fw-400: 400;
-$fw-500: 500;
-$fw-700: 700;
-$fw-900: 900;
-
-$clr-primary: coral;
-$clr-secondry: navy;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-black: 900;
 
 $desktop: 1230px;
 $tablet: 1023px;
 $tablet-portrait: 860px;
-$tablet-small: 750px;
+$tablet-small: 700px;
 $mobile: 499px;
