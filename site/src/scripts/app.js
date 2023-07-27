@@ -3,6 +3,8 @@ import tabs from './tabs'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    calculator.init();
-    tabs.runTabs();
+    if (document.documentElement.id === 'page-calculator') {
+        calculator.init();
+        tabs.runTabs();
+    }
 });

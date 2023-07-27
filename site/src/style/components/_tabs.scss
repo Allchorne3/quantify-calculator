@@ -25,15 +25,21 @@
             flex: 1;
             
             a {
+                $color: $dull-grey; 
                 display: block;
                 text-decoration: none;
-                color: $dull-grey;
+                color: $color;
                 padding: 10px 25px;
                 background: none;
                 font-weight: bold;
-                border: solid 2px $dull-grey;
+                border: solid 2px $color;
                 text-transform: uppercase;
                 transition: all .3s ease-in-out;
+
+                &:hover {
+                    color: lighten($color, 20%);
+                    border-color: lighten($color, 20%);
+                }
             
                 &.active {
                     border-color: $gold;

@@ -1,0 +1,106 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+#page-index {
+    @include m.mobile-max {
+        h1 {
+            font-size: 11vw;
+        }
+    }
+
+    .wrapper {
+        display: grid;
+        place-content: center;
+        height: 100vh;
+        padding-top: 0;
+    }
+
+    .options {
+        max-width: 760px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        margin: 3rem auto;
+
+        @include m.tablet-small-max {
+            flex-direction: column;
+        }
+
+        .option {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: solid 3px $gold;
+            background: $gold;
+            transition: all .3s ease-in-out;
+            display: grid;
+            place-content: center;
+            font-size: $fs-3;
+            font-family: $ff-body;
+            font-weight: $fw-bold;
+            color: $blue;
+            text-decoration: none;
+
+            i {
+                font-size: 3rem;
+                margin-top: 1rem;
+                transition: all .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            
+            &:hover {
+                background: $gold;
+                color: $blue;
+                cursor: pointer;
+
+                i {
+                    position: relative;
+                    transform: translateY(-10px);
+                }
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                width: 0; 
+                height: 0; 
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-bottom: 20px solid $blue;
+                transform: rotate(-45deg);
+                top: -7px;
+                left: -18px;
+                transition: all .6s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            &::after {
+                top: auto;
+                left: auto;
+                bottom: -7px;
+                right: -18px;
+                transform: rotate(135deg);
+            }
+
+            &:hover::before,
+            &:hover::after {
+                border-left: 40px solid transparent;
+                border-right: 40px solid transparent;
+                border-bottom: 40px solid $blue;
+            }
+
+            &:hover::before {
+                top: -10px;
+                left: -30px;
+            }
+
+            &:hover::after {
+                top: auto;
+                left: auto;
+                bottom: -10px;
+                right: -30px;
+            }
+        }
+    }
+}

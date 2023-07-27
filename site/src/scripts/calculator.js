@@ -184,7 +184,7 @@ const init = () => {
 	table = document.querySelector('table');
 	tabs = document.querySelectorAll('.tabs li a');
 	tableButtons = document.querySelectorAll('.buttons button');
-	contents = document.querySelectorAll('.content > div');
+	contents = document.querySelectorAll('html#page-calculator .content > div');
 	daysSubmit = document.querySelector('#days form');
 	balanceSubmit = document.querySelector('#balance form');
 	exportBtn = document.querySelector('#downloadExcel');

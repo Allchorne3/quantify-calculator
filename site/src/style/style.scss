@@ -6,10 +6,12 @@
 
 @use 'sections/header';
 
+@use 'components/buttons';
 @use 'components/form';
 @use 'components/table';
 @use 'components/tabs';
-@use 'components/buttons';
+
+@use 'pages/index';
 
 @use 'utilities/mixins';
 @use 'utilities/classes';

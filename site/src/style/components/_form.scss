@@ -36,7 +36,7 @@ form {
 
         &[type="submit"],
         &[type="reset"] {
-            font-weight: $fw-black;
+            font-weight: $fw-regular;
             font-size: $fs-7;
         }
 
@@ -54,7 +54,7 @@ form {
             background: $color;
         
             &:hover {
-                background: darken($grey, 5%);
+                background: darken($gold, 10%);
             }
         }
 
@@ -67,7 +67,7 @@ form {
         display: none;
         text-align: left;
         margin-top: 1rem;
-        font-weight: 900;
+        font-weight: $fw-semi-bold;
         text-transform: uppercase;
 
         & > small {

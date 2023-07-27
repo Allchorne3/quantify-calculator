@@ -29,5 +29,9 @@ body {
 }
 
 .wrapper {
-	padding: 0 1rem 3rem;
+	padding: 10rem 1rem 3rem;
+
+  @include m.tablet-small-max {
+    padding-top: 7rem;
+  }
 }
