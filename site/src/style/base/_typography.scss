@@ -22,6 +22,10 @@ h1 {
   span {
     color: $gold;
   }
+
+  @include m.until(600px) {
+    font-size: 9vw;
+  }
 }
 
 h2 {
