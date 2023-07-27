@@ -2,7 +2,7 @@ let mix = require('laravel-mix')
 
 mix
     // Directories
-    // .copyDirectory('./site/src/assets', 'public/assets')
+    .copyDirectory('./site/src/assets', 'public/assets')
     .copyDirectory('./site/_redirects', 'public/')
 
     // JavaScript
