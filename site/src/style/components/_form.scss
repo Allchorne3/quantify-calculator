@@ -57,5 +57,9 @@ form {
                 background: darken($grey, 5%);
             }
         }
+
+        &[type="date"] {
+          width: 100%;
+        }
     }
 }
