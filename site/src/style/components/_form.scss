@@ -62,4 +62,24 @@ form {
           width: 100%;
         }
     }
+
+    label {
+        display: none;
+        text-align: left;
+        margin-top: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+
+        & > small {
+            text-transform: lowercase;
+        }
+
+        small {
+            font-style: italic;
+        }
+
+        @include m.mobile-max {
+            display: block;
+        }
+    }
 }

@@ -2,11 +2,10 @@ import exportTable from './exportTable';
 
 let clearButton;
 let table;
-// let overview;
 let tabs;
 let contents;
 let daysSubmit;
-let amountSubmit;
+let balanceSubmit;
 let exportBtn;
 let exportHighlightsBtn;
 let clearHighlightButton;
@@ -65,9 +64,7 @@ const clearTable = () => {
       table.deleteRow(table.rows.length - 1);
     }
 
-    // overview.textContent = '';
 	clearTableButtons();
-
     table.classList.add('hidden');
 }
 
@@ -151,10 +148,6 @@ const viewTabs = items => {
 	}
 }
 
-// const getPercentageForLevel = (level) => {
-//     return levelSelectOptions[level].percentage * 100;
-// };
-
 const getPercentageForLevel = (balance, level) => {
 	let percentage;
 
@@ -189,17 +182,16 @@ const getPercentageForLevel = (balance, level) => {
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
-	// overview = document.querySelector('p.overview');
 	tabs = document.querySelectorAll('.tabs li a');
 	tableButtons = document.querySelectorAll('.buttons button');
 	contents = document.querySelectorAll('.content > div');
 	daysSubmit = document.querySelector('#days form');
-	amountSubmit = document.querySelector('#amount form');
+	balanceSubmit = document.querySelector('#balance form');
 	exportBtn = document.querySelector('#downloadExcel');
 	exportHighlightsBtn = document.querySelector('#downloadExcelRows');
 	aimInput = document.querySelector('#user-limit');
 	tbody = document.createElement('tbody');
-	resetButton = document.querySelector('#amount form [type="reset"]');
+	resetButton = document.querySelector('#balance form [type="reset"]');
 	clearHighlightButton = document.querySelector('#remove-highlights');
 	highlightedRows = [];
 
@@ -274,18 +266,18 @@ const init = () => {
 		}
 	});
 	
-	amountSubmit.addEventListener('submit', (e) => {
+	balanceSubmit.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-		const levelInput = document.querySelector('#amount #user-level');
-		const balanceInput = document.querySelector('#amount #user-balance');
-		const aimInput = document.querySelector('#amount #user-limit');
-		const amountDateInput = document.querySelector('#amount-date');
+		const levelInput = document.querySelector('#balance #user-level');
+		const balanceInput = document.querySelector('#balance #user-balance');
+		const aimInput = document.querySelector('#balance #user-limit');
+		const balanceDateInput = document.querySelector('#balance-date');
 
 		const level = Number(levelInput.value);
 		let balance = parseFloat(balanceInput.value);
 		const aim = Number(aimInput.value);
-		const amountDate = amountDateInput.value;
+		const balanceDate = balanceDateInput.value;
 
 		if (balance >= aim) {
 			if (!document.querySelector('.tabs .error-message')) {
@@ -301,7 +293,7 @@ const init = () => {
 				aimInput.classList.remove('error');
 			}
 
-			amountSubmit.reset();
+			balanceSubmit.reset();
 			clearTable();
 			table.classList.remove('hidden');
 			
@@ -316,7 +308,7 @@ const init = () => {
 				
 				const newRow = document.createElement('tr');
 				newRow.innerHTML = `
-					<td>Day ${i + 1} - ${currentDate(i, amountDate)}</td>
+					<td>Day ${i + 1} - ${currentDate(i, balanceDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
 					<td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>

@@ -58,12 +58,6 @@ table {
         }
     }
     
-    &.overview {
-        th {
-            background: rgba(white, 0.5);
-        }
-    }
-    
     th, td {
         padding: .5rem 1rem;
         text-align: left;
@@ -103,6 +97,11 @@ table {
                     opacity: 0;
                     z-index: -1;
                     transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+                    @include m.until(699px) {
+                        transform: scale(1);
+                        opacity: 0;
+                    }
                 }
                 
                 &:last-child {
@@ -111,39 +110,40 @@ table {
                     div {
                         position: absolute;
                         right: -15px;
-                        top: 17%;
-                        width: 25px;
-                        height: 25px;
+                        top: 15%;
                         border-radius: 50%;
-                        background: $coral;
+                        background: $white-ter;
                         display: grid;
                         place-items: center;
-                        transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
                         transform-origin: center;
                         color: $blue;
                         font-size: 15px;
                         cursor: pointer;
                         opacity: 0;
+                        transition: background 1s, opacity .2s, right .8s;
+                        transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+                        
+                        span {
+                            padding: 3px 6.5px;
+                            line-height: 1;
+                            font-size: 20px;
+                            transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+                        }
 
                         @include m.tablet-small-max {
                             opacity: 1;
                             right: 50%;
                             transform: translateX(50%);
-                            top: 50%;
-                            width: 40px;
-                            height: 40px;
+                            top: 35%;
                             font-weight: bold;
 
                             span {
-                                font-size: 40px;
+                                font-size: 37px !important;
+                                padding: 6px 12px !important;
+                                font-weight: $fw-regular;
                             }
                         }
                         
-                        span {
-                            line-height: 1;
-                            font-weight: normal;
-                            font-size: 20px;
-                        }
                     }
                 }
             }
@@ -152,8 +152,6 @@ table {
                 &:hover td {
                     &:last-child div {
                         opacity: 1;
-                        right: -12.5px;
-                        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
                     }
                 }
             }
@@ -164,21 +162,23 @@ table {
                         color: $blue;
                     }
                     
-                    div {
-                        transform: rotate(45deg);
-                        transform-origin: center;
+                    div{
                         opacity: 1;
-                        
-                        @include m.tablet-small-min {
-                            right: -12.5px;
+                        background: $crimson;
+                        color: $white;
+
+                        span {
+                            transform: rotate(45deg);
                         }
-
-
                     }
 
                     &::after {
                         transform: scaleY(1);
                         opacity: 1;
+
+                        @include m.until(699px) {
+                            opacity: 1;
+                        }
                     }
                 } 
             }

@@ -34,12 +34,13 @@
         
         &#downloadExcel,
         &#downloadExcelRows {
-            $color: green;
+            $color: lighten($blue, 10%);
             background: $color;
             
             &:hover {
                 background: darken($color, 5%);
             }
+
         }
 
         &.disabled {

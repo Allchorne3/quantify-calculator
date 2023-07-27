@@ -1,0 +1,13 @@
+<form>
+    <select id="user-level">
+        <option value="1" data-percentage="2.5">VIP1: 35.00-500.00</option>
+        <option value="2" data-percentage="2.8">VIP2: 501.00-2000.00</option>
+        <option value="3" data-percentage="3.0">VIP3: 2001.00-5000.00</option>
+    </select>
+    <input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
+    <input type="number" id="user-limit" placeholder="Earnings Aim*" required>
+
+    <label for="#day-date">Select a start date <small>(Optional)</small></label>
+    <input type="date" id="balance-date" placeholder="Select a date">
+    {% include "form-events.njk" %}
+</form>
