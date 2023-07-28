@@ -12,6 +12,9 @@
 @use 'components/tabs';
 
 @use 'pages/index';
+@use 'pages/guides';
+@use 'pages/calculator';
+@use 'pages/post';
 
 @use 'utilities/mixins';
 @use 'utilities/classes';

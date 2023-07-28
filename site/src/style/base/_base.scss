@@ -8,18 +8,26 @@
 body {
   background: $blue;
   color: white;
-  text-align: center;
+  // text-align: center;
   font-size: .9rem;
   font-family: $ff-body;
+  
+  &.is-light {
+    background: $white-ter;
+    color: $blue;
+  }
 }
 
 .container {
+  max-width: 1440px;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
   padding: 0 1rem 3rem;
+
+  &.is-narrow {
+    max-width: 960px;
+  }
 
   .content {
       @include m.mobile-max {

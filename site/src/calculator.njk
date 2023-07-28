@@ -2,6 +2,7 @@
 layout: base.njk 
 title: Calculator
 uniqueTitle: Quantify Calculator
+centered: true
 ---
 
 <div class="wrapper">  
@@ -9,24 +10,26 @@ uniqueTitle: Quantify Calculator
 	<p class="subtitle">Use the options below to showcase how much money you will earn. The day option will allow you to see how much money you have earned over your chosen number of days and when you have hit your limit depending on your VIP level. The balance option will show you the date that you will reach your specified balance.</p>
 
 	<div class="container">
-		<div class="tabs">
-			<ul>
-				<li><a href="#" data-target="days" class="active">Days</a></li>
-				<li><a href="#" data-target="balance">Balance</a></li>
-			</ul>
-		</div>    
-		
-		<div class="content">
-			<div id="days">
-				{% include "days-form.njk" %}
-			</div>
+		<section class="calculator">
+			<div class="tabs">
+				<ul>
+					<li><a href="#" data-target="days" class="active">Days</a></li>
+					<li><a href="#" data-target="balance">Balance</a></li>
+				</ul>
+			</div>    
+			
+			<div class="content">
+				<div id="days">
+					{% include "days-form.njk" %}
+				</div>
 
-			<div id="balance" class="hidden">
-				{% include "balance-form.njk" %}
+				<div id="balance" class="hidden">
+					{% include "balance-form.njk" %}
+				</div>
 			</div>
-		</div>
+		</section>
 
-		<div class="buttons">
+		<div class="buttons is-centered">
 			<button class="clear hidden">Clear Table</button>
 			<button id="downloadExcel" class="disabled hidden">Export to Excel</button>
 			<button id="downloadExcelRows" class="disabled hidden">Export Highlights</button>

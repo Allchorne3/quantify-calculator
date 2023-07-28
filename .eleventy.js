@@ -1,6 +1,6 @@
 const htmlmin = require("html-minifier"); //minify html
-
 const prettyDate = require('./lib/pretty-date.js')
+const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
 
 module.exports = function(eleventyConfig) {
 
@@ -11,12 +11,20 @@ module.exports = function(eleventyConfig) {
         return collection.getFilteredByTag("post").filter(item => item.data.featured);
     });
 
-    eleventyConfig.addCollection("posts", function(collection) {
-        return collection.getFilteredByTag("post").reverse();
-    });
+    // eleventyConfig.addCollection("posts", function(collection) {
+    //     return collection.getFilteredByTag("post").reverse();
+    // });
 
     // Expose Nunjucks filters
     eleventyConfig.addFilter("prettyDate", prettyDate);
+
+    // plugins
+    eleventyConfig.addPlugin(emojiReadTime, {
+        emoji: "🕓",
+        label: "mins",
+        wpm: 270,
+        bucketSize: 3,
+      });
 
     // Automatically open up the browser on script runs
     eleventyConfig.setBrowserSyncConfig({
@@ -38,7 +46,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addGlobalData('site', {
         name: 'Your Site Name',
         url: 'https://yoursitename.com',
-        host: process.env.NODE_ENV === 'production' ? 'https://gearset.com' : 'http://localhost:8080',
+        host: process.env.NODE_ENV === 'production' ? 'https://your-site.com' : 'http://localhost:8080',
         slogan: 'Your global site slogan',
         description: "your default site description"
     });

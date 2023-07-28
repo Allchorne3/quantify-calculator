@@ -1,0 +1,22 @@
+---
+layout: base.njk 
+uniqueTitle: Quantify Guides
+lightHeader: true
+lightBody: true
+---
+
+<div class="wrapper">
+    <h1 class="text-centered">Guides</h1>
+
+    <div class="container">
+        {% if collections.post.length %}
+            <ul role="list">
+                {% for post in collections.post | reverse%}
+                    {% include 'posts/snippet.njk' %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h2 class="text-centered ">There are no guides yet, hang tight!</h2>
+        {% endif %}
+    </div>
+</div>

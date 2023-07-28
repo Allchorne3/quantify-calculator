@@ -1,0 +1,18 @@
+---
+layout: base.njk
+lightHeader: true
+lightBody: true
+pageClass: post
+---
+
+<div class="wrapper">
+    <div class="container is-narrow">
+        <article class="main-article">
+            <h1 class="article-title">{{ title }}</h1>
+            <h4 class="article-date">{{ date | prettyDate}} <span class="divider">|</span> {{ content | emojiReadTime }} </h4>
+            {{ content | safe }}
+        </article>
+
+        <a class="back" href="/guides/">Back to guides</a>
+    </div>
+</div>

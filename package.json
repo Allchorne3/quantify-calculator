@@ -37,6 +37,7 @@
     "sass-loader": "^12.6.0"
   },
   "dependencies": {
+    "@11tyrocks/eleventy-plugin-emoji-readtime": "^1.0.1",
     "@fortawesome/fontawesome-free": "^6.2.0",
     "moment": "^2.29.4",
     "sheetjs": "^2.0.0"

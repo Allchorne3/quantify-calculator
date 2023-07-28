@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+#page-post {
+    h4.article-date {
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+        font-family: $ff-body;
+        font-size: $fs-5;
+
+        span.divider {
+            padding-inline: .5rem;
+            font-weight: $fw-light;
+        }
+    }
+
+    a.back {
+        margin-top: 1rem;
+        display: inline-block;
+        text-decoration: none;
+        font-weight: $fw-bold;
+        color: $blue;
+        position: relative;
+        z-index: 2;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 6px;
+            bottom: 0px;
+            background: $gold;
+            opacity: 0;
+            left: 5px;
+            transition: all .3s ease-in-out;
+            z-index: -1;
+        }
+        
+        &:hover::before {
+            bottom: 3px;
+            opacity: 1;
+          }
+    }
+}
