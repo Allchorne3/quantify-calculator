@@ -71,11 +71,40 @@ header.header {
               
             }
 
-            &:hover::before {
+            &:not([aria-current="page"]):hover::before {
               transform: scaleX(1);
             }
           }
         }
+      }
+    }
+  }
+
+  &.is-light {
+    background: $white-ter;
+
+    svg {
+      path.quantify {
+        fill: $blue;
+      }
+
+      path.helpers {
+        fill: $gold-dark;
+      }
+    }
+
+    nav {
+      li a {
+        color: $blue !important;
+
+        &:hover::before {
+          background: lighten($blue, 10%);
+        }
+
+        &[aria-current="page"] {
+          padding-bottom: .1rem;
+          border-bottom: solid 2px $gold-dark;
+        } 
       }
     }
   }

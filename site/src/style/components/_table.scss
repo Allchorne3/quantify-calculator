@@ -2,8 +2,7 @@
 @use '../utilities/mixins' as m;
 
 table {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin: 1rem auto;
     width: 740px;
     border-spacing: 5px;
 

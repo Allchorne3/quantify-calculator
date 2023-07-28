@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" {% if pageClass %} id="page-{{pageClass}}"{% elseif page.fileSlug %} id="page-{{page.fileSlug}}"{% else %} id="page-index"{% endif %}>
+<html lang="en" {% include "page-class.njk" %} >
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,10 +16,10 @@
 
         <link rel="stylesheet" href="{{ '/style/style.css' | url }}">
     </head>
-    <body>
+    <body{% if lightBody %} class="is-light"{% endif %}>
         {% include "header.njk" %}
         
-        <main>
+        <main{% if centered %} class="text-centered" {% endif %}>
             {{ content | safe }}
         </main>
 
