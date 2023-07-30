@@ -20,8 +20,8 @@ module.exports = function(eleventyConfig) {
 
     // plugins
     eleventyConfig.addPlugin(emojiReadTime, {
-        emoji: "🕓",
-        label: "mins",
+        emoji: "📖",
+        label: "mins read",
         wpm: 270,
         bucketSize: 3,
       });
