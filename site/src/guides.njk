@@ -10,7 +10,7 @@ lightBody: true
 
     <div class="container">
         {% if collections.post.length %}
-            <ul role="list">
+            <ul role="list text-centered">
                 {% for post in collections.post | reverse%}
                     {% include 'posts/snippet.njk' %}
                 {% endfor %}
