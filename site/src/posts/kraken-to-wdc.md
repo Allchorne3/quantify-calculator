@@ -30,6 +30,6 @@ _**Note:** your bank may refuse this transaction as some banks have a policy aga
 
 12. You will now need to open WDC Quantify. On the home tab, click deposit. You should see a QR code on the screen and above it, a drop down menu. Make sure you select **trc20-USDT** from the drop down menu and then copy your wallet address.
 
-13. Head back to Kraken and paste your wallet address. Click review and slide to confirm.
+13. Head back to Kraken and paste your wallet address, add your description, click review and slide to confirm.
 
 14. You are now done. Head back to WDC Quantify and you should see your deposit. (It may take a few minutes to appear.)
