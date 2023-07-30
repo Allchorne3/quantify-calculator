@@ -1,6 +1,6 @@
 ---
 title: How to deposit into WDC from Kraken
-date: 2023-07-28
+date: 2023-07-30
 tags: post
 ---
 
