@@ -1,6 +1,8 @@
 ---
 title: How to deposit into WDC from Kraken
 date: 2023-07-30
+icon: wdc
+imageType: png
 ---
 
 1. You will need to open a Kraken account. This will be your crypto wallet for all your deposits and withdrawals.

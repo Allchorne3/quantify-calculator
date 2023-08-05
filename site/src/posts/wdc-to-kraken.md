@@ -1,6 +1,7 @@
 ---
 title: How to withdraw WDC balance into Kraken
 date: 2023-08-02
+icon: kraken
 ---
 
 1. First go into WDC Quantify and click the **Mine** tab.
