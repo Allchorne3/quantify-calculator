@@ -12,7 +12,10 @@
         display: grid;
         place-content: center;
         height: 100vh;
-        padding-top: 0;
+
+        @include m.from(700px) {
+            padding-top: 0;
+        }
     }
 
     .options {
