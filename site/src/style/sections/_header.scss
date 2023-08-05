@@ -27,6 +27,7 @@ header.header {
 
     @include m.mobile-max {
       flex-direction: column;
+      align-items: center;
     }
 
     svg {
@@ -51,29 +52,10 @@ header.header {
           }
 
           a {
-            position: relative;
             text-decoration: none;
             color: $white;
             font-weight: $fw-semi-bold;
-            font-size: $fs-6;
-
-            &::before {
-              position: absolute;
-              content: "";
-              width: 100%;
-              height: 2px;
-              bottom: -3px;
-              background: $white;
-              left: 0;
-              transform: scaleX(0);
-              transform-origin: left;
-              transition: all .2s ease-in-out;
-              
-            }
-
-            &:not([aria-current="page"]):hover::before {
-              transform: scaleX(1);
-            }
+            font-size: $fs-5;
           }
         }
       }
@@ -96,21 +78,7 @@ header.header {
     nav {
       li a {
         color: $blue !important;
-
-        &:hover::before {
-          background: lighten($blue, 10%);
-        }
-
-        &[aria-current="page"] {
-          padding-bottom: .1rem;
-          border-bottom: solid 2px $gold-dark;
-        } 
       }
     }
   }
-}
-
-[aria-current="page"] {
-  padding-bottom: .1rem;
-  border-bottom: solid 2px $gold;
 }

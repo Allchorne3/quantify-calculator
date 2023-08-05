@@ -8,12 +8,13 @@ h2,
 h3,
 h4, 
 h5 {
-  font-family: $ff-main;
+  font-family: $ff-body;
   font-weight: $fw-semi-bold;
   line-height: 1.1;
 }
 
 h1 {
+  font-family: $ff-main;
   font-size: $fs-0;
   margin-top: 3rem;
   margin-bottom: .5rem;
@@ -29,6 +30,10 @@ h1 {
 
 h2 {
   font-size: $fs-3;
+}
+
+h4 {
+  font-size: $fs-4;
 }
 
 strong {

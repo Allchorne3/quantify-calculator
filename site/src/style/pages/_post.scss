@@ -20,25 +20,5 @@
         text-decoration: none;
         font-weight: $fw-bold;
         color: $blue;
-        position: relative;
-        z-index: 2;
-
-        &::before {
-            position: absolute;
-            content: "";
-            width: 100%;
-            height: 6px;
-            bottom: 0px;
-            background: $gold;
-            opacity: 0;
-            left: 5px;
-            transition: all .3s ease-in-out;
-            z-index: -1;
-        }
-        
-        &:hover::before {
-            bottom: 3px;
-            opacity: 1;
-          }
     }
 }

@@ -24,25 +24,25 @@
             flex: 1;
             
             a {
-                $color: $dull-grey; 
+                $color: $dull-grey;
                 display: block;
                 text-decoration: none;
-                color: $color;
+                color: #454E5E;
                 padding: 10px 25px;
-                background: none;
+                background: $grey;
                 font-weight: bold;
-                border: solid 2px $color;
                 text-transform: uppercase;
-                transition: all .3s ease-in-out;
+                clip-path: polygon(14px 0, 100% 0, 100% 34px, 238px 100%, 0 100%, 0 10px);
+                transition: all 0.3s ease-in-out; 
 
                 &:hover {
-                    color: lighten($color, 20%);
-                    border-color: lighten($color, 20%);
+                    // color: lighten($color, 20%);
+                    background: lighten($color, 10%);
                 }
-            
+                
                 &.active {
-                    border-color: $gold;
-                    color: $gold;
+                    background: $gold;
+                    color: $blue;
                 }
             }
         }

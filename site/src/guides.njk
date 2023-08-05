@@ -8,11 +8,16 @@ lightBody: true
 <div class="wrapper">
     <h1 class="text-centered">Guides</h1>
 
-    <div class="container">
+    <div class="container is-narrow">
         {% if collections.post.length %}
-            <ul role="list">
+            <ul role="list" class="posts">
                 {% for post in collections.post | reverse%}
+                <li>
+                    <div class="image">
+                        <img src="/assets/images/{% if post.data.icon %}{{post.data.icon}}{% else %}default-icon{% endif %}.{% if post.data.imageType %}{{ post.data.imageType }}{% else %}svg{% endif %}" alt="Icon">
+                    </div>
                     {% include 'posts/snippet.njk' %}
+                </li>
                 {% endfor %}
             </ul>
         {% else %}
