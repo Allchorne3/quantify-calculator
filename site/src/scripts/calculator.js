@@ -157,7 +157,7 @@ const getPercentageForLevel = (balance, level) => {
 	
 	// > 2001 & < 5001 & level 3
 	} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
-		percentage = levelSelectOptions[2].percentage
+		percentage = levelSelectOptions[3].percentage
 	
 	// >= 2001 & < 5001 & level 2
 	} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
