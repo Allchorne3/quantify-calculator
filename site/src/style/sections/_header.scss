@@ -2,13 +2,14 @@
 @use '../utilities/mixins' as m;
 
 header {
+    background: red;
     width: 1720px;
+    min-height: 5rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 50px;
-
+    
     // Main nav
     nav {
         ul {
