@@ -24,12 +24,12 @@
             flex: 1;
             
             a {
-                $color: $dull-grey;
+                $color: $grey-dark;
                 display: block;
                 text-decoration: none;
                 color: #454E5E;
                 padding: 10px 25px;
-                background: $grey;
+                background: $grey-mid;
                 font-weight: bold;
                 text-transform: uppercase;
                 clip-path: polygon(14px 0, 100% 0, 100% 34px, 238px 100%, 0 100%, 0 10px);

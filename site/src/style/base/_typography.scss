@@ -8,20 +8,19 @@ h2,
 h3,
 h4, 
 h5 {
-  font-family: $ff-body;
-  font-weight: $fw-semi-bold;
+  font-family: $ff-main;
   line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: $fw-semi-bold;
 }
 
 h1 {
   font-family: $ff-main;
   font-size: $fs-0;
-  margin-top: 3rem;
-  margin-bottom: .5rem;
-
-  span {
-    color: $gold;
-  }
 
   @include m.until(600px) {
     font-size: 9vw;
@@ -34,22 +33,9 @@ h2 {
 
 h4 {
   font-size: $fs-4;
+  font-weight: $fw-medium;
 }
 
 strong {
-  font-weight: $fw-bold;
-}
-
-p.subtitle {
-  font-size: $fs-7;
-  font-weight: normal;
-  margin: 0 auto 3rem;
-  line-height: 2;
-  color: #f7f7f7;
-  max-width: 850px;
-
-  @include m.mobile-max {
-    font-size: $fs-6;
-    line-height: 1.6
-  }
+  font-weight: $fw-semi-bold;
 }

@@ -1,39 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Josefin+Sans:wght@300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-@media(prefers-color-scheme: dark) {
-$navy-dark: #00072E;
-$blue: #152238;
-$gold: #FFD35A;
-$gold-dark: #FCAF22;
-$coral: #FF7F50;
-$orange: #FA5B06;
-$crimson: #DC143C;
-$light-grey: #B2BEB5;
-$green: #4CBB17;
-$bright-green: #0FC100;
-$highlight: #FCF0DD;
-$mid-grey: #9B9B9B;
-$grey: #797979;
-$dull-grey: #454E5E;
-$white-ter: #F7F7F7;
-$white: #FFFFFF;
-}
-
-$navy-dark: #00072E;
-$blue: #152238;
-$gold: #FFD35A;
-$gold-dark: #FCAF22;
-$coral: #FF7F50;
-$orange: #FA5B06;
-$crimson: #DC143C;
-$light-grey: #B2BEB5;
-$green: #4CBB17;
-$bright-green: #0FC100;
-$highlight: #FCF0DD;
-$mid-grey: #9B9B9B;
-$grey: #797979;
-$dull-grey: #454E5E;
-$white-ter: #F7F7F7;
+$black: #191C27;
+$grey-dark: #20222E;
+$grey-mid: #707070;
+$purple: #8E3BFF;
+$purple-light: #7566EF;
+$blue-light: #726DED;
+$blue-mid: #534ED6;
+// $galactic: linear-gradient($blue-light, $blue-mid);
 $white: #FFFFFF;
 
 $fs-0: 3.75rem; //60px
@@ -45,17 +19,21 @@ $fs-5: 1.125rem; //18px
 $fs-6: 1rem; //16px
 $fs-7: .875rem; //14px
 
-$ff-main: "Josefin Sans", sans-serif;
-$ff-body: "Poppins", sans-serif;
+$ff-main: "Inter", sans-serif;
 
-$fw-light: 300;
 $fw-regular: 400;
+$fw-medium: 500;
 $fw-semi-bold: 600;
-$fw-bold: 700;
-$fw-black: 900;
 
 $desktop: 1230px;
 $tablet: 1023px;
 $tablet-portrait: 860px;
 $tablet-small: 700px;
 $mobile: 499px;
+
+
+$blue: #152238;
+$gold: #FFD35A;
+$crimson: #DC143C;
+$green: #4CBB17;
+$highlight: #FCF0DD;

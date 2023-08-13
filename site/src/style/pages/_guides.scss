@@ -2,54 +2,5 @@
 @use '../utilities/mixins' as m;
 
 #page-guides {
-    h1 {
-        margin-bottom: 2rem;
-    }
-
-    .container {
-        ul.posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-
-            li {
-                display: flex;
-                justify-content: stretch;
-                align-items: center;
-                margin-bottom: 0rem;
     
-                .box {
-                    width: 130px;
-                    height: 130px;
-                    background: red;
-                }
-
-                img {
-                    max-width: 90px;
-                }
-            }
-        } 
-    }
-
-    article.snippet {
-        padding: 2rem;
-        align-self: stretch;
-        flex: 1;
-    
-        .snippet {
-            &-title {
-                font-size: $fs-3;
-                font-family: $ff-main;
-                text-decoration: none;
-                color: lighten($navy-dark, 10%);
-                font-weight: $fw-regular;
-                padding-bottom: 1rem;
-                display: inline-block;
-            }
-    
-            &-date {
-                font-size: $fs-6;
-                font-weight: $fw-regular;
-            }
-        } 
-    }
 }

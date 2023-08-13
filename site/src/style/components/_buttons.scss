@@ -45,8 +45,8 @@
 
         &.disabled {
             pointer-events: none;
-            background: $grey !important;
-            color: darken($grey, 20%);
+            background: $grey-mid !important;
+            color: darken($grey-mid, 20%);
         }
     }
 }
