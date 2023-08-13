@@ -21,6 +21,7 @@ h3 {
 h1 {
   font-family: $ff-main;
   font-size: $fs-0;
+  margin-bottom: 1.5rem;
 
   @include m.until(600px) {
     font-size: 9vw;
@@ -28,6 +29,10 @@ h1 {
 }
 
 h2 {
+  font-size: $fs-3;
+}
+
+h3 {
   font-size: $fs-3;
 }
 

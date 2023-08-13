@@ -1,20 +1,56 @@
 ---
 layout: base.njk 
 uniqueTitle: Quantify Guides
-lightHeader: true
-lightBody: true
 ---
 
-<h1 class="text-centered">Guides</h1>
+<div class="hero">
+    <div class="hero-body text-centered">
+        <h1>Guides</h1>
+        <p>Below you will find some useful guides to help you on your journey.</p>
+    </div>
+</div>
 
-{% if collections.post.length %}
-    <ul role="list" class="posts">
-        {% for post in collections.post | reverse%}
-        <li>
-            {% include 'posts/snippet.njk' %}
-        </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h2 class="text-centered ">There are no guides yet, hang tight!</h2>
-{% endif %}
+<div class="container">
+    <div class="guides">
+        <div class="categories">
+            <h3>Categories</h3>
+            <div class="tabs">
+                <ul>
+                    <li>
+                        <a href="#" data-target="all" id="allTab" class="active">All</a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="kraken">Kraken</a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="wdc">WDC Quantify</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="articles">
+            {% if collections.post.length %}
+            <ul role="list" class="posts">
+                <div class="content">
+                    {% for post in collections.post | reverse%}
+                        {% if post.data.category === 'kraken' %}
+                            <div id="kraken">
+                                {% include "posts/guide-item.njk" %}
+                            </div>
+                        {% endif %}
+
+                        {% if post.data.category === 'wdc' %}
+                            <div id="wdc">
+                                {% include "posts/guide-item.njk" %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </ul>
+            {% else %}
+            <h2 class="text-centered ">There are no guides yet, hang tight!</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
