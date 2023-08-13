@@ -39,3 +39,12 @@ h4 {
 strong {
   font-weight: $fw-semi-bold;
 }
+
+.title {
+  em {
+    background: $galactic;
+    padding-right: 5px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 $black: #191C27;
 $grey-dark: #20222E;
@@ -9,8 +9,10 @@ $blue-light: #726DED;
 $blue-mid: #534ED6;
 $navy-dark: #152237;
 $galactic: linear-gradient($blue-light, $blue-mid);
+$galactic-reverse: linear-gradient($blue-mid, $blue-light);
 $white: #FFFFFF;
 
+$fs-giant: 5rem; //80px
 $fs-0: 3.75rem; //60px
 $fs-1: 2.5rem; //40px
 $fs-2: 2rem; //32px;
@@ -22,6 +24,7 @@ $fs-7: .875rem; //14px
 
 $ff-main: "Inter", sans-serif;
 
+$fw-light: 300;
 $fw-regular: 400;
 $fw-medium: 500;
 $fw-semi-bold: 600;
