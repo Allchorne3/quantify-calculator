@@ -1,3 +1,67 @@
 @use '../abstracts/variables' as *;
 @use '../utilities/mixins' as m;
 
+header {
+    width: 1720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+
+    // Main nav
+    nav {
+        ul {
+            display: flex;
+
+            li {
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+                
+                a {
+                    position: relative;
+                    text-decoration: none;
+                    font-size: 1rem;
+                    color: $white;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 100%;
+                        width: 100%;
+                        height: 2px;
+                        background: white;
+                        border-radius: 3px;
+                        pointer-events: none;
+                        transform-origin: 100% 50%;
+                        transform: scale3d(0,1,1);
+                        transition: transform .3s cubic-bezier(.33,0,0,1);
+                    }
+    
+                    &[aria-current="page"]::before,
+                    &:hover::before {
+                        transform-origin: 0% 50%;
+                        transform: scaleZ(1);
+                    }
+                }
+            }
+        }
+    }
+
+    // Calculator Button
+    a.button {
+        background: $navy-dark;
+        border: solid 1px $grey-mid;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background: $purple-light;
+        }
+    }
+}

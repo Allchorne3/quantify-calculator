@@ -1,28 +1,26 @@
 <header class="header">
-	<div class="container">
-			<a href="/">
-				<img src="/assets/images/logo.svg" alt="Logo">
-			</a>
-				
-			<nav>
-				<ul role="list" class="nav-list flex-group">
-					<li>
-						<a class="link" {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
-							Home
-						</a>
-					</li>
-					<li>
-						<a class="link" {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
-							Guides
-						</a>
-					</li>
-				</ul>
-			</nav>
+		<a href="/">
+			<img src="/assets/images/logo.svg" alt="Logo">
+		</a>
+			
+		<nav>
+			<ul role="list" class="nav-list flex-group">
+				<li>
+					<a class="link" {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
+						Home
+					</a>
+				</li>
+				<li>
+					<a class="link" {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
+						Guides
+					</a>
+				</li>
+			</ul>
+		</nav>
 
-			<aside>
-				<a class="button{% if page.fileSlug === 'calculator' %} is-active{% endif %}" href="/calculator/">
-					Calculator
-				</a>
-			</aside>
-	</div>
+		<aside role="nav">
+			<a class="button{% if page.fileSlug === 'calculator' %} is-active{% endif %}" href="/calculator/">
+				Calculator
+			</a>
+		</aside>
 </header>
