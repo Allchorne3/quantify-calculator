@@ -22,7 +22,7 @@ body {
   padding-inline: 1rem;
 
   @include m.desktop-max {
-    padding-inline: 3rem;
+    padding-inline: 1rem;
   }
 
   &.narrow {

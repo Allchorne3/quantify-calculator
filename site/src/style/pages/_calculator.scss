@@ -1,3 +1,40 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
 #page-calculator {
-    
+    p {
+        max-width: 855px;
+        margin: 0 auto;
+    }
+
+    .calculator {
+        display: flex;
+        gap: 3rem;
+        margin-top: 3rem;
+
+        @include m.desktop-max {
+            flex-direction: column;
+        }
+
+        &-form,
+        &-table {
+            border-radius: 15px;
+            padding: 1rem;
+            background: $grey-dark;
+            border: solid 1px $blue-light;
+            height: fit-content;
+
+            @include m.tablet-max {
+                padding: 1.5rem;
+            }
+        }
+
+        &-form {
+            flex: 1;
+        }
+
+        &-table {
+            flex: 3;
+        }
+    }
 }

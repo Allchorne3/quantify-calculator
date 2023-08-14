@@ -2,33 +2,82 @@
 @use '../utilities/mixins' as m;
 
 form {
-    display: grid;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 1rem;
     margin-bottom: .6rem;
+    grid-template-columns: 1fr;
 
-    grid-template-columns: 1fr 1fr;
+    & > div {
+        text-align: left;
+        
+        label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: inline-block;
+            text-align: left;
+            font-weight: $fw-light;
+    
+            & > small {
+                text-transform: lowercase;
+            }
+    
+            small {
+                font-style: italic;
+            }
+    
+            @include m.mobile-max {
+                display: block;
+            }
+        }
+    }
+    
+    @include m.desktop-max {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
 
-    @include m.mobile-max {
+        .form-events {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @include m.tablet-small-max {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .form-events {
+        display: flex;
+        gap: 15px;
+        margin-top: 2rem;
+
+        input {
+            width: 50%;
+        }
     }
 
     input,
     select {
         padding: 10px 15px;
-        background: rgba($white, .95);
+        background: $grey-blue;
         transition: all 0.3s ease-in-out;
         border: none;
         cursor: pointer;
-        color: $blue;
+        border-radius: 6px;
+        width: 100%;
+
             
-        &::placeholder,
-        option {
-            color: black;
+        option,
+        & {
+            color: $white !important;
         }
     }
     
     input {
+        width: 100%;
+        
         &:focus,
         &:active {
             outline: none;
@@ -36,50 +85,28 @@ form {
 
         &[type="submit"],
         &[type="reset"] {
-            font-weight: $fw-regular;
-            font-size: $fs-7;
+            text-transform: uppercase;
+            font-weight: $fw-medium;
         }
 
         &[type="submit"] {
-            $color: $green;
+            $color: $galactic;
             background: $color;
-            
-            &:hover {
-                background: darken($color, 5%);
-            }
+            color: $white;
         }
 
         &[type="reset"] {
-            $color: $gold;
+            $color: $white-ter;
             background: $color;
+            color: $grey-dark !important;
         
             &:hover {
-                background: darken($gold, 10%);
+                background: darken($color, 10%);
             }
         }
 
         &[type="date"] {
-          width: 100%;
-        }
-    }
-
-    label {
-        display: none;
-        text-align: left;
-        margin-top: 1rem;
-        font-weight: $fw-semi-bold;
-        text-transform: uppercase;
-
-        & > small {
-            text-transform: lowercase;
-        }
-
-        small {
-            font-style: italic;
-        }
-
-        @include m.mobile-max {
-            display: block;
+            color: $white;
         }
     }
 }

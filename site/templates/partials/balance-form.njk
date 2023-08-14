@@ -1,9 +1,25 @@
 <form>
-    {% include "vip-levels.njk" %}
-    <input type="number" id="user-balance" step="0.01" placeholder="Balance*" required>
-    <input type="number" id="user-limit" placeholder="Earnings Aim*" required>
+    <div>
+        <label for="user-balance">VIP Level*</label>
+        {% include "vip-levels.njk" %}
+    </div>
 
-    <label for="#day-date">Select a start date <small>(Optional)</small></label>
-    <input type="date" id="balance-date" placeholder="Select a date">
-    {% include "form-events.njk" %}
-</form>
+    <div>
+        <label for="user-balance">Balance*</label>
+        <input type="number" id="user-balance" step="0.01" required>
+    </div>
+
+    <div>
+        <label for="user-balance">Earning aim*</label>
+        <input type="number" id="user-limit" required>
+    </div>
+
+    <div>
+        <label for="#day-date">Start date <small>(Optional)</small></label>
+        <input type="date" id="balance-date">
+    </div>
+
+    <div>
+        {% include "form-events.njk" %}
+    </form>
+</div>

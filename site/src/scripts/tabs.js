@@ -1,11 +1,13 @@
 let tabs;
 let allTab;
 let contents;
+let tabIndicator;
 
 const runTabs = () => {
     tabs = document.querySelectorAll('.tabs ul li a');
 	allTab = document.querySelector('.tabs ul li a[data-target="all"]')
     contents = document.querySelectorAll('.content > div');
+	tabIndicator = document.querySelector('.tabs #tab-indicator')
 
     for(const tab of tabs) {
         tab.addEventListener('click', event => {
@@ -25,6 +27,8 @@ const runTabs = () => {
 					content.classList.add('hidden');
 				}
 			}
+
+			tabIndicator.style.top = tab.offsetTop;
         })
 
     }
