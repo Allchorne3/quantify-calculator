@@ -16,39 +16,13 @@ let highlightedRows;
 let tableButtons;
 let preText;
 
-const levelSelectOptions = {
-	1: {
-		limit: 501,
-		percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
-	},
-	2: {
-		limit: 2001,
-		percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
-	},
-	3: {
-		limit: 5001,
-		percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
-	}
-};
-
 const currentDate = (dayNumber, dateInputValue) => {
 	const currentDate = dateInputValue ? new Date(dateInputValue) : new Date();
 	currentDate.setDate(currentDate.getDate() + dayNumber);
 	return currentDate.toDateString();
 };
   
-const calculateEarnings = (level, balance) => {
-	const levelData = levelSelectOptions[level];
-	let earnings;
 
-	if (balance >= levelData.limit) {
-		earnings = levelData.limit * levelData.percentage;
-	} else {
-		earnings = balance * levelData.percentage;
-	}
-
-	return earnings;
-};
 
 const showTabContent = (el) => {
 	for (const content of contents) {
@@ -146,37 +120,6 @@ const viewTabs = items => {
 	}
 }
 
-const getPercentageForLevel = (balance, level) => {
-	let percentage;
-
-	// > 5001 & level 3
-	if(balance > levelSelectOptions[3].limit && level === 3) {
-		percentage = levelSelectOptions[3].percentage
-	
-	// > 2001 & < 5001 & level 3
-	} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
-		percentage = levelSelectOptions[3].percentage
-	
-	// >= 2001 & < 5001 & level 2
-	} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
-		percentage = levelSelectOptions[2].percentage
-
-	// > 501 & < 2001 & level 3
-	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 3) {
-		percentage = levelSelectOptions[2].percentage
-	
-	// > 501 & < 2001 & level 2
-	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 2) {
-		percentage = levelSelectOptions[2].percentage
-	
-	// < 501
-	} else {
-		percentage = levelSelectOptions[1].percentage
-	}
-
-    return percentage * 100;
-};
-
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
@@ -193,6 +136,65 @@ const init = () => {
 	clearHighlightButton = document.querySelector('#remove-highlights');
 	highlightedRows = [];
 	preText = document.querySelector('.pre-text');
+
+	const levelSelectOptions = {
+		1: {
+			limit: 501,
+			percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
+		},
+		2: {
+			limit: 2001,
+			percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
+		},
+		3: {
+			limit: 5001,
+			percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
+		}
+	};
+
+	const calculateEarnings = (level, balance) => {
+		const levelData = levelSelectOptions[level];
+		let earnings;
+	
+		if (balance >= levelData.limit) {
+			earnings = levelData.limit * levelData.percentage;
+		} else {
+			earnings = balance * levelData.percentage;
+		}
+	
+		return earnings;
+	};
+
+	const getPercentageForLevel = (balance, level) => {
+		let percentage;
+	
+		// > 5001 & level 3
+		if(balance > levelSelectOptions[3].limit && level === 3) {
+			percentage = levelSelectOptions[3].percentage
+		
+		// > 2001 & < 5001 & level 3
+		} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
+			percentage = levelSelectOptions[3].percentage
+		
+		// >= 2001 & < 5001 & level 2
+		} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
+			percentage = levelSelectOptions[2].percentage
+	
+		// > 501 & < 2001 & level 3
+		} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 3) {
+			percentage = levelSelectOptions[2].percentage
+		
+		// > 501 & < 2001 & level 2
+		} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 2) {
+			percentage = levelSelectOptions[2].percentage
+		
+		// < 501
+		} else {
+			percentage = levelSelectOptions[1].percentage
+		}
+	
+		return percentage * 100;
+	};
 
 	// Swtich Tabs
 	viewTabs(tabs)
