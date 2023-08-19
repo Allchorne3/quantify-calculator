@@ -22,6 +22,8 @@
         text-transform: uppercase;
         font-weight: $fw-medium;
         background: $purple-light;
+        position: relative;
+        z-index: 9;
         
         &:hover {
             background: $blue-mid;

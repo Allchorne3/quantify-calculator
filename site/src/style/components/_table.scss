@@ -81,6 +81,19 @@ table {
         background: $gold;
         color: $blue;
         font-weight: bold;
+        position: sticky;
+        top: 125px;
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -87px;
+            left: 0;
+            width: 103%;
+            height: 86px;
+            background: $grey-dark;
+        }
     }
     
     tbody {
