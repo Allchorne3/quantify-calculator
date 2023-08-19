@@ -35,6 +35,10 @@
                     transition: all 0.3s ease-in-out;
                     position: relative;
 
+                    &:not(.active):hover {
+                        background: darken($grey-blue, 4%);
+                    }
+
                     &.active {
                         background: $galactic;
                         color: $white;

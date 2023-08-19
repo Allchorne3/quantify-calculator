@@ -34,3 +34,11 @@
 .is-centered {
     justify-content: center;
 }
+
+.galactic {
+    background: linear-gradient($blue-light, transparent) $blue-mid;
+
+    &:hover, &:focus {
+        background-color: $purple-light;
+    }    
+}

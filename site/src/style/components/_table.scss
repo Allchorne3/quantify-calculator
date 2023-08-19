@@ -2,7 +2,7 @@
 @use '../utilities/mixins' as m;
 
 table {
-    margin: 1rem auto;
+    margin: 1rem auto 0;
     width: 100%;
     border-spacing: 3px;
 
@@ -31,7 +31,22 @@ table {
             tr {
                 display: block;
                 margin-bottom: 2.5rem;
-                // border-radius: 5px;
+                border-radius: 10px;
+
+                
+                td {
+                    &:first-child {
+                        background: rgba($purple-light, .6);
+                    }
+                }
+                    
+                &:nth-child(even) {
+                    td {
+                        &:first-child {
+                            background: rgba($purple-light, .4);
+                        }
+                    }
+                }
             }
         }
 
@@ -75,8 +90,16 @@ table {
             position: relative;
             background: rgba(254.9,255,255, .1);
             
-            &:nth-child(odd) {
+            &:nth-child(even) {
                 background: rgba(254.9,255,255, .2);
+            }
+
+            @include m.tablet-small-max {
+                background: rgba($purple-light, .5);
+            
+                &:nth-child(even) {
+                    background: rgba($purple-light, .3);
+                }
             }
 
             td {
@@ -84,7 +107,6 @@ table {
                 z-index: 1;
                 isolation: isolate;
                 transition: all .2s ease-in-out;
-                // transition-delay: .1s;
                 
                 &::after {
                     content: "";

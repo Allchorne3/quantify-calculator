@@ -12,6 +12,10 @@
         gap: 3rem;
         margin-top: 3rem;
 
+        @include m.mobile-max {
+            gap: 2rem;
+        }
+
         @include m.desktop-max {
             flex-direction: column;
         }

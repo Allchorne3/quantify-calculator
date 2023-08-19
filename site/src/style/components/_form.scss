@@ -89,12 +89,6 @@ form {
             font-weight: $fw-medium;
         }
 
-        &[type="submit"] {
-            $color: $galactic;
-            background: $color;
-            color: $white;
-        }
-
         &[type="reset"] {
             $color: $white-ter;
             background: $color;
