@@ -14,6 +14,7 @@ let tbody;
 let resetButton;
 let highlightedRows;
 let tableButtons;
+let preText;
 
 const levelSelectOptions = {
 	1: {
@@ -66,18 +67,15 @@ const clearTable = () => {
 
 	clearTableButtons();
     table.classList.add('hidden');
+	preText.classList.remove('hidden');
 }
 
 const clearTableButtons = () => {
-	for(const buttons of tableButtons) {
-		buttons.classList.add('hidden');
-	}
+	tableButtons.classList.add('hidden');
 }
 
 const showTableButtons = () => {
-	for(const buttons of tableButtons) {
-		buttons.classList.remove('hidden');
-	}
+	tableButtons.classList.remove('hidden');
 }
 
 const clearHighlights = () => {
@@ -183,7 +181,7 @@ const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
 	tabs = document.querySelectorAll('.tabs li a');
-	tableButtons = document.querySelectorAll('.buttons button');
+	tableButtons = document.querySelector('.buttons');
 	contents = document.querySelectorAll('html#page-calculator .content > div');
 	daysSubmit = document.querySelector('#days form');
 	balanceSubmit = document.querySelector('#balance form');
@@ -194,6 +192,7 @@ const init = () => {
 	resetButton = document.querySelector('#balance form [type="reset"]');
 	clearHighlightButton = document.querySelector('#remove-highlights');
 	highlightedRows = [];
+	preText = document.querySelector('.pre-text');
 
 	// Swtich Tabs
 	viewTabs(tabs)
@@ -243,7 +242,7 @@ const init = () => {
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
                     <td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
-					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
 				tbody.appendChild(newRow);
@@ -263,6 +262,7 @@ const init = () => {
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
 			showTableButtons();
+			preText.classList.add('hidden');
 		}
 	});
 	
@@ -312,7 +312,7 @@ const init = () => {
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
 					<td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
-					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
 				tbody.appendChild(newRow);
@@ -328,15 +328,15 @@ const init = () => {
 					counter++;
 				}
 
-				if (balance >= aim && counter === 1) {
+				if (balance >= aim) {
 					newRow.classList.add('row-aim');
-					counter++;
 				}
 			}
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
 			showTableButtons();
+			preText.classList.add('hidden');
 		}
 	});
 

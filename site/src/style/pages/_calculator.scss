@@ -2,7 +2,7 @@
 @use '../utilities/mixins' as m;
 
 #page-calculator {
-    p {
+    .hero-body p {
         max-width: 855px;
         margin: 0 auto;
     }

@@ -1,4 +1,4 @@
-// import calculator from './calculator';
+import calculator from './calculator';
 import tabs from './tabs'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatchEvent(new Event('scroll'));
 
     if (document.documentElement.id === 'page-calculator') {
-        // calculator.init();
+        calculator.init();
     }
 
     // Tab functionality
