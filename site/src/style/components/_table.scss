@@ -3,8 +3,8 @@
 
 table {
     margin: 1rem auto;
-    width: 740px;
-    border-spacing: 5px;
+    width: 100%;
+    border-spacing: 3px;
 
     
     @include m.tablet-portrait-max {
@@ -31,7 +31,7 @@ table {
             tr {
                 display: block;
                 margin-bottom: 2.5rem;
-                border-radius: 5px;
+                // border-radius: 5px;
             }
         }
 
@@ -60,6 +60,8 @@ table {
     th, td {
         padding: .5rem 1rem;
         text-align: left;
+        border-radius: 5px;
+        font-size: 17px;
     }
     
     th {

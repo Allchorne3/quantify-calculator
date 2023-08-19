@@ -35,14 +35,14 @@ centered: true
         </div>
 
         <div class="calculator-table">
-			<div class="buttons is-centered">
-				<button class="clear hidden">Clear Table</button>
-				<button id="downloadExcel" class="disabled hidden">Export to Excel</button>
-				<button id="downloadExcelRows" class="disabled hidden">Export Highlights</button>
-				<button id="remove-highlights" class="disabled hidden">Clear highlights</button>
+			<div class="buttons">
+				<button class="clear hiden">Clear Table</button>
+				<button id="downloadExcel" class="disabled hiden">Export to Excel</button>
+				<button id="downloadExcelRows" class="disabled hiden">Export Highlights</button>
+				<button id="remove-highlights" class="disabled hiden">Clear highlights</button>
 			</div>
 
-			<table class="hidden">
+			<table class="hiden">
 				<thead>
 					<tr>
 						<th>Day</th>
@@ -52,30 +52,32 @@ centered: true
 						<th>Balance</th>
 					</tr>
 				</thead>
+				<tbody>
+					<tr>
+						<td>Day 1 - Sun August 06 2023</td>
+						<td>$1.15</td>
+						<td>$1.15</td>
+						<td>2.3%</td>
+						<td>$51.15</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+				</tbody>
 			</table>
         </div>
     </div>
-</div>
-
-<div class="container">
-	<section class="calculator">
-		{# <div class="tabs">
-			<ul>
-				<li><a href="#" data-target="days" class="active">Days</a></li>
-				<li><a href="#" data-target="balance">Balance</a></li>
-			</ul>
-		</div>    
-		
-		<div class="content">
-			<div id="days">
-				{% include "days-form.njk" %}
-			</div>
-
-			<div id="balance" class="hidden">
-				{% include "balance-form.njk" %}
-			</div>
-		</div> #}
-	</section>
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>
