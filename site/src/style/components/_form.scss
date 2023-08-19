@@ -31,31 +31,28 @@ form {
                 display: block;
             }
         }
+
+        &:last-child {
+            grid-column: 1 / -1 !important;
+        }
     }
     
     @include m.desktop-max {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-
-        .form-events {
-            grid-column: 1 / -1;
-        }
     }
-
+        
     @include m.tablet-small-max {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-
+        
     .form-events {
-        display: flex;
+        display: flex !important;
         gap: 15px;
         margin-top: 2rem;
-
-        input {
-            width: 50%;
-        }
+        width: 100%;
     }
 
     input,
