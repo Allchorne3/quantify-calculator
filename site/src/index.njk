@@ -11,3 +11,103 @@ uniqueTitle: Quantify Helpers
         <a href="#see-more" class="button galactic">See more &rarr;</a>
     </div>
 </div>
+
+<div class="container medium" id="see-more">
+    <section id="section-pages">
+        <a href="/calculator/" class="calculator-box">
+            <h3>Calculate your $earnings</h3>
+            <p class="subtitle">See how much you can earn and when you can earn it based on a number of days and a balance goal.</p>
+            <img src="/assets/images/calc-table.png" class="image-box" alt="Example calculation table">
+            {# <img src="/assets/images/calc-table-7.png" class="image-box" alt="Example calculation table"> #}
+            <img src="/assets/images/calc-table-tab.png" class="image-wide" alt="Example calculation table">
+            {# <table class="">
+				<thead>
+					<tr>
+						<th>Day</th>
+						<th>Daily</th>
+						<th>Acc Earnings</th>
+						<th>Percentage</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
+			    <tbody>
+                    <tr class="">
+                        <td>Day 1 - Wed Aug 23 2023</td>
+                        <td data-label="Daily">$11.50</td>
+                        <td data-label="Acc Earnings">$11.50</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$511.50<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 2 - Thu Aug 24 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$23.02</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$523.02<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 3 - Fri Aug 25 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$34.55</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$534.55<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 4 - Sat Aug 26 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$46.07</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$546.07<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 5 - Sun Aug 27 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$57.59</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$557.59<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 6 - Mon Aug 28 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$69.11</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$569.12<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 7 - Tue Aug 29 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$80.64</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$580.64<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 8 - Wed Aug 30 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$92.16</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$592.16<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 9 - Thu Aug 31 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$103.68</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$603.68<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr><tr>
+                        <td>Day 10 - Fri Sep 01 2023</td>
+                        <td data-label="Daily">$11.52</td>
+                        <td data-label="Acc Earnings">$115.21</td>
+                        <td data-label="Percentage">2.3%</td>
+                        <td data-label="Balance">$615.21<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
+                    </tr>
+                </tbody>
+            </table> #}
+        </a>
+        <div class="guides-box">
+            <h3>Super helpful guides</h3>
+            <p class="subtitle">Need some help withdrawing or depositing money? Here are some useful guides that you can follow.</p>
+
+            <div class="guide-list">
+                <h4>Latest guides</h4>
+                {% for post in collections.post | reverse%}
+                    <h5><a class="snippet-title" href="{{ post.url }}">{{ post.data.title }}</a></h5>
+                    <p class="snippet-date">{{ post.data.date  | prettyDate }}</p>
+                {% endfor %}
+                <a href="/guides/" class="button button-small galactic">See all guides</a>
+            </div>
+
+        </div>
+    </section>
+</div>

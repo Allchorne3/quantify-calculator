@@ -34,4 +34,103 @@
         }
 
     }
+
+    .container {
+        padding-bottom: 10rem;
+
+        #section-pages {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+
+            @include m.tablet-max {
+                flex-direction: column;
+            }
+
+            .calculator-box,
+            .guides-box {
+                flex: 1;
+                border-radius: 15px;
+                padding: 2rem;
+                background: $grey-dark;
+                border: solid 1px $blue-light;
+                text-decoration: none;
+                color: $white-ter;
+
+                h3 {
+                    margin-bottom: 1rem;
+                }
+                
+                p {
+                    // max-width: 40ch;
+                    font-size: $fs-6;
+                    margin-bottom: 2rem;
+
+                    @include m.tablet-max {
+                        max-width: 100%;
+                    }
+                }
+            }
+
+            .calculator-box {
+                .image-box {
+                    display: block;
+
+                    @include m.tablet-max {
+                        display: none;
+                    }
+
+                    @include m.tablet-small-max {
+                        display: block;
+                    }
+                }
+
+                .image-wide {
+                    @include m.from(1023px) {
+                        display: none;
+                    }
+
+                    @include m.tablet-small-max {
+                        display: none;
+                    }
+                }
+            }
+            
+            .guides-box {
+                p.subtitle {
+                    padding-bottom: 2rem;
+                    border-bottom: solid 1px $grey-mid;
+                }
+
+                .guide-list {
+                    h4 {
+                        margin-bottom: 1.3rem;
+                    }
+
+                    h5 {
+                        margin-block: .3rem;
+
+                        
+                        a {
+                            color: $white;
+                            font-size: $fs-5;
+                            font-weight: $fw-regular;
+                            text-decoration: none;
+                        }
+                    }
+
+                    p {
+                        margin-bottom: 1rem;
+                        font-size: $fs-7;
+                        color: $purple-light;
+                    }
+
+                    a.button {
+                        display: inline-block;
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+    }
 }

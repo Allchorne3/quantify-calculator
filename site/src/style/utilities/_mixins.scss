@@ -71,3 +71,9 @@
         @content;
     }
 }
+
+@mixin to-from($to, $from) {
+    @media screen and (min-width: $from) and (max-width: $to) {
+        @content;
+    }
+}

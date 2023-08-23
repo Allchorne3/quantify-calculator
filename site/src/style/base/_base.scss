@@ -25,6 +25,10 @@ body {
     padding-inline: 1rem;
   }
 
+  &.medium {
+    max-width: 1200px;
+  }
+
   &.narrow {
     max-width: 1000px;
   }

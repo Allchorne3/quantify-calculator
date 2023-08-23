@@ -11,7 +11,6 @@ table {
     }
     
     @include m.tablet-small-max {
-        // table-layout: fixed;
         border-collapse: collapse;
         border: 0;
 

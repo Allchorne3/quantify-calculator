@@ -45,4 +45,10 @@ a.button {
     font-size: $fs-5;
     border: solid 1px rgba($white, .5);
     transition: all .3s ease-in-out;
+
+    &.button-small {
+        border: none;
+        padding: 5px 15px;
+        font-size: $fs-6;
+    }
 }
