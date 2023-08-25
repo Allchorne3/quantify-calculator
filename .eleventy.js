@@ -1,5 +1,6 @@
 const htmlmin = require("html-minifier"); //minify html
 const prettyDate = require('./lib/pretty-date.js')
+const limiter = require('./lib/limiter.js')
 const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
 
 module.exports = function(eleventyConfig) {
@@ -17,6 +18,7 @@ module.exports = function(eleventyConfig) {
 
     // Expose Nunjucks filters
     eleventyConfig.addFilter("prettyDate", prettyDate);
+    eleventyConfig.addFilter("limiter", limiter);
 
     // plugins
     eleventyConfig.addPlugin(emojiReadTime, {
