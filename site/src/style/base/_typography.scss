@@ -52,4 +52,14 @@ strong {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  &.animated {
+    // transform: translateY(100px);
+    overflow: hidden;
+    opacity: 0;
+
+    & ~ p {
+      opacity: 0;
+    }
+  }
 }

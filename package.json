@@ -30,11 +30,13 @@
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
+    "gsap": "^3.12.2",
     "html-minifier": "^4.0.0",
     "laravel-mix": "^6.0.49",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.54.5",
-    "sass-loader": "^12.6.0"
+    "sass-loader": "^12.6.0",
+    "split-type": "^0.3.3"
   },
   "dependencies": {
     "@11tyrocks/eleventy-plugin-emoji-readtime": "^1.0.1",

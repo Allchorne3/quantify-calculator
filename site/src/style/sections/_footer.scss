@@ -1,0 +1,8 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+footer {
+    background: $grey-blue;
+    padding: 1rem;
+    margin-top: 6rem;
+}
