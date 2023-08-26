@@ -54,6 +54,7 @@
             .calculator-box,
             .guides-box {
                 flex: 1;
+
                 border-radius: 15px;
                 padding: 2rem;
                 background: $grey-dark;
@@ -67,13 +68,17 @@
                 }
                 
                 p {
-                    // max-width: 40ch;
                     font-size: $fs-6;
                     margin-bottom: 2rem;
 
                     @include m.tablet-max {
                         max-width: 100%;
                     }
+                }
+
+                &:hover {
+                    border-color: $purple;
+                    transform: scale(1.01);
                 }
             }
 
@@ -98,11 +103,6 @@
                     @include m.tablet-small-max {
                         display: none;
                     }
-                }
-
-                &:hover {
-                    border-color: $purple;
-                    transform: scale(1.01);
                 }
             }
             

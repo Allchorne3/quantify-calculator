@@ -46,3 +46,31 @@
 p.subtitle {
     color: $dark-white;
 }
+
+.card {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        position: absolute;
+        border-radius: inherit;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(
+            800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.06),
+            transparent 40%
+        );
+        opacity: 0;
+        transition: opacity .3s;
+        z-index: -1;
+    }
+    
+    &:hover::before {
+        opacity: 1;
+    }
+    
+}
