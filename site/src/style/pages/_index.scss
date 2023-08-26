@@ -48,8 +48,6 @@
             
             a.button {
                 opacity: 0;
-                position: relative;
-                top: 10px;
             }
         }
 
@@ -142,7 +140,7 @@
                             transition: all .2s ease-in-out;
 
                             &:hover {
-                                color: $purple-light;
+                                color: lighten($blue-mid, 10%);
                             }
                         }
                     }
