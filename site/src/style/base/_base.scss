@@ -32,7 +32,11 @@ body {
 
 
 .hero {
-  margin-top: 10rem;
+  margin-top: 5rem;
+
+  @include m.mobile-max {
+    margin-top: 3rem;
+  }
 
   &-body {
     padding-inline: 1rem;

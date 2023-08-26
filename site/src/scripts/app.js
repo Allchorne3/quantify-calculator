@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
             card.onmousemove = e => handleMouseMove(e);
         }
 
+        // Mobile nav
+        // const hamburger = document.querySelector('.nav-hamburger');
+        // const closeMenu = document.querySelector('.close-menu');
+
+        // hamburger.addEventListener('click', () => {
+        //     document.querySelector('.mobile-nav').classList.add('active');
+        //     hamburger.classList.add('active');
+        // })
+        // closeMenu.addEventListener('click', () => {
+        //     document.querySelector('.mobile-nav').classList.remove('active');
+        //     hamburger.classList.remove('active');
+        // })
+
         // Imported functions
         tabs.runTabs();
         animations.init();

@@ -52,5 +52,9 @@ footer {
         @include m.mobile-max {
             text-align: center;
         }
+
+        @include m.tablet-small-max {
+            padding-bottom: 75px;
+        }
     }
 }

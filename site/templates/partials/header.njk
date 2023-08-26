@@ -1,26 +1,51 @@
 <header class="header">
-		<a href="/">
-			<img src="/assets/images/logo.svg" class="svg logo" alt="Logo">
-		</a>
-			
-		<nav>
-			<ul role="list" class="nav-list flex-group">
-				<li>
-					<a class="link" {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
-						Home
-					</a>
-				</li>
-				<li>
-					<a class="link" {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
-						Guides
-					</a>
-				</li>
-			</ul>
-		</nav>
+	<a href="/">
+		<img src="/assets/images/logo.svg" class="svg logo" alt="Logo">
+	</a>
+		
+	<nav>
+		<ul role="list" class="nav-list">
+			<li>
+				<a class="link" {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
+					Home
+				</a>
+			</li>
+			<li>
+				<a class="link" {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
+					Guides
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-		<aside role="nav">
-			<a class="button{% if page.fileSlug === 'calculator' %} is-active{% endif %}" href="/calculator/">
+	<aside role="nav">
+		<a class="button{% if page.fileSlug === 'calculator' %} is-active{% endif %}" href="/calculator/">
+			Calculator
+		</a>
+	</aside>
+
+	{# <i class="fa-solid fa-bars nav-hamburger"></i> #}
+
+</header>
+
+{# <div class="mobile-nav" role="nav">
+	<i class="fa-solid fa-xmark close-menu"></i>
+
+	<ul role="list" class="nav-list">
+		<li>
+			<a class="link" {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
+				Home
+			</a>
+		</li>
+		<li>
+			<a class="link" {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
+				Guides
+			</a>
+		</li>
+		<li>
+			<a class="link" {% if page.fileSlug === 'calculator' %}aria-current="page"{% endif %} href="/calculator/">
 				Calculator
 			</a>
-		</aside>
-</header>
+		</li>
+	</ul>
+</div> #}

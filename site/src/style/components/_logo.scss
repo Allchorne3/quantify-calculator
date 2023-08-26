@@ -4,6 +4,7 @@
 .logo {
     width: 150px;
     height: 100%;
+
     
     footer & {
         &:hover {
@@ -11,20 +12,24 @@
                 animation: lower .7s forwards;
             }
             #q {animation-delay: .1s;}
-
+            
             #u {animation-delay: .15s;}
-
+            
             #a {animation-delay: .2s;}
-
+            
             #n {animation-delay: .25s;}
-
+            
             #t {animation-delay: .3s;}
-
+            
             #i {animation-delay: .35s;}
-
+            
             #f {animation-delay: .4s;}
-
+            
             #y {animation-delay: .45s;}
+        }
+        
+        @include m.mobile-max {
+            height: 55px;
         }
     }
 }
@@ -44,29 +49,6 @@
     }
     75% {
         fill: $purple;
-    }
-    100% {
-        transform: translateY(0);
-        fill: $white-ter
-    }
-}
-
-@keyframes lower {
-    0% {
-        transform: translateY(0);
-        fill: $white-ter;
-    }
-    25% {
-        transform: translateY(10px);
-        fill: $gold;
-    }
-    50% {
-        transform: translateY(-5px);
-        fill: $purple-light;
-    }
-    75% {
-        fill: $purple;
-        transform: translateY(10px);
     }
     100% {
         transform: translateY(0);
