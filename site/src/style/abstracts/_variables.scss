@@ -15,6 +15,11 @@ $gradient-black: linear-gradient(90deg, $black, #25293d, $black);
 $white: #FFFFFF;
 $white-ter: #f7f7f7;
 $dark-white: rgba(255,255,255,.6);
+$gold: #FFD35A;
+$blue: #152238;
+$crimson: #DC143C;
+$green: #4CBB17;
+$highlight: #FCF0DD;
 
 $fs-giant: 5rem; //80px
 $fs-0: 3.75rem; //60px
@@ -39,10 +44,3 @@ $tablet: 1023px;
 $tablet-portrait: 860px;
 $tablet-small: 700px;
 $mobile: 499px;
-
-
-$blue: #152238;
-$gold: #FFD35A;
-$crimson: #DC143C;
-$green: #4CBB17;
-$highlight: #FCF0DD;

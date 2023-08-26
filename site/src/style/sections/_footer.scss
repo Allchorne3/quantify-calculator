@@ -2,7 +2,55 @@
 @use '../utilities/mixins' as m;
 
 footer {
-    background: $grey-blue;
-    padding: 1rem;
+    background: $black;
     margin-top: 6rem;
+    border-top: solid 1px rgba($purple-light, .5);;
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        padding-block: 3rem;
+
+        @include m.mobile-max {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    .sitemap {
+        h4 {
+            text-transform: uppercase;
+            font-size: $fs-6;
+            font-weight: $fw-semi-bold;
+            letter-spacing: 1px;
+            padding-bottom: .2rem;
+            border-bottom: solid 1px $white-ter;
+            display: inline-block;
+
+            @include m.mobile-max {
+                margin-top: 2rem;
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            a {
+                text-decoration: none;
+                color: $white;
+            }
+        }
+    }
+
+    .created {
+        text-align: left;
+        background: darken($black, 2%);
+        padding-block: 1rem;
+
+        @include m.mobile-max {
+            text-align: center;
+        }
+    }
 }

@@ -50,7 +50,8 @@ module.exports = function(eleventyConfig) {
         url: 'https://yoursitename.com',
         host: process.env.NODE_ENV === 'production' ? 'https://your-site.com' : 'http://localhost:8080',
         slogan: 'Your global site slogan',
-        description: "your default site description"
+        description: "your default site description",
+        author: 'Stefan Allchorne'
     });
      
 

@@ -21,18 +21,15 @@ body {
   margin: 0 auto;
   padding-inline: 1rem;
 
-  @include m.desktop-max {
-    padding-inline: 1rem;
-  }
-
   &.medium {
     max-width: 1200px;
   }
-
+  
   &.narrow {
     max-width: 1000px;
   }
 }
+
 
 .hero {
   margin-top: 10rem;
