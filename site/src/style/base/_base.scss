@@ -14,6 +14,7 @@ body {
   color: $white;
   font-size: .9rem;
   font-family: $ff-main;
+  // position: relative;
 }
 
 .container {
@@ -32,10 +33,10 @@ body {
 
 
 .hero {
-  margin-top: 5rem;
+  margin-top: 10rem;
 
   @include m.mobile-max {
-    margin-top: 3rem;
+    margin-top: 10rem;
   }
 
   &-body {

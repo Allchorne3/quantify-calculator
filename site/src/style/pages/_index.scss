@@ -53,11 +53,28 @@
 
     }
 
+    .home-boxes {
+        background: darken($grey-dark, 4%);
+        padding: 6rem;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+
+        @include m.until(1400px) {
+            padding: 1rem;
+            height: 75vh;
+        }
+
+        @include m.tablet-max {
+            height: auto;
+            padding-block: 2rem;
+        }
+    }
+
     .container {
         #section-pages {
             display: flex;
             gap: 3rem;
-            margin-top: 3rem;
 
             @include m.tablet-max {
                 flex-direction: column;
@@ -128,9 +145,10 @@
                     h4 {
                         margin-bottom: 1.3rem;
                     }
-
+                    
                     h5 {
                         margin-block: .3rem;
+                        line-height: 1.4;
                         
                         a {
                             color: $white;

@@ -12,29 +12,31 @@ uniqueTitle: Quantify Helpers
     </div>
 </div>
 
-<div class="container medium" id="see-more">
-    <section id="section-pages">
-        <a href="/calculator/" class="calculator-box card">
-            <h3>Calculate your $earnings</h3>
-            <p class="subtitle">See how much you can earn and when you can earn it based on a number of days and a balance goal.</p>
-            <img src="/assets/images/calc-table.png" class="image-box" alt="Example calculation table">
-            <img src="/assets/images/calc-table-tab.png" class="image-wide" alt="Example calculation table">
-        </a>
-        <div class="guides-box card">
-            <h3>Super helpful guides</h3>
-            <p class="subtitle">Need some help withdrawing or depositing money? Here are some useful guides that you can follow.</p>
+<div class="home-boxes">
+    <div class="container medium" id="see-more">
+        <section id="section-pages">
+            <a href="/calculator/" class="calculator-box card">
+                <h3>Calculate your $earnings</h3>
+                <p class="subtitle">See how much you can earn and when you can earn it based on a number of days and a balance goal.</p>
+                <img src="/assets/images/calc-table.png" class="image-box" alt="Example calculation table">
+                <img src="/assets/images/calc-table-tab.png" class="image-wide" alt="Example calculation table">
+            </a>
+            <div class="guides-box card">
+                <h3>Super helpful guides</h3>
+                <p class="subtitle">Need some help withdrawing or depositing money? Here are some useful guides that you can follow.</p>
 
-            <div class="guide-list">
-                <h4>Latest guides</h4>
+                <div class="guide-list">
+                    <h4>Latest guides</h4>
 
-                {% for post in collections.post | reverse | limiter(3) %}
-                    <h5><a class="snippet-title" href="{{ post.url }}">{{ post.data.title }}</a></h5>
-                    <p class="snippet-date">{{ post.data.date  | prettyDate }}</p>
-                {% endfor %}
+                    {% for post in collections.post | reverse | limiter(3) %}
+                        <h5><a class="snippet-title" href="{{ post.url }}">{{ post.data.title }}</a></h5>
+                        <p class="snippet-date">{{ post.data.date  | prettyDate }}</p>
+                    {% endfor %}
 
-                <a href="/guides/" class="button button-small galactic">See all guides</a>
+                    <a href="/guides/" class="button button-small galactic">See all guides</a>
+                </div>
+
             </div>
-
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
