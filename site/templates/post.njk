@@ -15,7 +15,7 @@ pageClass: post
             <a href="/guides/"><i class="fa-solid fa-chevron-left"></i> Back to guides</a>
         </div>
 
-        <article class="main-article">
+        <article class="main-article {{ category }}">
             <h1 class="article-title">{{ title }}</h1>
             <h4 class="article-date">{{ date | prettyDate}} <span class="divider">|</span> {{ content | emojiReadTime }} </h4>
             {{ content | safe }}

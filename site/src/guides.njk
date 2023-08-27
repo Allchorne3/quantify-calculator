@@ -26,6 +26,9 @@ minisite: guides
                     <li>
                         <a href="#" data-target="wdc">WDC Quantify</a>
                     </li>
+                    <li>
+                        <a href="#" data-target="common">Common Questions</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,6 +46,12 @@ minisite: guides
 
                         {% if post.data.category === 'wdc' %}
                             <div id="wdc">
+                                {% include "posts/guide-item.njk" %}
+                            </div>
+                        {% endif %}
+
+                        {% if post.data.category === 'common' %}
+                            <div id="common">
                                 {% include "posts/guide-item.njk" %}
                             </div>
                         {% endif %}

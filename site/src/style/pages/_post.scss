@@ -5,6 +5,7 @@
     .guide-article {
         display: flex;
         gap: 3rem;
+        margin-bottom: 6rem;
 
         @include m.tablet-max {
             flex-direction: column-reverse;
@@ -67,6 +68,21 @@
                     font-weight: $fw-semi-bold;
                     color: $purple-light;
                 }
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        .common {
+            h6 {
+                font-size: $fs-5;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: 1.5rem;
             }
         }
     }
