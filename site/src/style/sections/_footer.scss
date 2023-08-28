@@ -10,14 +10,16 @@ footer {
         justify-content: space-between;
         padding-block: 3rem;
 
-        @include m.mobile-max {
+        @include m.desktop-max {
+            padding-inline: 2rem;
+        }
+
+        @include m.tablet-small-max {
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
-    }
 
-    .sitemap {
         h4 {
             text-transform: uppercase;
             font-size: $fs-6;
@@ -26,19 +28,49 @@ footer {
             padding-bottom: .2rem;
             border-bottom: solid 1px $white-ter;
             display: inline-block;
-
-            @include m.mobile-max {
-                margin-top: 2rem;
-            }
         }
 
-        ul {
-            list-style: none;
-            padding-left: 0;
+        .footer-right {
+            display: flex;
+            gap: 3rem;
 
-            a {
-                text-decoration: none;
-                color: $white;
+            @include m.tablet-small-max {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .footer-post {
+                h5 {
+                    font-size: $fs-6;
+                    margin-bottom: .3rem;
+                    margin-top: 1.2rem;
+
+                    a {
+                        color: $white;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: $gold;
+                        }
+                    }
+                }
+
+                p {
+                    color: $purple-light;
+                }
+            }
+            
+            .sitemap {
+                
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+                    
+                    a {
+                        text-decoration: none;
+                        color: $white;
+                    }
+                }
             }
         }
     }
@@ -48,7 +80,7 @@ footer {
         background: darken($black, 2%);
         padding-block: 1rem;
 
-        @include m.mobile-max {
+        @include m.tablet-small-max {
             text-align: center;
         }
 

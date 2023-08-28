@@ -28,8 +28,9 @@
             #y {animation-delay: .45s;}
         }
         
-        @include m.mobile-max {
+        @include m.tablet-max {
             height: 55px;
+            margin-bottom: 2rem;
         }
     }
 

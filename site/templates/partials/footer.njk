@@ -5,13 +5,24 @@
 				<img src="/assets/images/logo.svg" class="logo svg" alt="Logo">
 			</a>
 
-			<div class="sitemap">
-				<h4>Sitemap</h4>
-				<ul>
-					<li><a href="/" class="link">Home</a></li>
-					<li><a href="/guides/" class="link">Guides</a></li>
-					<li><a href="/calculator/" class="link">Calculator</a></li>
-				</ul>
+			<div class="footer-right">
+				<div class="footer-post">
+					<h4>Latest guide</h4>
+
+					{% for post in collections.post | reverse | limiter(1) %}
+						<h5><a class="snippet-title" href="{{ post.url }}">{{ post.data.title }}</a></h5>
+						<p class="snippet-date">{{ post.data.date  | prettyDate }}</p>
+					{% endfor %}
+				</div>
+
+				<div class="sitemap">
+					<h4>Sitemap</h4>
+					<ul>
+						<li><a href="/" class="link">Home</a></li>
+						<li><a href="/guides/" class="link">Guides</a></li>
+						<li><a href="/calculator/" class="link">Calculator</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
