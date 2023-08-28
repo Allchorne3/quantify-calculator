@@ -9,9 +9,6 @@ $purple-light: #7566EF;
 $blue-light: #726DED;
 $blue-mid: #534ED6;
 $navy-dark: #152237;
-$galactic: linear-gradient($blue-light, $blue-mid);
-$galactic-reverse: linear-gradient($blue-mid, $blue-light);
-$gradient-black: linear-gradient(90deg, $black, #25293d, $black);
 $white: #FFFFFF;
 $white-ter: #f7f7f7;
 $dark-white: rgba(255,255,255,.6);
@@ -20,6 +17,10 @@ $blue: #152238;
 $crimson: #DC143C;
 $green: #4CBB17;
 $highlight: #FCF0DD;
+$galactic: linear-gradient($blue-light, $blue-mid);
+$galactic-right: linear-gradient(90deg, $purple-light, $gold);
+$galactic-reverse: linear-gradient($blue-mid, $blue-light);
+$gradient-black: linear-gradient(90deg, $black, #25293d, $black);
 
 $fs-giant: 5rem; //80px
 $fs-0: 3.75rem; //60px
