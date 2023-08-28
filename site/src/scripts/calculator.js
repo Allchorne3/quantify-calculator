@@ -120,6 +120,77 @@ const viewTabs = items => {
 	}
 }
 
+const getPercentageForLevel = (balance, level) => {
+	let percentage;
+
+	if(level === 6) {
+		if( balance > levelSelectOptions[5].limit) {
+			percentage = levelSelectOptions[6].percentage
+		} else if (balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit) { // > 10001 && < 30001
+			percentage = levelSelectOptions[5].percentage
+		} else if(balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit ) { // > 5001 && < 100001
+				percentage = levelSelectOptions[4].percentage
+		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+			percentage = levelSelectOptions[3].percentage
+		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+			percentage = levelSelectOptions[2].percentage
+		} else { // < 501
+			percentage = levelSelectOptions[1].percentage
+		}
+	}
+
+	else if(level === 5) {
+		if (balance > levelSelectOptions[4].limit) { // > 10001
+			percentage = levelSelectOptions[5].percentage
+		} else if(balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit ) { // > 5001 && < 10001
+				percentage = levelSelectOptions[4].percentage
+		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+			percentage = levelSelectOptions[3].percentage
+		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+			percentage = levelSelectOptions[2].percentage
+		} else { // < 501
+			percentage = levelSelectOptions[1].percentage
+		}
+	}
+
+	else if(level === 4) {
+		if (balance > levelSelectOptions[3].limit) {
+			percentage = levelSelectOptions[4].percentage
+		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+			percentage = levelSelectOptions[3].percentage
+		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+			percentage = levelSelectOptions[2].percentage
+		} else { // < 501
+			percentage = levelSelectOptions[1].percentage
+		}
+	}
+
+	else if(level === 3) {
+		if(balance > levelSelectOptions[2].limit ) { // > 2001
+			percentage = levelSelectOptions[3].percentage
+		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+			percentage = levelSelectOptions[2].percentage
+		} else { // < 501
+			percentage = levelSelectOptions[1].percentage
+		}
+	} 
+	
+	else if (level === 2) {
+		if(balance > levelSelectOptions[1].limit ) { // > 501
+			percentage = levelSelectOptions[2].percentage
+		} else { // < 501
+			percentage = levelSelectOptions[1].percentage
+		}
+	} 
+	
+	// Balance < 501
+	else {
+		percentage = levelSelectOptions[1].percentage
+	}
+
+	return (percentage * 100).toFixed(1) + '%';
+};
+
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
@@ -139,17 +210,29 @@ const init = () => {
 
 	const levelSelectOptions = {
 		1: {
-			limit: 501,
+			limit: 500,
 			percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
 		},
 		2: {
-			limit: 2001,
+			limit: 2000,
 			percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
 		},
 		3: {
-			limit: 5001,
+			limit: 5000,
 			percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
-		}
+		},
+		4: {
+			limit: 10000,
+			percentage: document.querySelector('select option[value="4"]').dataset.percentage / 100
+		},
+		5: {
+			limit: 30000,
+			percentage: document.querySelector('select option[value="5"]').dataset.percentage / 100
+		},
+		6: {
+			limit: 9999999,
+			percentage: document.querySelector('select option[value="6"]').dataset.percentage / 100
+		},
 	};
 
 	const calculateEarnings = (level, balance) => {
@@ -165,36 +248,76 @@ const init = () => {
 		return earnings;
 	};
 
-	const getPercentageForLevel = (balance, level) => {
-		let percentage;
+	// const getPercentageForLevel = (balance, level) => {
+	// 	let percentage;
+
+	// 	if(level === 6) {
+	// 		if( balance > levelSelectOptions[5].limit) {
+	// 			percentage = levelSelectOptions[6].percentage
+	// 		} else if (balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit) { // > 10001 && < 30001
+	// 			percentage = levelSelectOptions[5].percentage
+	// 		} else if(balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit ) { // > 5001 && < 100001
+	// 				percentage = levelSelectOptions[4].percentage
+	// 		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+	// 			percentage = levelSelectOptions[3].percentage
+	// 		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+	// 			percentage = levelSelectOptions[2].percentage
+	// 		} else { // < 501
+	// 			percentage = levelSelectOptions[1].percentage
+	// 		}
+	// 	}
+
+	// 	else if(level === 5) {
+	// 		if (balance > levelSelectOptions[4].limit) { // > 10001
+	// 			percentage = levelSelectOptions[5].percentage
+	// 		} else if(balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit ) { // > 5001 && < 10001
+	// 				percentage = levelSelectOptions[4].percentage
+	// 		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+	// 			percentage = levelSelectOptions[3].percentage
+	// 		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+	// 			percentage = levelSelectOptions[2].percentage
+	// 		} else { // < 501
+	// 			percentage = levelSelectOptions[1].percentage
+	// 		}
+	// 	}
+
+	// 	else if(level === 4) {
+	// 		if (balance > levelSelectOptions[3].limit) {
+	// 			percentage = levelSelectOptions[4].percentage
+	// 		} else if(balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit ) { // > 2001 && < 5001
+	// 			percentage = levelSelectOptions[3].percentage
+	// 		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+	// 			percentage = levelSelectOptions[2].percentage
+	// 		} else { // < 501
+	// 			percentage = levelSelectOptions[1].percentage
+	// 		}
+	// 	}
+
+	// 	else if(level === 3) {
+	// 		if(balance > levelSelectOptions[2].limit ) { // > 2001
+	// 			percentage = levelSelectOptions[3].percentage
+	// 		} else if(balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit ) {  // > 501 && < 2001
+	// 			percentage = levelSelectOptions[2].percentage
+	// 		} else { // < 501
+	// 			percentage = levelSelectOptions[1].percentage
+	// 		}
+	// 	} 
+		
+	// 	else if (level === 2) {
+	// 		if(balance > levelSelectOptions[1].limit ) { // > 501
+	// 			percentage = levelSelectOptions[2].percentage
+	// 		} else { // < 501
+	// 			percentage = levelSelectOptions[1].percentage
+	// 		}
+	// 	} 
+		
+	// 	// Balance < 501
+	// 	else {
+	// 		percentage = levelSelectOptions[1].percentage
+	// 	}
 	
-		// > 5001 & level 3
-		if(balance > levelSelectOptions[3].limit && level === 3) {
-			percentage = levelSelectOptions[3].percentage
-		
-		// > 2001 & < 5001 & level 3
-		} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
-			percentage = levelSelectOptions[3].percentage
-		
-		// >= 2001 & < 5001 & level 2
-		} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
-			percentage = levelSelectOptions[2].percentage
-	
-		// > 501 & < 2001 & level 3
-		} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 3) {
-			percentage = levelSelectOptions[2].percentage
-		
-		// > 501 & < 2001 & level 2
-		} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 2) {
-			percentage = levelSelectOptions[2].percentage
-		
-		// < 501
-		} else {
-			percentage = levelSelectOptions[1].percentage
-		}
-	
-		return percentage * 100;
-	};
+	// 	return (percentage * 100).toFixed(1) + '%';
+	// };
 
 	// Swtich Tabs
 	viewTabs(tabs)
@@ -243,7 +366,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
+                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
@@ -313,7 +436,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, balanceDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-					<td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
