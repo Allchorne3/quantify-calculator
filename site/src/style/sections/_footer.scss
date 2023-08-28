@@ -58,6 +58,12 @@ footer {
                 p {
                     color: $purple-light;
                 }
+
+                max-width: 25ch;
+
+                @include m.tablet-small-max {
+                    max-width: 60ch;
+                }
             }
             
             .sitemap {
