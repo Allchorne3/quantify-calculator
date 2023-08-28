@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+#blob {
+    background-color: white;
+    height: 10vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, $purple-light, $gold);
+    animation: rotate 20s infinite;
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    backdrop-filter: blur(6vmax);
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1 1.5;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}

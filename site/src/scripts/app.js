@@ -12,11 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, () =>{
 
         document.addEventListener('scroll', () => {
-            docElement.classList.toggle('is-scrolled', window.scrollY > 30)
+            document.documentElement.classList.toggle('is-scrolled', window.scrollY > 30)
+            console.log(window.scrollY);
         });
+        window.dispatchEvent(new Event('scroll'));
 
         docElement.classList.toggle('is-scrolled', window.scrollY > 30)
-        window.dispatchEvent(new Event('scroll'));
     
         if (docElement.id === 'page-calculator') {
             calculator.init();
@@ -39,18 +40,24 @@ document.addEventListener('DOMContentLoaded', () => {
             card.onmousemove = e => handleMouseMove(e);
         }
 
-        // Mobile nav
-        // const hamburger = document.querySelector('.nav-hamburger');
-        // const closeMenu = document.querySelector('.close-menu');
+        // Homepage blob
+        const blob = document.getElementById("blob");
 
-        // hamburger.addEventListener('click', () => {
-        //     document.querySelector('.mobile-nav').classList.add('active');
-        //     hamburger.classList.add('active');
-        // })
-        // closeMenu.addEventListener('click', () => {
-        //     document.querySelector('.mobile-nav').classList.remove('active');
-        //     hamburger.classList.remove('active');
-        // })
+        if(blob) {
+            document.body.onpointermove = event => { 
+            const { clientX, clientY } = event;
+            
+            // follow mouse instantly
+            // blob.style.left = `${clientX}px`
+            // blob.style.top = `${clientY}px`
+            
+            // follow mouse with delay  
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 1000, fill: "forwards" });
+            }
+        }
 
         // Imported functions
         tabs.runTabs();

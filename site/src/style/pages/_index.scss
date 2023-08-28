@@ -51,6 +51,55 @@
             }
         }
 
+        .wave {
+            background: rgba($purple-light, .1);
+            border-radius: 2000% 2000% 0 0;
+            position: absolute;
+            width: 200%;
+            height: 18rem;
+            animation: wave 10s -3s linear infinite;
+            transform: translate3d(0, 0, 0);
+            opacity: 0.9;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .wave:nth-of-type(2) {
+            background: $galactic;
+            bottom: -2.25em;
+            animation: wave 18s linear reverse infinite;
+            opacity: 0.1;
+        }
+        
+        .wave:nth-of-type(3) {
+            background: $galactic-reverse;
+            bottom: -3.5em;
+            animation: wave 20s -1s reverse infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes wave {
+            2% {
+                transform: translateX(1);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(1);
+            }
+        }
     }
 
     .home-boxes {
@@ -59,6 +108,9 @@
         height: 100vh;
         display: grid;
         place-items: center;
+        border-top: solid 1px $purple-light;
+        position: relative;
+        overflow: hidden;
 
         @include m.until(1400px) {
             padding: 1rem;
