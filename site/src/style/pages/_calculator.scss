@@ -12,6 +12,10 @@
         gap: 3rem;
         margin-top: 3rem;
         margin-bottom: 6rem;
+
+        @include m.desktop-max {
+            flex-direction: column;
+        }
     }
 
     .calculator {
@@ -24,7 +28,7 @@
         }
         
         @include m.desktop-max {
-            grid-template-columns: 1fr;
+            flex-direction: column;
         }
     }
 
