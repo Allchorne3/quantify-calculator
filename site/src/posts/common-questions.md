@@ -5,6 +5,14 @@ description: Here, you will find a list of commonly asked questions.
 category: common
 ---
 
+###### What is WDC Quantify
+An explanation can be found in this [post](/posts/about-wdc/)
+
+###### What exactly do I need to do?
+To begin, create a WDC Quantify account. This process is remarkably straightforward. Next, create  a Kraken account, which serves as your crypto wallet. This step is equally uncomplicated. (Note: Alternative crypto wallets are available; this website provides Kraken-specific instructions.) Following this, deposit funds into your Kraken account. Afterward, withdraw your Kraken balance into your WDC Quantify wallet, using the instructions in this guide (/posts/kraken-to-wdc/).
+
+With these steps completed, you're now primed for quantification! A single action remains: press the prominently displayed "Start to quantify" button up to five times daily. Once pressed, the automated trading bot will undertake its responsibilities. While your initial earnings might be small, they possess the potential for substantial growth over time.
+
 ###### Can I remain at VIP1?
 Absolutely, it's entirely possible for you to stay at VIP1, and within a span of 30 days, your potential earnings could reach up to $345.
 
@@ -23,3 +31,12 @@ WDC Quantify operates primarily on a referral-based system, meaning that advanci
  - **VIP4**: 10 - level 1 &amp; 20 - level 2 - 4 (Quantify frequency: 8)
  - **VIP5**: 15 - level 1 &amp; 35 - level 2 - 4 (Quantify frequency: 9)
  - **VIP6**: 25 - level 1 &amp; 50 - level 2 - 4 (Quantify frequency: 10)
+
+###### How much commission can I earn from my referrals?
+You will receive a portion of your referrals' daily earnings, with the commission rate decreasing as the referral level increases. The commission percentages are structured as follows:
+ - Level 1 referral: 12%
+ - Level 2 referral: 6%
+ - Level 3 referral: 4%
+ - Level 4 referral: 2%
+
+Following a 3-day waiting period, your commission will be issued. Eventually, this waiting period will align in a way that allows you to earn commission on a daily basis.

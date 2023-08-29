@@ -162,14 +162,6 @@ const init = () => {
 		},
 	};
 
-	// const percentageSelectOptions = {
-	// 	level6Percentage: balance > levelSelectOptions[5].limit,
-	// 	level5Percentage: balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit,
-	// 	level4Percentage: balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit,
-	// 	level3Percentage: balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit,
-	// 	level2Percentage: balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit
-	// }
-
 	const calculateEarnings = (level, balance) => {
 		const levelData = levelSelectOptions[level];
 		let earnings;
@@ -336,15 +328,39 @@ const init = () => {
 
 				tbody.appendChild(newRow);
 
-				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
+				if (counter === 0) {
+					switch (level) {
+						case 1:
+							if (balance >= levelSelectOptions[1].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 2:
+							if (balance >= levelSelectOptions[2].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 3:
+							if (balance >= levelSelectOptions[3].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 4:
+							if (balance >= levelSelectOptions[4].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 5:
+							if (balance >= levelSelectOptions[5].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+					}
 				}
 			}
 
@@ -406,19 +422,39 @@ const init = () => {
 
 				tbody.appendChild(newRow);
 
-				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				}
-
-				if (balance >= aim) {
-					newRow.classList.add('row-aim');
+				if (counter === 0) {
+					switch (level) {
+						case 1:
+							if (balance >= levelSelectOptions[1].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 2:
+							if (balance >= levelSelectOptions[2].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 3:
+							if (balance >= levelSelectOptions[3].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 4:
+							if (balance >= levelSelectOptions[4].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 5:
+							if (balance >= levelSelectOptions[5].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+					}
 				}
 			}
 
