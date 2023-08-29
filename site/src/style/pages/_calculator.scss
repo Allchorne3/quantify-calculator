@@ -10,12 +10,13 @@
     .container {
         display: flex;
         gap: 3rem;
+        margin-top: 3rem;
+        margin-bottom: 6rem;
     }
-    
+
     .calculator {
         display: flex;
         gap: 3rem;
-        margin-top: 3rem;
         margin-bottom: 6rem;
         
         @include m.mobile-max {
