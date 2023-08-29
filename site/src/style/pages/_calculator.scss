@@ -7,18 +7,19 @@
         margin: 0 auto;
     }
 
-    .calculator {
-        display: flex;
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
         gap: 3rem;
         margin-top: 3rem;
         margin-bottom: 6rem;
-
+        
         @include m.mobile-max {
             gap: 2rem;
         }
-
+        
         @include m.desktop-max {
-            flex-direction: column;
+            grid-template-columns: 1fr;
         }
 
         .form,
