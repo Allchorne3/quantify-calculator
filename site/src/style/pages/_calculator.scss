@@ -8,44 +8,46 @@
     }
 
     .container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 3rem;
-        margin-top: 3rem;
-        margin-bottom: 6rem;
-        
-        @include m.mobile-max {
-            gap: 2rem;
-        }
-        
-        @include m.desktop-max {
-            grid-template-columns: 1fr;
-        }
-
-        .form,
-        .earnings {
-            border-radius: 15px;
-            padding: 1rem;
-            background: $grey-dark;
-            border: solid 1px $blue-light;
-            height: fit-content;
-
-            @include m.tablet-max {
-                padding: 1.5rem;
+        .calculator {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            margin-bottom: 6rem;
+            
+            @include m.mobile-max {
+                gap: 2rem;
             }
-        }
-
-        .form {
-            flex: 1;
-
-            @include m.desktop-min {
-                position: sticky;
-                top: 125px;
+            
+            @include m.desktop-max {
+                grid-template-columns: 1fr;
             }
-        }
 
-        .earnings {
-            flex: 3;
+            .form,
+            .earnings {
+                border-radius: 15px;
+                padding: 1rem;
+                background: $grey-dark;
+                border: solid 1px $blue-light;
+                height: fit-content;
+
+                @include m.tablet-max {
+                    padding: 1.5rem;
+                }
+            }
+
+            .form {
+                flex: 1;
+
+                @include m.desktop-min {
+                    position: sticky;
+                    top: 125px;
+                }
+            }
+
+            .earnings {
+                flex: 3;
+            }
         }
     }
 }
