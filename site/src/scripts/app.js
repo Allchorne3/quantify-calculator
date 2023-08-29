@@ -59,36 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // magic stars
-        const stars = document.querySelectorAll(".magic-star");
-        if(stars) {
-            let index = 0;
-            let interval = 1000;
-
-            // Create a random number generator
-            const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-            function animate(element) {
-            element.style.setProperty("--star-left", `${rand(-10, 100)}%`);
-            element.style.setProperty("--star-top", `${rand(-40, 80)}%`);
-
-            // DOM reflow
-            element.style.animation = "none";
-            element.offsetHeight;
-            element.style.animation = "";
-            }
-
-            for(const star of stars) {
-            // Use setTimeout to stagger the stars animations  
-            setTimeout(() => {
-                animate(star);
-                // Use setInterval to animate the stars
-                setInterval(() => animate(star), 1000)
-            }, index++ * (interval / 3))
-            
-            }
-        }
-
         // Imported functions
         tabs.runTabs();
         animations.init();
