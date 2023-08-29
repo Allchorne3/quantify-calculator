@@ -57,15 +57,11 @@
 
         .articles {
             flex: 3;
-            padding-right: 6rem;
-            padding-bottom: 1rem;
-
-            @include m.desktop-max {
-                padding-right: 3rem;
-            }
 
             .content > div {
-                margin-bottom: 2rem;
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
             }
 
             h3 {
