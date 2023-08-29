@@ -1,7 +1,8 @@
 ---
 title: How to withdraw WDC balance into Kraken
 date: 2023-08-02
-icon: kraken
+description: "This post will guide you through the process of withdrawing some or all of your Kraken cryptocurrency into your WDC Quantify account."
+category: kraken
 ---
 
 1. First go into WDC Quantify and click the **Mine** tab.

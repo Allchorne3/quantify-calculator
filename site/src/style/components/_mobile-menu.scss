@@ -1,0 +1,34 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.mobile-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($navy-dark, .5);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5rem;
+    z-index: 999;
+    border-top: solid 1px rgba($white, .5);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+
+        i {
+            font-size: 24px;
+            color: rgba($white, .5);
+        }
+
+        a[aria-current="page"] i {
+            color: $white;
+        }
+    }
+
+    @include m.tablet-small-min {
+        display: none;
+    }
+}

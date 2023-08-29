@@ -1,48 +1,48 @@
 @use '../abstracts/variables' as *;
 @use '../utilities/mixins' as m;
 
-.tabs {
-    @include m.mobile-max {
+#page-calculator {
+    .tabs {
         width: 100%;
-    }
-  
-    width: 100%;
-
-    ul {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        padding-left: 0;
-        margin-bottom: 1.5rem;
-
-        @include m.mobile-max {
-            grid-template-columns: repeat(2, 1fr);
-        }
         
-        li {
-            list-style: none;
-            flex: 1;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding-left: 0;
+            background: $grey-blue;
+            padding: .15rem;
+            margin-top: 0;
+            border-radius: 8px;
             
-            a {
-                $color: $dull-grey;
-                display: block;
-                text-decoration: none;
-                color: #454E5E;
-                padding: 10px 25px;
-                background: $grey;
-                font-weight: bold;
-                text-transform: uppercase;
-                clip-path: polygon(14px 0, 100% 0, 100% 34px, 238px 100%, 0 100%, 0 10px);
-                transition: all 0.3s ease-in-out; 
-
-                &:hover {
-                    // color: lighten($color, 20%);
-                    background: lighten($color, 10%);
-                }
+            @include m.mobile-max {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            li {
+                list-style: none;
+                flex: 1;
                 
-                &.active {
-                    background: $gold;
-                    color: $blue;
+                a {
+                    $color: $grey-dark;
+                    display: block;
+                    text-decoration: none;
+                    color: $grey-dark;
+                    padding: 10px 25px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    border-radius: 6px;
+                    transition: all 0.3s ease-in-out;
+                    position: relative;
+
+                    &:not(.active):hover {
+                        background: darken($grey-blue, 4%);
+                    }
+
+                    &.active {
+                        background: $galactic;
+                        color: $white;
+                    }
                 }
             }
         }

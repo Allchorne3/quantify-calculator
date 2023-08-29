@@ -14,39 +14,12 @@ let tbody;
 let resetButton;
 let highlightedRows;
 let tableButtons;
-
-const levelSelectOptions = {
-	1: {
-		limit: 501,
-		percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
-	},
-	2: {
-		limit: 2001,
-		percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
-	},
-	3: {
-		limit: 5001,
-		percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
-	}
-};
+let preText;
 
 const currentDate = (dayNumber, dateInputValue) => {
 	const currentDate = dateInputValue ? new Date(dateInputValue) : new Date();
 	currentDate.setDate(currentDate.getDate() + dayNumber);
 	return currentDate.toDateString();
-};
-  
-const calculateEarnings = (level, balance) => {
-	const levelData = levelSelectOptions[level];
-	let earnings;
-
-	if (balance >= levelData.limit) {
-		earnings = levelData.limit * levelData.percentage;
-	} else {
-		earnings = balance * levelData.percentage;
-	}
-
-	return earnings;
 };
 
 const showTabContent = (el) => {
@@ -66,18 +39,15 @@ const clearTable = () => {
 
 	clearTableButtons();
     table.classList.add('hidden');
+	preText.classList.remove('hidden');
 }
 
 const clearTableButtons = () => {
-	for(const buttons of tableButtons) {
-		buttons.classList.add('hidden');
-	}
+	tableButtons.classList.add('hidden');
 }
 
 const showTableButtons = () => {
-	for(const buttons of tableButtons) {
-		buttons.classList.remove('hidden');
-	}
+	tableButtons.classList.remove('hidden');
 }
 
 const clearHighlights = () => {
@@ -148,42 +118,11 @@ const viewTabs = items => {
 	}
 }
 
-const getPercentageForLevel = (balance, level) => {
-	let percentage;
-
-	// > 5001 & level 3
-	if(balance > levelSelectOptions[3].limit && level === 3) {
-		percentage = levelSelectOptions[3].percentage
-	
-	// > 2001 & < 5001 & level 3
-	} else if (balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 3) {
-		percentage = levelSelectOptions[3].percentage
-	
-	// >= 2001 & < 5001 & level 2
-	} else if(balance >= levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit && level === 2){
-		percentage = levelSelectOptions[2].percentage
-
-	// > 501 & < 2001 & level 3
-	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 3) {
-		percentage = levelSelectOptions[2].percentage
-	
-	// > 501 & < 2001 & level 2
-	} else if (balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit && level === 2) {
-		percentage = levelSelectOptions[2].percentage
-	
-	// < 501
-	} else {
-		percentage = levelSelectOptions[1].percentage
-	}
-
-    return percentage * 100;
-};
-
 const init = () => {
 	clearButton = document.querySelector('.clear');
 	table = document.querySelector('table');
 	tabs = document.querySelectorAll('.tabs li a');
-	tableButtons = document.querySelectorAll('.buttons button');
+	tableButtons = document.querySelector('.buttons');
 	contents = document.querySelectorAll('html#page-calculator .content > div');
 	daysSubmit = document.querySelector('#days form');
 	balanceSubmit = document.querySelector('#balance form');
@@ -194,6 +133,147 @@ const init = () => {
 	resetButton = document.querySelector('#balance form [type="reset"]');
 	clearHighlightButton = document.querySelector('#remove-highlights');
 	highlightedRows = [];
+	preText = document.querySelector('.pre-text');
+
+	const levelSelectOptions = {
+		1: {
+			limit: 500,
+			percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
+		},
+		2: {
+			limit: 2000,
+			percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
+		},
+		3: {
+			limit: 5000,
+			percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
+		},
+		4: {
+			limit: 10000,
+			percentage: document.querySelector('select option[value="4"]').dataset.percentage / 100
+		},
+		5: {
+			limit: 30000,
+			percentage: document.querySelector('select option[value="5"]').dataset.percentage / 100
+		},
+		6: {
+			limit: Infinity,
+			percentage: document.querySelector('select option[value="6"]').dataset.percentage / 100
+		},
+	};
+
+	const calculateEarnings = (level, balance) => {
+		const levelData = levelSelectOptions[level];
+		let earnings;
+	
+		if (balance >= levelData.limit) {
+			earnings = levelData.limit * levelData.percentage;
+		} else {
+			earnings = balance * levelData.percentage;
+		}
+	
+		return earnings;
+	};
+
+	const getPercentageForLevel = (balance, level) => {
+		let percentage;
+
+		const percentageSelectOptions = {
+			level6Percentage: balance > levelSelectOptions[5].limit,
+			level5Percentage: balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit,
+			level4Percentage: balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit,
+			level3Percentage: balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit,
+			level2Percentage: balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit
+		}
+	
+		switch (level) {
+			case 6:
+				switch (true) {
+					case percentageSelectOptions.level6Percentage:
+						percentage = levelSelectOptions[6].percentage;
+						break;
+					case percentageSelectOptions.level5Percentage:
+						percentage = levelSelectOptions[5].percentage;
+						break;
+					case percentageSelectOptions.level4Percentage:
+						percentage = levelSelectOptions[4].percentage;
+						break;
+					case percentageSelectOptions.level3Percentage:
+						percentage = levelSelectOptions[3].percentage;
+						break;
+					case percentageSelectOptions.level2Percentage:
+						percentage = levelSelectOptions[2].percentage;
+						break;
+					default:
+						percentage = levelSelectOptions[1].percentage;
+				}
+				break;
+	
+			case 5:
+				switch (true) {
+					case balance > levelSelectOptions[4].limit:
+						percentage = levelSelectOptions[5].percentage;
+						break;
+					case balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit:
+						percentage = levelSelectOptions[4].percentage;
+						break;
+					case balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit:
+						percentage = levelSelectOptions[3].percentage;
+						break;
+					case balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit:
+						percentage = levelSelectOptions[2].percentage;
+						break;
+					default:
+						percentage = levelSelectOptions[1].percentage;
+				}
+				break;
+	
+			case 4:
+				switch (true) {
+					case balance > levelSelectOptions[3].limit:
+						percentage = levelSelectOptions[4].percentage;
+						break;
+					case balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit:
+						percentage = levelSelectOptions[3].percentage;
+						break;
+					case balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit:
+						percentage = levelSelectOptions[2].percentage;
+						break;
+					default:
+						percentage = levelSelectOptions[1].percentage;
+				}
+				break;
+	
+			case 3:
+				switch (true) {
+					case balance > levelSelectOptions[2].limit:
+						percentage = levelSelectOptions[3].percentage;
+						break;
+					case balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit:
+						percentage = levelSelectOptions[2].percentage;
+						break;
+					default:
+						percentage = levelSelectOptions[1].percentage;
+				}
+				break;
+	
+			case 2:
+				switch (true) {
+					case balance > levelSelectOptions[1].limit:
+						percentage = levelSelectOptions[2].percentage;
+						break;
+					default:
+						percentage = levelSelectOptions[1].percentage;
+				}
+				break;
+	
+			default:
+				percentage = levelSelectOptions[1].percentage;
+				break;
+		}
+	
+		return (percentage * 100).toFixed(1) + '%';
+	};
 
 	// Swtich Tabs
 	viewTabs(tabs)
@@ -242,27 +322,52 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
-					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
 				tbody.appendChild(newRow);
 
-				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
+				if (counter === 0) {
+					switch (level) {
+						case 1:
+							if (balance >= levelSelectOptions[1].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 2:
+							if (balance >= levelSelectOptions[2].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 3:
+							if (balance >= levelSelectOptions[3].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 4:
+							if (balance >= levelSelectOptions[4].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 5:
+							if (balance >= levelSelectOptions[5].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+					}
 				}
 			}
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
 			showTableButtons();
+			preText.classList.add('hidden');
 		}
 	});
 	
@@ -311,32 +416,52 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, balanceDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-					<td data-label="Percentage">${getPercentageForLevel(balance, level)}%</td>
-					<td data-label="Balance">$${balance.toFixed(2)}<div><span>+</span></div></td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
 				tbody.appendChild(newRow);
 
-				if (level === 1 && balance >= levelSelectOptions[1].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 2 && balance >= levelSelectOptions[2].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				} else if (level === 3 && balance >= levelSelectOptions[3].limit && counter === 0) {
-					newRow.classList.add('row-active');
-					counter++;
-				}
-
-				if (balance >= aim && counter === 1) {
-					newRow.classList.add('row-aim');
-					counter++;
+				if (counter === 0) {
+					switch (level) {
+						case 1:
+							if (balance >= levelSelectOptions[1].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 2:
+							if (balance >= levelSelectOptions[2].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 3:
+							if (balance >= levelSelectOptions[3].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 4:
+							if (balance >= levelSelectOptions[4].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+						case 5:
+							if (balance >= levelSelectOptions[5].limit) {
+								newRow.classList.add('row-active');
+								counter++;
+							}
+							break;
+					}
 				}
 			}
 
 			table.appendChild(tbody);
 			exportBtn.classList.remove('disabled');
 			showTableButtons();
+			preText.classList.add('hidden');
 		}
 	});
 

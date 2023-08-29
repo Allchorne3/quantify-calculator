@@ -5,11 +5,15 @@
 @use 'base/base';
 
 @use 'sections/header';
+@use 'sections/footer';
 
 @use 'components/buttons';
 @use 'components/form';
 @use 'components/table';
 @use 'components/tabs';
+@use 'components/logo';
+@use 'components/mobile-menu';
+@use 'components/blob';
 
 @use 'pages/index';
 @use 'pages/guides';

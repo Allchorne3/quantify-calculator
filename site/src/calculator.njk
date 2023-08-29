@@ -5,12 +5,16 @@ uniqueTitle: Quantify Calculator
 centered: true
 ---
 
-<div class="wrapper">  
-	<h1>Calculator</h1>
-	<p class="subtitle">Use the options below to showcase how much money you will earn. The day option will allow you to see how much money you have earned over your chosen number of days and when you have hit your limit depending on your VIP level. The balance option will show you the date that you will reach your specified balance.</p>
+<div class="hero">
+	<div class="hero-body">
+		<h1 class="title">Calculator</h1>
+		<p>Use the options below to showcase how much money you will earn. The days option will allow you to see how much money you have earned over your chosen number of days and when you will hit your limit depending on your VIP level. The Amount option will show you the date that you will reach your specified amount.</p>
+	</div>
+</div>
 
-	<div class="container">
-		<section class="calculator">
+<div class="container">
+    <div class="calculator">
+        <div class="form">
 			<div class="tabs">
 				<ul>
 					<li><a href="#" data-target="days" class="active">Days</a></li>
@@ -27,27 +31,31 @@ centered: true
 					{% include "balance-form.njk" %}
 				</div>
 			</div>
-		</section>
+        </div>
 
-		<div class="buttons is-centered">
-			<button class="clear hidden">Clear Table</button>
-			<button id="downloadExcel" class="disabled hidden">Export to Excel</button>
-			<button id="downloadExcelRows" class="disabled hidden">Export Highlights</button>
-			<button id="remove-highlights" class="disabled hidden">Clear highlights</button>
-		</div>
+        <div class="earnings">
+			<div class="buttons hidden">
+				<button class="clear">Clear Table</button>
+				<button id="downloadExcel" class="disabled">Export to Excel</button>
+				<button id="downloadExcelRows" class="disabled">Export Highlights</button>
+				<button id="remove-highlights" class="disabled">Clear highlights</button>
+			</div>
 
-		<table class="hidden">
-			<thead>
-				<tr>
-					<th>Day</th>
-					<th>Daily</th>
-					<th>Acc Earnings</th>
-					<th>Percentage</th>
-					<th>Balance</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
+			<p class="pre-text">Awaiting your calculation...</p>
+
+			<table class="hidden">
+				<thead>
+					<tr>
+						<th>Day</th>
+						<th>Daily</th>
+						<th>Acc Earnings</th>
+						<th>Percentage</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
+			</table>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js" defer></script>

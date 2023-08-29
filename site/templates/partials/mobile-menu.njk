@@ -1,0 +1,21 @@
+<div class="mobile-menu">
+    <nav>
+		<ul role="list" class="nav-list">
+			<li>
+				<a {% if page.fileSlug === '' %}aria-current="page"{% endif %} href="/">
+					<i class="fa-solid fa-house-chimney-window"></i>
+				</a>
+			</li>
+			<li>
+				<a {% if page.fileSlug === 'guides' %}aria-current="page"{% endif %} href="/guides/">
+					<i class="fa-solid fa-book"></i>
+				</a>
+			</li>
+			<li>
+				<a {% if page.fileSlug === 'calculator' %}aria-current="page"{% endif %} href="/calculator/">
+					<i class="fa-solid fa-calculator"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>

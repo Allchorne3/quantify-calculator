@@ -2,21 +2,50 @@
 layout: base.njk 
 title: Home
 uniqueTitle: Quantify Helpers
-centered: true
 ---
 
-<div class="wrapper">  
-	<h1>Hello,</h1>
-	<h2>Which option would you like?</h2>
+<div class="hero">
+    <div class="hero-body">
+        <h1 class="title animated line-up">
+            Calculate your <br /><span class="special">future</span> earnings.
+        </h1>
+        <p class="line-up">Simply enter your VIP level, balance, number of days and your goal balance to see what lies ahead.</p>
+        <a href="#see-more" class="button galactic">See more &rarr;</a>
+    </div>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+</div>
 
-	<div class="options">
-		<a href="/calculator/" class="option">
-			<p>Calculator</p>
-			<i class="fa-solid fa-calculator"></i>
-		</a>
-		<a href="/guides/" class="option">
-			<p>Guides</p>
-			<i class="fa-solid fa-file"></i>
-		</a>
-	</div>
+<div class="home-boxes" id="see-more">
+    <div id="blob"></div>
+    <div id="blur"></div>
+    <div class="container medium">
+        <section id="section-pages">
+            <a href="/calculator/" class="calculator-box card">
+                <h3>Calculate your $earnings</h3>
+                <p class="subtitle">See how much you can earn and when you can earn it based on a number of days and a balance goal.</p>
+                <img src="/assets/images/calc-table.png" class="image-box" alt="Example calculation table">
+                <img src="/assets/images/calc-table-tab.png" class="image-wide" alt="Example calculation table">
+            </a>
+            <div class="guides-box card">
+                <h3>Super helpful guides</h3>
+                <p class="subtitle">Need some help withdrawing or depositing money? Here are some useful guides that you can follow.</p>
+
+                <div class="guide-list">
+                    <h4>Latest guides</h4>
+
+                    {% for post in collections.post | reverse | limiter(3) %}
+                        <h5><a class="snippet-title" href="{{ post.url }}">{{ post.data.title }}</a></h5>
+                        <p class="snippet-date">{{ post.data.date  | prettyDate }}</p>
+                    {% endfor %}
+
+                    <a href="/guides/" class="button button-small galactic">See all guides</a>
+                </div>
+
+            </div>
+        </section>
+    </div>
 </div>

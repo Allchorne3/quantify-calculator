@@ -1,84 +1,154 @@
 @use '../abstracts/variables' as *;
 @use '../utilities/mixins' as m;
 
-/* //////////////////////
-  Header
-  /////////////////////// */
-
-header.header {
-  padding-inline: 2rem;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-block: 2.5rem;
-  background: $blue;
-  z-index: 2;
-  
-  .container {
+header {
+    width: 100%;
+    min-height: 5rem;
+    padding-inline: 2rem;
+    background: $gradient-black;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 9px 5px -7px (rgba(0, 0, 0, .6));
+    z-index: 999;
 
-    @include m.mobile-max {
-      flex-direction: column;
-      align-items: center;
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: rgba($purple-light, .5);
+        transform: scaleX(0);
+        transition: all .5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: scaleX(1);
     }
 
-    svg {
-      width: 180px;
-      height: auto;
-      display: block;
+    .logo {
+        max-width: 120px;
     }
-
-    nav {
-      @include m.mobile-max {
-        margin-top: 1rem;
-      }
-
-      ul {
-        display: flex;
-
-        li {
-          list-style: none;
-
-          &:not(:last-child) {
-            margin-right: 1rem;
-          }
-
-          a {
-            text-decoration: none;
-            color: $white;
-            font-weight: $fw-semi-bold;
-            font-size: $fs-5;
-          }
+    
+    @include m.tablet-small-max {
+        &::before {
+            transform: scaleX(1);
         }
-      }
+
+        justify-content: center;
     }
-  }
-
-  &.is-light {
-    background: $white-ter;
-
-    svg {
-      path.quantify {
-        fill: $blue;
-      }
-
-      path.helpers {
-        fill: $gold-dark;
-      }
-    }
-
+    
+    // Main nav
     nav {
-      li a {
-        color: $blue !important;
-      }
+        ul {
+            display: flex;
+
+            li {
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+                
+                a {
+                    text-decoration: none;
+                    font-size: 1rem;
+                color: $white;
+                }
+            }
+        }
+
+        @include m.tablet-small-max {
+            display: none;
+        }
     }
-  }
+
+    // Calculator Button
+    aside a.button {
+        background: $navy-dark;
+        border: solid 1px $grey-mid;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background: $purple-light;
+            border-color: $blue-mid;
+        }
+
+        @include m.tablet-small-max {
+            display: none;
+        }
+    }
+
+    // i.nav-hamburger {
+    //     font-size: $fs-2;
+        
+    //     @include m.tablet-small-min {
+    //         display: none;
+    //     }
+    // }
 }
+
+// .mobile-nav {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     z-index: 999;
+//     background: $gradient-black;
+//     padding: 2rem 2rem 4rem 4rem;
+//     overflow: hidden;
+//     opacity: 0;
+//     pointer-events: none;
+
+//     display: flex;
+//     align-items: flex-end;
+//     transition: all .3s ease-in-out;
+
+//     ul {
+//         position: relative;
+
+//         &::before {
+//             content: 'Q';
+//             position: absolute;
+//             font-size: 15rem;
+//             font-family: $ff-secondary;
+//             top: -170px;
+//             left: 66px;
+//             color: rgba($white-ter, .05);
+//         }
+//     }
+
+//     li {
+//         &:not(:last-child) {
+//             margin-bottom: .5rem;
+//         }
+
+//         a {
+//             display: inline-block;
+//             color: $white-ter;
+//             text-decoration: none;
+//             font-size: $fs-0;
+//             font-family: $ff-secondary;
+//         }
+//     }
+
+//     i.close-menu {
+//         font-size: $fs-1;
+//         position: absolute;
+//         top: 2rem;
+//         right: 2rem;
+//     }
+
+//     &.active {
+//         opacity: 1;
+//         pointer-events: all;
+//     }
+
+//     @include m.tablet-small-min {
+//         display: none;
+//     }
+// }

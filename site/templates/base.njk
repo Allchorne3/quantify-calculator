@@ -16,13 +16,15 @@
 
         <link rel="stylesheet" href="{{ '/style/style.css' | url }}">
     </head>
-    <body{% if lightBody %} class="is-light"{% endif %}>
+    <body>
         {% include "header.njk" %}
         
         <main{% if centered %} class="text-centered" {% endif %}>
             {{ content | safe }}
         </main>
 
+        {% include "mobile-menu.njk" %}
+        {% include "footer.njk" %}
         <script src="/scripts/app.js"></script>
     </body>
 </html>

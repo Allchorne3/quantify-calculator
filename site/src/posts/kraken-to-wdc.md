@@ -1,8 +1,8 @@
 ---
-title: How to deposit into WDC from Kraken
+title: How to withdraw Kraken balance into WDC
 date: 2023-07-30
-icon: wdc
-imageType: png
+description: "This post will guide you through the process of withdrawing some or all of your WDC Quantify balance into your cryptocurrency Kraken wallet."
+category: wdc
 ---
 
 1. You will need to open a Kraken account. This will be your crypto wallet for all your deposits and withdrawals.

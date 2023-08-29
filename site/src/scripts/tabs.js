@@ -1,8 +1,12 @@
 let tabs;
+let allTab;
+let contents;
 
 const runTabs = () => {
     tabs = document.querySelectorAll('.tabs ul li a');
-    
+	allTab = document.querySelector('.tabs ul li a[data-target="all"]')
+    contents = document.querySelectorAll('.content > div');
+
     for(const tab of tabs) {
         tab.addEventListener('click', event => {
             event.preventDefault();
@@ -12,8 +16,25 @@ const runTabs = () => {
     
             // Add active class to clicked tab
             tab.classList.add('active');
+
+			for (const content of contents) {
+				if (content.getAttribute('id') === tab.dataset.target) {
+					content.classList.remove('hidden');
+				} else {
+					content.classList.add('hidden');
+				}
+			}
         })
+
     }
+
+	if (document.documentElement.id === 'page-guides') {
+		allTab.addEventListener('click', (e) => {
+			e.preventDefault();
+			for(const content of contents) content.classList.remove('hidden');
+		})
+	}
+
 }
 
 export default {

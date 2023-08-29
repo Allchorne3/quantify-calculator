@@ -1,5 +1,6 @@
 const htmlmin = require("html-minifier"); //minify html
 const prettyDate = require('./lib/pretty-date.js')
+const limiter = require('./lib/limiter.js')
 const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
 
 module.exports = function(eleventyConfig) {
@@ -17,6 +18,7 @@ module.exports = function(eleventyConfig) {
 
     // Expose Nunjucks filters
     eleventyConfig.addFilter("prettyDate", prettyDate);
+    eleventyConfig.addFilter("limiter", limiter);
 
     // plugins
     eleventyConfig.addPlugin(emojiReadTime, {
@@ -48,7 +50,8 @@ module.exports = function(eleventyConfig) {
         url: 'https://yoursitename.com',
         host: process.env.NODE_ENV === 'production' ? 'https://your-site.com' : 'http://localhost:8080',
         slogan: 'Your global site slogan',
-        description: "your default site description"
+        description: "your default site description",
+        author: 'Stefan Allchorne'
     });
      
 

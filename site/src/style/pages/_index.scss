@@ -2,69 +2,235 @@
 @use '../utilities/mixins' as m;
 
 #page-index {
-    @include m.mobile-max {
-        h1 {
-            font-size: 11vw;
-        }
-    }
-
-    .wrapper {
-        display: grid;
-        place-content: center;
+    .hero {
+        width: 100%;
         height: 100vh;
-
-        @include m.from(700px) {
-            padding-top: 0;
-        }
-    }
-
-    .options {
-        max-width: 760px;
-        display: flex;
-        flex-direction: row;
+        display: grid;
         justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        margin: 3rem auto;
+        text-align: center;
+        margin-top: 0 !important;
+        position: relative;
 
-        @include m.tablet-small-max {
-            flex-direction: column;
+        @include m.mobile-max {
+            height: 70vh;
         }
+        
+        &-body {
+            padding-inline: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
 
-        .option {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            border: solid 3px $gold;
-            background: $gold;
-            transition: all .3s ease-in-out;
-            display: grid;
-            place-content: center;
-            font-size: $fs-3;
-            font-family: $ff-body;
-            font-weight: $fw-bold;
-            color: $blue;
-            text-decoration: none;
-            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-
-            i {
-                font-size: 3rem;
-                margin-top: 1rem;
-                transition: all .6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            h1 {
+                font-size: $fs-giant;
+                transform: translateY(100px);
+                padding-bottom: 3px;
+                
+                @include m.tablet-small-max {
+                    font-size: 11vw;
+                }
+                
+                margin-bottom: 1.5rem;
             }
             
-            &:hover {
-                background: $gold;
-                color: $blue;
-                cursor: pointer;
-                clip-path: polygon(20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%, 0 20%);
+            p {
+                font-size: $fs-3;
+                max-width: 34ch;
+                margin: 0 auto;
+                font-weight: $fw-light;
+                margin-bottom: 2.5rem;
 
-                i {
-                    position: relative;
-                    transform: translateY(-10px);
+                @include m.mobile-max {
+                    font-size: 4vw;
+                }
+            }
+            
+            a.button {
+                opacity: 0;
+            }
+        }
+
+        .wave {
+            background: rgba($purple-light, .1);
+            border-radius: 2000% 2000% 0 0;
+            position: absolute;
+            width: 200%;
+            height: 18rem;
+            animation: wave 10s -3s linear infinite;
+            transform: translate3d(0, 0, 0);
+            opacity: 0.9;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .wave:nth-of-type(2) {
+            background: $galactic;
+            bottom: -2.25em;
+            animation: wave 18s linear reverse infinite;
+            opacity: 0.1;
+        }
+        
+        .wave:nth-of-type(3) {
+            background: $galactic-reverse;
+            bottom: -3.5em;
+            animation: wave 20s -1s reverse infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes wave {
+            2% {
+                transform: translateX(1);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(1);
+            }
+        }
+    }
+
+    .home-boxes {
+        background: darken($grey-dark, 4%);
+        padding: 6rem;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        border-top: solid 1px $purple-light;
+        position: relative;
+        overflow: hidden;
+
+        @include m.until(1400px) {
+            padding: 1rem;
+            height: 75vh;
+        }
+
+        @include m.tablet-max {
+            height: auto;
+            padding-block: 2rem;
+        }
+    }
+
+    .container {
+        #section-pages {
+            display: flex;
+            gap: 3rem;
+
+            @include m.tablet-max {
+                flex-direction: column;
+            }
+
+            .calculator-box,
+            .guides-box {
+                flex: 1;
+                border-radius: 15px;
+                padding: 2rem;
+                background: $grey-dark;
+                border: solid 1px $blue-light;
+                text-decoration: none;
+                color: $white-ter;
+                transition: all .3s ease-in-out;
+
+                @include m.tablet-max {
+                    padding: 1.5rem;
+                }
+
+                h3 {
+                    margin-bottom: 1rem;
+                }
+                
+                p {
+                    font-size: $fs-6;
+                    margin-bottom: 2rem;
+
+                    @include m.tablet-max {
+                        max-width: 100%;
+                    }
+                }
+
+                &:hover {
+                    border-color: $purple;
+                    transform: scale(1.01);
                 }
             }
 
+            .calculator-box {
+                .image-box {
+                    display: block;
+
+                    @include m.tablet-max {
+                        display: none;
+                    }
+
+                    @include m.tablet-small-max {
+                        display: block;
+                    }
+                }
+
+                .image-wide {
+                    @include m.from(1023px) {
+                        display: none;
+                    }
+
+                    @include m.tablet-small-max {
+                        display: none;
+                    }
+                }
+            }
+            
+            .guides-box {
+                p.subtitle {
+                    padding-bottom: 2rem;
+                    border-bottom: solid 1px $grey-mid;
+                }
+
+                .guide-list {
+                    h4 {
+                        margin-bottom: 1.3rem;
+                    }
+                    
+                    h5 {
+                        margin-block: .3rem;
+                        line-height: 1.4;
+                        
+                        a {
+                            color: $white;
+                            font-size: $fs-5;
+                            font-weight: $fw-regular;
+                            text-decoration: none;
+                            transition: all .2s ease-in-out;
+
+                            &:hover {
+                                color: lighten($blue-mid, 10%);
+                            }
+                        }
+                    }
+
+                    p {
+                        margin-bottom: 1rem;
+                        font-size: $fs-7;
+                        color: $purple-light;
+                    }
+
+                    a.button {
+                        display: inline-block;
+                        margin-top: 1rem;
+                    }
+                }
+            }
         }
     }
 }

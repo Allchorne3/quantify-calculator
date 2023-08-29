@@ -1,0 +1,99 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.logo {
+    width: 150px;
+    height: 100%;
+
+    
+    footer & {
+        &:hover {
+            #q, #u, #a, #n, #t, #i, #f, #y {
+                animation: lower .7s forwards;
+            }
+            #q {animation-delay: .1s;}
+            
+            #u {animation-delay: .15s;}
+            
+            #a {animation-delay: .2s;}
+            
+            #n {animation-delay: .25s;}
+            
+            #t {animation-delay: .3s;}
+            
+            #i {animation-delay: .35s;}
+            
+            #f {animation-delay: .4s;}
+            
+            #y {animation-delay: .45s;}
+        }
+        
+        @include m.tablet-max {
+            height: 55px;
+            margin-bottom: 2rem;
+        }
+    }
+
+    header & {
+        &:hover {
+            #q, #u, #a, #n, #t, #i, #f, #y {
+                animation: colourSwitch .7s forwards;
+            }
+            #q {animation-delay: .1s;}
+            
+            #u {animation-delay: .15s;}
+            
+            #a {animation-delay: .2s;}
+            
+            #n {animation-delay: .25s;}
+            
+            #t {animation-delay: .3s;}
+            
+            #i {animation-delay: .35s;}
+            
+            #f {animation-delay: .4s;}
+            
+            #y {animation-delay: .45s;}
+        }
+    }
+}
+
+@keyframes lower {
+    0% {
+        transform: translateY(0);
+        fill: $white-ter;
+    }
+    25% {
+        transform: translateY(0);
+        fill: $gold;
+    }
+    50% {
+        transform: translateY(10px);
+        fill: $purple-light;
+    }
+    75% {
+        fill: $purple;
+    }
+    100% {
+        transform: translateY(0);
+        fill: $white-ter
+    }
+}
+
+@keyframes colourSwitch {
+    0% {
+        fill: $white-ter;
+    }
+    25% {
+        fill: $purple;
+    }
+    50% {
+        fill: $gold;
+    }
+    75% {
+        fill: $purple-light;
+    }
+    100% {
+        fill: $white-ter
+    }
+}
