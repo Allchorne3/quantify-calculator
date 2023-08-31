@@ -52,60 +52,60 @@ WDC Quantify operates primarily on a referral-based system, meaning that advanci
    - Frequency: 10 -->
 
 <ul class="first-level">
-  <li>
-    <strong>VIP0</strong>
-    <ul>
-      <li>Default level upon account creation</li>
-      <li><strong>Frequency:</strong> 5</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP1</strong>
-    <ul>
-      <li>Activate your account by depositing $35</li>
-      <li><strong>Frequency:</strong> 5</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP2</strong>
-    <ul>
-      <li>2 x lvl 1</li>
-      <li>5 x lvl 2-4</li>
-      <li><strong>Frequency:</strong> 6</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP3</strong>
-    <ul>
-      <li>5 x lvl 1</li>
-      <li>10 x lvl 2-4</li>
-      <li><strong>Frequency:</strong> 7</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP4</strong>
-    <ul>
-      <li>10 x lvl 1</li>
-      <li>20 x lvl 2-4</li>
-      <li><strong>Frequency:</strong> 8</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP5</strong>
-    <ul>
-      <li>15 x lvl 1</li>
-      <li>35 x lvl 2-4</li>
-      <li><strong>Frequency:</strong> 9</li>
-    </ul>
-  </li>
-  <li>
-    <strong>VIP6</strong>
-    <ul>
-      <li>25 x lvl 1</li>
-      <li>50 x lvl 2-4</li>
-      <li><strong>Frequency:</strong> 10</li>
-    </ul>
-  </li>
+    <li>
+        <strong>VIP0</strong>
+        <ul>
+        <li>Default level upon account creation</li>
+        <li><strong>Frequency:</strong> 5</li>
+        </ul>
+    </li>
+    <li>
+        <strong>VIP4</strong>
+        <ul>
+        <li>10 x lvl 1</li>
+        <li>20 x lvl 2-4</li>
+        <li><strong>Frequency:</strong> 8</li>
+        </ul>
+    </li>
+    <li>
+        <strong>VIP1</strong>
+        <ul>
+        <li>Activate your account by depositing $35</li>
+        <li><strong>Frequency:</strong> 5</li>
+        </ul>
+    </li>
+        <li>
+        <strong>VIP5</strong>
+        <ul>
+        <li>15 x lvl 1</li>
+        <li>35 x lvl 2-4</li>
+        <li><strong>Frequency:</strong> 9</li>
+        </ul>
+    </li>
+    <li>
+        <strong>VIP2</strong>
+        <ul>
+        <li>2 x lvl 1</li>
+        <li>5 x lvl 2-4</li>
+        <li><strong>Frequency:</strong> 6</li>
+        </ul>
+    </li>
+    <li>
+        <strong>VIP6</strong>
+        <ul>
+        <li>25 x lvl 1</li>
+        <li>50 x lvl 2-4</li>
+        <li><strong>Frequency:</strong> 10</li>
+        </ul>
+    </li>
+        <li>
+        <strong>VIP3</strong>
+        <ul>
+        <li>5 x lvl 1</li>
+        <li>10 x lvl 2-4</li>
+        <li><strong>Frequency:</strong> 7</li>
+        </ul>
+    </li>
 </ul>
 
 
