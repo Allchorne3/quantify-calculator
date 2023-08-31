@@ -75,6 +75,33 @@
             }
         }
 
+        ul.first-level {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            list-style: none;
+            gap: 1rem;
+            padding-left: 0;
+
+            @include m.mobile-max {
+            }
+
+            & > li {
+                margin-bottom: .5rem;
+
+                & > strong {
+                    color: $gold;
+                    border-bottom: solid 2px $gold;
+                    margin-bottom: .35rem;
+                    display: inline-block;
+                }
+
+                & > ul {
+                    padding-left: 0;
+                    list-style: none;
+                }
+            }
+        }
+
         .common {
             h6 {
                 font-size: $fs-5;
