@@ -177,31 +177,23 @@ const init = () => {
 
 	const getPercentageForLevel = (balance, level) => {
 		let percentage;
-
-		const percentageSelectOptions = {
-			level6Percentage: balance > levelSelectOptions[5].limit,
-			level5Percentage: balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit,
-			level4Percentage: balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit,
-			level3Percentage: balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit,
-			level2Percentage: balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit
-		}
 	
 		switch (level) {
 			case 6:
 				switch (true) {
-					case percentageSelectOptions.level6Percentage:
+					case balance > levelSelectOptions[5].limit:
 						percentage = levelSelectOptions[6].percentage;
 						break;
-					case percentageSelectOptions.level5Percentage:
+					case balance > levelSelectOptions[4].limit && balance < levelSelectOptions[5].limit:
 						percentage = levelSelectOptions[5].percentage;
 						break;
-					case percentageSelectOptions.level4Percentage:
+					case balance > levelSelectOptions[3].limit && balance < levelSelectOptions[4].limit:
 						percentage = levelSelectOptions[4].percentage;
 						break;
-					case percentageSelectOptions.level3Percentage:
+					case balance > levelSelectOptions[2].limit && balance < levelSelectOptions[3].limit:
 						percentage = levelSelectOptions[3].percentage;
 						break;
-					case percentageSelectOptions.level2Percentage:
+					case balance > levelSelectOptions[1].limit && balance < levelSelectOptions[2].limit:
 						percentage = levelSelectOptions[2].percentage;
 						break;
 					default:
@@ -322,7 +314,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-                    <td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+          <td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
