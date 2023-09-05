@@ -138,27 +138,27 @@ const init = () => {
 	const levelSelectOptions = {
 		1: {
 			limit: 500,
-			percentage: document.querySelector('select option[value="1"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="1"]').dataset.percentage
 		},
 		2: {
 			limit: 2000,
-			percentage: document.querySelector('select option[value="2"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="2"]').dataset.percentage
 		},
 		3: {
 			limit: 5000,
-			percentage: document.querySelector('select option[value="3"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="3"]').dataset.percentage
 		},
 		4: {
 			limit: 10000,
-			percentage: document.querySelector('select option[value="4"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="4"]').dataset.percentage
 		},
 		5: {
 			limit: 30000,
-			percentage: document.querySelector('select option[value="5"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="5"]').dataset.percentage
 		},
 		6: {
 			limit: Infinity,
-			percentage: document.querySelector('select option[value="6"]').dataset.percentage / 100
+			percentage: document.querySelector('select option[value="6"]').dataset.percentage
 		},
 	};
 
@@ -175,7 +175,8 @@ const init = () => {
 		return earnings;
 	};
 
-	const getPercentageForLevel = (balance, level) => {
+	// Used for display purposes only
+	const getPercentageForLevel = (balance, level, display) => {
 		let percentage;
 	
 		switch (level) {
@@ -264,7 +265,10 @@ const init = () => {
 				break;
 		}
 	
-		return (percentage * 100).toFixed(1) + '%';
+		if(display) {
+			return (percentage) + '%'; //2.3% for level 1 as an example
+		}
+		return (percentage / 100); // 0.023 for level 1 as an example
 	};
 
 	// Swtich Tabs
@@ -314,7 +318,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, dayDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earnings">$${totalEarnings.toFixed(2)}</td>
-          <td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level, true)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
