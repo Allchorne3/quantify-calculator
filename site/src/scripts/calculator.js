@@ -137,23 +137,23 @@ const init = () => {
 
 	const levelSelectOptions = {
 		1: {
-			limit: 500,
+			limit: 501,
 			percentage: document.querySelector('select option[value="1"]').dataset.percentage
 		},
 		2: {
-			limit: 2000,
+			limit: 2001,
 			percentage: document.querySelector('select option[value="2"]').dataset.percentage
 		},
 		3: {
-			limit: 5000,
+			limit: 5001,
 			percentage: document.querySelector('select option[value="3"]').dataset.percentage
 		},
 		4: {
-			limit: 10000,
+			limit: 10001,
 			percentage: document.querySelector('select option[value="4"]').dataset.percentage
 		},
 		5: {
-			limit: 30000,
+			limit: 30001,
 			percentage: document.querySelector('select option[value="5"]').dataset.percentage
 		},
 		6: {
@@ -164,15 +164,24 @@ const init = () => {
 
 	const calculateEarnings = (level, balance) => {
 		const levelData = levelSelectOptions[level];
-		let earnings;
+		// let earnings;
 	
-		if (balance >= levelData.limit) {
-			earnings = levelData.limit * levelData.percentage;
-		} else {
-			earnings = balance * levelData.percentage;
+		// if (balance >= levelData.limit) {
+		// 	earnings = levelData.limit * levelData.percentage;
+		// } else {
+		// 	earnings = balance * levelData.percentage;
+		// }
+
+		let earnings;
+		earnings = balance;
+		const percentage = getPercentageForLevel(balance, level)
+
+		if (earnings >= levelData.limit) {
+			return levelData.limit * levelData.percentage / 100
+		} {
+			return earnings * percentage;
 		}
 	
-		return earnings;
 	};
 
 	// Used for display purposes only
