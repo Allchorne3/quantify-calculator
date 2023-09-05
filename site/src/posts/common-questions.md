@@ -24,32 +24,6 @@ Anyone who uses your referral code becomes your level 1 referral. If your referr
 
 ###### How do I progress to the next level?
 WDC Quantify operates primarily on a referral-based system, meaning that advancing through the VIP levels is based upon achieving a specific number of referrals. As you ascend the VIP ladder, your capacity to quantify (achieve this by pressing the big blue button) also increases. The list below explains the rules for moving forward:
- <!-- - **VIP0**
-   - Default level upon account creation
-   - Frequency: 5
- - **VIP1**
-   - Activate your account by depositing $35
-   - Frequency: 5
- - **VIP2**
-   - 2 x lvl 1
-   - 5 x lvl 2-4
-   - Frequency: 6
- - **VIP3**
-   - 5 x lvl 1
-   - 10 x lvl 2-4
-   - Frequency: 7
- - **VIP4**
-   - 10 x lvl 1
-   - 20 x lvl 2-4
-   - Frequency: 8
- - **VIP5**
-   - 15 x lvl 1
-   - 35 x lvl 2-4
-   - Frequency: 9
- - **VIP6**
-   - 25 x lvl 1
-   - 50 x lvl 2-4
-   - Frequency: 10 -->
 
 <ul class="first-level">
     <li>
