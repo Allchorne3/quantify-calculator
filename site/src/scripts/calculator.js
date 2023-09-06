@@ -421,7 +421,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, balanceDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-					<td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level, true)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
