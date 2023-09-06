@@ -8,7 +8,7 @@ category: kraken
 1. First go into WDC Quantify and click the **Mine** tab.
 2. Click **Withdrawal** and then **Choose withdrawal account**.
 3. Click **Add digital currency wallet**. You will now be on the wallet details page.
-4.At this point, you will need to open **Kraken**. 
+4. At this point, you will need to open **Kraken**. 
 5. Click the purple button in the bottom center and click **Deposit**.
 6. Find **Tether(USDT)** and select it. On the next section choose **Tron** (this is very important).
 7. This will then bring up your Kraken wallet address. Copy the **USDT deposit address** and head back to WDC Quantify.
