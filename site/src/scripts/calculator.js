@@ -11,14 +11,17 @@ let exportHighlightsBtn;
 let clearHighlightButton;
 let aimInput;
 let tbody;
-let resetButton;
+let balanceResetButton;
 let highlightedRows;
 let tableButtons;
 let preText;
 
 const currentDate = (dayNumber, dateInputValue) => {
+	// Determind whether date has been select
 	const currentDate = dateInputValue ? new Date(dateInputValue) : new Date();
+
 	currentDate.setDate(currentDate.getDate() + dayNumber);
+
 	return currentDate.toDateString();
 };
 
@@ -130,7 +133,7 @@ const init = () => {
 	exportHighlightsBtn = document.querySelector('#downloadExcelRows');
 	aimInput = document.querySelector('#user-limit');
 	tbody = document.createElement('tbody');
-	resetButton = document.querySelector('#balance form [type="reset"]');
+	balanceResetButton = document.querySelector('#balance form [type="reset"]');
 	clearHighlightButton = document.querySelector('#remove-highlights');
 	highlightedRows = [];
 	preText = document.querySelector('.pre-text');
@@ -280,6 +283,26 @@ const init = () => {
 		return (percentage / 100); // 0.023 for level 1 as an example
 	};
 
+	const getEndDate = (endDate) => {
+		// Get the date input element
+	
+		// Create a Date object from the selected date value
+		const date = new Date(endDate);
+	
+		// Get the day of the year (1 for January 1st, 2 for January 2nd, and so on)
+		const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000) + 1;
+	
+		return dayOfYear;
+	}
+
+	const getStartDate = (startDate) => {
+		const date = new Date(startDate);	
+
+		const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000) + 1;
+
+		return dayOfYear;
+	}
+
 	// Swtich Tabs
 	viewTabs(tabs)
 
@@ -290,10 +313,40 @@ const init = () => {
 		const balanceInput = document.querySelector('#days #user-balance');
 		const iterationsInput = document.querySelector('#days #user-iterations');
 		const dayDateInput = document.querySelector('#day-date');
+		const endDateInput = document.querySelector('#end-date');
 		const level = Number(levelInput.value);
 		let balance = parseFloat(balanceInput.value);
-		const iterations = Number(iterationsInput.value);
-		const dayDate = dayDateInput.value;
+		let iterations;
+		let dayDate = dayDateInput.value;
+		const endDate = endDateInput.value;
+
+		const endDateNumber = getEndDate(endDate);
+		let startDateNumber;
+
+		if(dayDate) {
+			startDateNumber = getStartDate(dayDate)
+		} else {
+			startDateNumber = getStartDate(new Date());
+		}
+
+		if(endDate) {
+			iterations = (endDateNumber - startDateNumber) + 1;
+
+			if (iterationsInput.value) {
+				// Both iterationsInput and endDateInput have values, show an error message
+				if (!document.querySelector('.tabs .error-message')) {
+					const errorMessage = document.createElement('p');
+					errorMessage.textContent = 'You cannot specify both a date range and a number of iterations.';
+					errorMessage.classList.add('error-message');
+					document.querySelector('.tabs').appendChild(errorMessage);
+					iterationsInput.classList.add('error');
+					endDateInput.classList.add('error');
+				}
+				return; // Exit the function without proceeding further
+			}
+		} else {
+			iterations = Number(iterationsInput.value);
+		}
 
 		if (iterations <= 0) {
 			if (!document.querySelector('.tabs .error-message')) {
@@ -307,12 +360,13 @@ const init = () => {
 			if (document.querySelector('.tabs .error-message')) {
 				document.querySelector('.tabs .error-message').remove();
 				iterationsInput.classList.remove('error');
+				endDateInput.classList.remove('error');
 			}		
 
 			daysSubmit.reset();
 			clearTable();
 			table.classList.remove('hidden');
-
+			
 			let totalEarnings = 0;
 			let earnings;
 			let counter = 0;
@@ -421,7 +475,7 @@ const init = () => {
 					<td>Day ${i + 1} - ${currentDate(i, balanceDate)}</td>
 					<td data-label="Daily">$${earnings.toFixed(2)}</td>
 					<td data-label="Acc Earning">$${totalEarnings.toFixed(2)}</td>
-					<td data-label="Percentage">${getPercentageForLevel(balance, level)}</td>
+					<td data-label="Percentage">${getPercentageForLevel(balance, level, true)}</td>
 					<td data-label="Balance">$${balance.toFixed(2)}<div><span><i class="fa-sharp fa-solid fa-xmark"></i></span></div></td>
 				`;
 
@@ -471,7 +525,7 @@ const init = () => {
 	});
 
 	// Event listeners
-	resetButton.addEventListener('click', removeError);
+	balanceResetButton.addEventListener('click', removeError);
 	clearButton.addEventListener('click', clearTable);
 	clearHighlightButton.addEventListener('click', clearHighlights);
 

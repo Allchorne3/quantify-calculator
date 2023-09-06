@@ -10,13 +10,18 @@
     </div>
 
     <div>
-        <label for="user-balance">How many days?*</label>
-        <input type="number" id="user-iterations" required>
+        <label for="user-balance">How many days?</label>
+        <input type="number" id="user-iterations">
     </div>
 
     <div>
         <label for="#day-date">Start date <small>(Optional)</small></label>
         <input type="date" id="day-date">
+    </div>
+
+    <div>
+        <label for="#day-date">End date</label>
+        <input type="date" id="end-date">
     </div>
 
     {% include "form-events.njk" %}
