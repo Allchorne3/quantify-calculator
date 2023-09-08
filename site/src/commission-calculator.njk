@@ -10,7 +10,7 @@ centered: true
         <div class="container narrow">
             <h1 class="title">Commission Calculator</h1>
             <div class="text">
-                <p>Use the options below to showcase how much commission you will earn in a day. Choose the level of your referral and their balance. </p>
+                <p>Use the options below to showcase how much commission you will earn per referral in a day. Choose the level of your referral and their daily earning. </p>
             </div>
         </div>
 	</div>
@@ -23,17 +23,16 @@ centered: true
                 <div>
                     <label for="referral-level">Referral Level*</label>
                     <select id="referral-level">
-                        <option value="" disabled hidden selected>Choose referral level*</option>
-                        <option value="1" data-percentage="12">Level 1 - 12% <em>(35.00-500.00)</em></option>
-                        <option value="2" data-percentage="6">Level 2 - 6% <em>(501.00-2000.00)</em></option>
-                        <option value="3" data-percentage="4">Level 3 - 4% <em>(2001.00-5000.00)</em></option>
-                        <option value="4" data-percentage="2">Level 4 - 2% <em>(5001.00-10000.00)</em></option>
+                        <option value="1" data-percentage="0.12">Level 1 - 12% <em>(35.00-500.00)</em></option>
+                        <option value="2" data-percentage="0.06">Level 2 - 6% <em>(501.00-2000.00)</em></option>
+                        <option value="3" data-percentage="0.04">Level 3 - 4% <em>(2001.00-5000.00)</em></option>
+                        <option value="4" data-percentage="0.02">Level 4 - 2% <em>(5001.00-10000.00)</em></option>
                     </select>
                 </div>
 
                 <div id="currency-input">
-                    <label for="referral-balance">Referral balance*</label>
-                    <input type="number" id="referral-balance" step="0.01" required />
+                    <label for="referral-balance">Daily Referral earning*</label>
+                    <input type="number" id="referral-earning" step="0.01" required />
                 </div>
 
                 <div id="currency-input">
