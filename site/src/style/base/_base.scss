@@ -36,6 +36,11 @@ main {
   &.narrow {
     max-width: 1000px;
   }
+
+  &.centered {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 

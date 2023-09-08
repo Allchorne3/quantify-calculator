@@ -72,6 +72,10 @@ strong {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 @keyframes background-pan {
   from {
     background-position: 0% center;

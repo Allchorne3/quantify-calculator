@@ -47,9 +47,20 @@ p.subtitle {
     color: $dark-white;
 }
 
+.text {
+    p {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
 .card {
     position: relative;
     isolation: isolate;
+    border-radius: 15px;
+    padding: 1rem;
+    background: $grey-dark;
+    border: solid 1px $blue-light;
+    color: $white-ter;
 
     &::before {
         position: absolute;
@@ -72,11 +83,21 @@ p.subtitle {
     &:hover::before {
         opacity: 1;
     }
+
+    &.single {
+        max-width: 430px;
+    }
     
 }
 
 .link {
     position: relative;
+    color: $white;
+    text-decoration: none;
+
+    &.gold {
+        color: $gold;
+    }
     
     &::before {
         content: "";
