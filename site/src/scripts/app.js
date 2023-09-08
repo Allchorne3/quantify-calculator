@@ -1,4 +1,5 @@
 import calculator from './calculator';
+import commissionCalculator from './commission-calculator';
 import tabs from './tabs'
 import animations from './animations'
 import InlineSVG from "./utils/js-inlinesvg"
@@ -18,10 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(new Event('scroll'));
 
         docElement.classList.toggle('is-scrolled', window.scrollY > 30)
-    
-        if (docElement.id === 'page-calculator') {
-            calculator.init();
-        }
     
         // Blog card hover
         const handleMouseMove = e => {
@@ -59,8 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        
         // Imported functions
+        if (docElement.id === 'page-calculator') {
+            calculator.init();
+        }
+        if (docElement.id === 'page-commission-calculator') {
+            commissionCalculator.init();
+        }
+
         tabs.runTabs();
         animations.init();
+
     })
 });

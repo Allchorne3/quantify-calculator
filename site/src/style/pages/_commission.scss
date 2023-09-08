@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+#page-commission-calculator {
+    .comm-calc {
+        margin-top: 3rem;
+        margin-bottom: 6rem;
+
+        form {
+            input {
+                &#commission-balance {
+                    background: lighten($grey-blue, 20%);
+                }
+            }
+
+            #currency-input {
+                position: relative;
+
+                input {
+                    padding-left: 27px;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: '$';
+                    color: rgba($white, .6);
+                    top: 42px;
+                    left: 10px;
+                    font-size: 20px;
+                    font-weight: $fw-semi-bold;
+                }
+            }
+        }
+    }
+}
