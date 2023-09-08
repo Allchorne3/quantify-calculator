@@ -38,14 +38,22 @@ form {
     }
     
     @include m.desktop-max {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        &.calculator-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            & > div:nth-child(5) {
+                grid-column: 1 / -1;
+            }
+        }
     }
         
     @include m.tablet-small-max {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        &.calculator-form {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
     }
         
     .form-events {
