@@ -7,6 +7,8 @@
         margin-bottom: 6rem;
 
         form {
+            margin-top: 0;
+            
             input {
                 &#commission-balance {
                     background: lighten($grey-blue, 20%);
