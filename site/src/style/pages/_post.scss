@@ -102,28 +102,28 @@
             }
         }
 
-        .common {
-            h6 {
-                font-size: $fs-5;
-                margin-bottom: .3rem;
-                background: $galactic-right;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+        h6 {
+            font-size: $fs-5;
+            margin-bottom: .3rem;
+            background: $galactic-right;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
 
-                &:not(:first-of-type) {
-                    margin-top: 2.5rem;
-                }
+            &:not(:first-of-type) {
+                margin-top: 2.5rem;
             }
+        }
 
-            p {
-                margin-bottom: .7rem;
-            }
+        p {
+            margin-bottom: .9rem;
+        }
 
-            a {
-                transition: all .2s ease-in-out;
-                &:hover {
-                    color: $gold;
-                }
+        a {
+            transition: all .2s ease-in-out;
+            text-decoration: underline;
+            
+            &:hover {
+                color: $gold;
             }
         }
     }
