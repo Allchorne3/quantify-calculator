@@ -5,7 +5,7 @@ description: "This post will get your started, from the registration to your fir
 category: wdc
 ---
 
-1. Visit https://wdcquantify.com/pc.html and select any of the tabs along the bottom to prompt the register screen to appear to create your account. Alternatively, you can download the WDC Quantify app from the Google Play Store / Apple app store.
+1. Visit [https://wdcquantify.com/pc.html](https://wdcquantify.com/pc.html) and select any of the tabs along the bottom to prompt the register screen to appear to create your account. Alternatively, you can download the WDC Quantify app from the Google Play Store / Apple app store.
 
 2. Upon signup, you will need to enter an invite code. You can use this code 699476 to signup. Once your account is created, you should be logged in. If not, then simply log in with the account you have just created. You should find a free $8 welcome bonus in your account.
 
