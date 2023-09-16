@@ -64,7 +64,8 @@ form {
     }
 
     input,
-    select {
+    select,
+    textarea {
         padding: 10px 15px;
         background: $grey-blue;
         transition: all 0.3s ease-in-out;
@@ -80,7 +81,8 @@ form {
         }
     }
     
-    input {
+    input,
+    textarea {
         width: 100%;
         
         &:focus,
