@@ -4,8 +4,25 @@
     display: none;
 }
 
+.notification {
+    color: $black;
+    padding: .2rem .5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: $fw-semi-bold;
+    
+    &.success {
+        background: $green;
+    }
+    
+    &.error {
+        background: $crimson;
+        color: $white;
+    }
+}
+
 .error-message {
-    background: crimson;
+    background: $crimson;
     color: white;
     padding: 10px;
     font-weight: bold;
@@ -15,7 +32,7 @@
 }
 
 .error {
-    border: solid 1px red !important;
+    border: solid 1px $crimson !important;
 }
 
 .row-active {
