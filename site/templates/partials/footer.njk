@@ -1,9 +1,19 @@
 <footer id="footer">
-	<div class="container medium">
+	<div class="container">
 		<div class="footer-content">
 			<a href="/">
 				<img src="/assets/images/logo.svg" class="logo svg" alt="Logo">
 			</a>
+
+			<div>
+				<h4>Contact</h4>
+				<form name="contact" method="POST" netlify data-netlify="true" onSubmit="submit">
+					<input type="text" placeholder="Name*" name="name" required />
+					<input type="email" placeholder="Email address*" name="email" required />
+					<textarea cols="30" rows="5" placeholder="Message*" name="message" required></textarea>
+					{% include "form-events.njk" %}
+				</form>
+			</div>
 
 			<div class="footer-right">
 				<div class="footer-post">
