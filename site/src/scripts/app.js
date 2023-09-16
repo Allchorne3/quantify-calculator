@@ -56,27 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Handle footer form submission
-        const footerForm = document.querySelector('footer form');
-
-        footerForm.addEventListener('submit', e => {
-            // e.preventDefault();
-            footerForm.reset();
-
-            const notification = document.createElement('p');
-            notification.textContent = 'Your message has been sent!';
-            notification.classList.add('notification', 'success');
-
-            footerForm.append(notification);
-            console.log('SUBMITTED');
-
-            if(notification) {
-                footerForm.addEventListener('click', () => {
-                    notification.remove();
-                })
-            }
-        })
-
         
         // Imported functions
         if (docElement.id === 'page-calculator') {
