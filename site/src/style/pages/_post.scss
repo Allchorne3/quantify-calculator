@@ -5,7 +5,6 @@
     .guide-article {
         display: flex;
         gap: 3rem;
-        margin-bottom: 6rem;
 
         @include m.tablet-max {
             flex-direction: column-reverse;

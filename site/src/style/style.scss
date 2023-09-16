@@ -12,9 +12,12 @@
 @use 'components/table';
 @use 'components/tabs';
 @use 'components/logo';
+@use 'components/icons';
 @use 'components/mobile-menu';
 @use 'components/blob';
 
+@use 'pages/not-found';
+@use 'pages/success';
 @use 'pages/index';
 @use 'pages/guides';
 @use 'pages/calculator';

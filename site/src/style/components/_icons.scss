@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.fa-file-circle-xmark {
+    font-size: 10rem;
+    margin-bottom: 2rem;
+    background: $galactic;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

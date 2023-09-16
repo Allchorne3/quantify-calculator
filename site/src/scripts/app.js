@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Get the previous URL
+        var previousURL = document.referrer;
+        document.querySelector('.previous-link').setAttribute('href', previousURL);
         
         // Imported functions
         if (docElement.id === 'page-calculator') {

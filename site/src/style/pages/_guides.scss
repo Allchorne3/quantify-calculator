@@ -6,7 +6,6 @@
         display: flex;
         gap: 3rem;
         margin-top: 3rem;
-        margin-bottom: 6rem;
 
         @include m.tablet-small-max {
             flex-direction: column;

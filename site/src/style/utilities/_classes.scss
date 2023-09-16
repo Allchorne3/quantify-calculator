@@ -136,4 +136,8 @@ p.subtitle {
         transform-origin: 0% 50%;
         transform: scaleZ(1);
     }
+    
+    &.active::before {
+        transform: scaleZ(1);
+    }
 }

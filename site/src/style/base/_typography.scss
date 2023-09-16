@@ -26,6 +26,10 @@ h1 {
   @include m.until(600px) {
     font-size: 9vw;
   }
+
+  @include m.tablet-small-max {
+    font-size: 11vw !important;
+  }
 }
 
 h2 {
