@@ -16,6 +16,17 @@
 
         <link rel="stylesheet" href="{{ '/style/style.css' | url }}">
     </head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SYFV38XQS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1SYFV38XQS');
+    </script>
+    
     <body>
         {% include "header.njk" %}
         
