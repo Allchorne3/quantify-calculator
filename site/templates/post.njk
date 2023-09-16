@@ -19,8 +19,9 @@ pageClass: post
             <h1 class="article-title">{{ title }}</h1>
             <h4 class="article-date">{{ date | prettyDate}} <span class="divider">|</span> {{ content | emojiReadTime }} </h4>
             {{ content | safe }}
+            {% include "contact-cta.njk" %}
         </article>
+
     </div>
 </div>
 
-</div>

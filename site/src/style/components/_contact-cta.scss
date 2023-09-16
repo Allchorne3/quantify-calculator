@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as *;
+@use '../utilities/mixins' as m;
+
+.contact-cta {
+    background: $blue-mid;
+    max-width: 960px;
+    border-radius: 25px;
+    margin: 3rem auto 0;
+    padding: 2.5rem;
+
+    .title {
+        font-size: $fs-2;
+        margin-bottom: .5rem;
+    }
+
+    p {
+        margin-bottom: 2rem;
+        font-size: $fs-4;
+    }
+
+    a {
+        display: inline-block;
+        text-decoration: none !important;
+
+        &:hover {
+            color: inherit !important;
+        }
+    }
+}
