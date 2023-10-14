@@ -1,4 +1,4 @@
-import calculator from './calculator';
+import calculator from './calc-temp';
 import commissionCalculator from './commission-calculator';
 import tabs from './tabs'
 import animations from './animations'

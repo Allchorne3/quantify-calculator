@@ -7,13 +7,13 @@
         
         ul {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 10px;
             padding-left: 0;
-            background: $grey-blue;
             padding: .15rem;
-            margin-top: 0;
             border-radius: 8px;
+            margin-top: 1.5rem;
+            margin-bottom: .5rem;
             
             @include m.mobile-max {
                 grid-template-columns: repeat(2, 1fr);
@@ -22,26 +22,19 @@
             li {
                 list-style: none;
                 flex: 1;
+                text-align: center;
                 
                 a {
-                    $color: $grey-dark;
+                    background: rgba($white, .4);
+                    color: $white;
                     display: block;
-                    text-decoration: none;
-                    color: $grey-dark;
-                    padding: 10px 25px;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    border-radius: 6px;
-                    transition: all 0.3s ease-in-out;
-                    position: relative;
-
-                    &:not(.active):hover {
-                        background: darken($grey-blue, 4%);
-                    }
+                    font-weight: $fw-semi-bold;
+                    padding: .5rem 1rem;
+                    border-radius: 5px;
 
                     &.active {
-                        background: $galactic;
-                        color: $white;
+                        background: $gold;
+                        color: $blue;
                     }
                 }
             }

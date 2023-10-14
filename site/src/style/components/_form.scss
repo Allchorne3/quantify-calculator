@@ -5,8 +5,6 @@ form {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-top: 1rem;
-    margin-bottom: .6rem;
     grid-template-columns: 1fr;
 
     & > div {
@@ -109,5 +107,9 @@ form {
         &[type="date"] {
             color: $white;
         }
+    }
+
+    .choose {
+        // margin-top: 1rem;
     }
 }
