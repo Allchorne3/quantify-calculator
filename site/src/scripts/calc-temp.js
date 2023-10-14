@@ -18,17 +18,17 @@ const init = () => {
         e.preventDefault();
 
         if (daysInput.value && endDatePicker.value) {
-            // Show error
             if (!errorMessage) {
                 generateErrorMessage('You cannot specify both an end date and a number of days.');
             }
-            return; // Exit the function without proceeding further
+            return;
         } else {
             alert("Complete");
         }
     })
 
-    resetButton.addEventListener('click', () => {
+    // Form reset
+    form.addEventListener('reset', () => {
         if (errorMessage) {
             removeErrorMessage();
         }
