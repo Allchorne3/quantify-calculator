@@ -363,7 +363,6 @@ const init = () => {
 				endDateInput.classList.remove('error');
 			}		
 
-			daysSubmit.reset();
 			clearTable();
 			table.classList.remove('hidden');
 			
@@ -457,7 +456,6 @@ const init = () => {
 				aimInput.classList.remove('error');
 			}
 
-			balanceSubmit.reset();
 			clearTable();
 			table.classList.remove('hidden');
 			
