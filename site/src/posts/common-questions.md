@@ -44,7 +44,7 @@ WDC Quantify operates primarily on a referral-based system, meaning that advanci
     <li>
         <strong>VIP1</strong>
         <ul>
-        <li>Activate your account by depositing $35</li>
+        <li>Activate your account by depositing $100</li>
         <li><strong>Frequency:</strong> 5</li>
         </ul>
     </li>
