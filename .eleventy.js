@@ -48,9 +48,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addGlobalData('site', {
         name: 'Your Site Name',
         url: 'https://yoursitename.com',
-        host: process.env.NODE_ENV === 'production' ? 'https://your-site.com' : 'http://localhost:8080',
-        slogan: 'Your global site slogan',
-        description: "your default site description",
+        host: process.env.NODE_ENV === 'production' ? 'https://quantify-calculator.co.uk' : 'http://localhost:8080',
+        slogan: 'Helping you to calculate your future',
+        description: "Use our calculator and follow our guides to help you earn more for your future.",
         author: 'Stefan Allchorne'
     });
      
