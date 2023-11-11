@@ -27,6 +27,9 @@ minisite: guides
                         <a href="#" data-target="wdc">WDC Quantify</a>
                     </li>
                     <li>
+                        <a href="#" data-target="cos">COS</a>
+                    </li>
+                    <li>
                         <a href="#" data-target="common">Common Questions</a>
                     </li>
                 </ul>
@@ -40,6 +43,12 @@ minisite: guides
                     {% for post in collections.post | reverse%}
                         {% if post.data.category === 'kraken' %}
                             <div id="kraken">
+                                {% include "posts/guide-item.njk" %}
+                            </div>
+                        {% endif %}
+
+                        {% if post.data.category === 'cos' %}
+                            <div id="cos">
                                 {% include "posts/guide-item.njk" %}
                             </div>
                         {% endif %}
