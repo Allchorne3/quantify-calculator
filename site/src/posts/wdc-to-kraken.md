@@ -1,7 +1,7 @@
 ---
 title: How to withdraw WDC balance into Kraken
 date: 2023-08-02
-description: "This post will guide you through the process of withdrawing some or all of your Kraken cryptocurrency into your WDC Quantify account."
+description: "This post will guide you through the process of withdrawing some or all of your WDC Quantify balance into your Kraken wallet."
 category: kraken
 ---
 
