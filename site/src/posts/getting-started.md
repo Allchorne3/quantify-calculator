@@ -7,7 +7,7 @@ category: wdc
 
 1. Visit [https://wdcvip.top/pc.html](https://wdcvip.top/pc.html) and select any of the tabs along the bottom to prompt the register screen to appear to create your account. Alternatively, you can download the WDC Quantify app from the Google Play Store / Apple app store.
 
-2. Upon signup, you will need to enter an invite code. You can use this code 199318 or visit [https://wdcvip.top/index.html#/register/199318](https://wdcvip.top/index.html#/register/699476) to signup. Once your account is created, you should be logged in. If not, then simply log in with the account you have just created. You should find a free $8 welcome bonus in your account.
+2. Upon signup, you will need to enter an invite code. You can use this code 199318 or visit [https://wdcvip.top/index.html#/register/199318](https://wdcvip.top/index.html#/register/199318) to signup. Once your account is created, you should be logged in. If not, then simply log in with the account you have just created. You should find a free $8 welcome bonus in your account.
 
 3. To get started, you will need to deposit a minimum of $100 (£82) to activate your WDC Quantify account. For this, you will need a cryptocurrency wallet. I use Kraken because it is very well known and reliable.
 
