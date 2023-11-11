@@ -2,7 +2,7 @@
 title: How to deposit funds into COS
 date: 2023-11-11
 description: "This post will guide you through the process of withdrawing some or all of your Kraken balance into your COS account."
-category: co
+category: cos
 isCos: true
 ---
 
@@ -12,7 +12,7 @@ isCos: true
 
 3. Now click deposit, click **Pound Sterling**(GBP) and then finally **Link bank account**
 
-4. Enter the name of your bank. Once you’ve selected your bank, enter the amount you want to deposit. If it is your first time you will need to enter at least £45 ($53).
+4. Enter the name of your bank. Once you’ve selected your bank, enter the amount you want to deposit. If it is your first time you will need to enter at least £45 ($55).
 
 _**Note:** your bank may refuse this transaction as some banks have a policy against depositing into cryptocurrency due to high risk of fraud. If this is the case, then you will have to buy the tether cryptocurrency directly. However this will mean you will not be able to withdraw your tether into WDC Quantify for 72 hours (3 days). You can also skip to the withdrawal process in Step 9_
 
