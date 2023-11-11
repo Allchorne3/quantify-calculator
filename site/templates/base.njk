@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" {% include "page-class.njk" %} >
+<html{% if isCos %} class="is-cos"{% endif %} lang="en" {% include "page-class.njk" %} >
     <head>
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -39,7 +39,7 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQBTX4Z3"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        
+
         {% include "header.njk" %}
         
         <main{% if centered %} class="text-centered" {% endif %}>
