@@ -140,23 +140,23 @@ const init = () => {
 
 	const levelSelectOptions = {
 		1: {
-			limit: 501,
+			limit: 5001,
 			percentage: document.querySelector('select option[value="1"]').dataset.percentage
 		},
 		2: {
-			limit: 2001,
+			limit: 20001,
 			percentage: document.querySelector('select option[value="2"]').dataset.percentage
 		},
 		3: {
-			limit: 5001,
+			limit: 50001,
 			percentage: document.querySelector('select option[value="3"]').dataset.percentage
 		},
 		4: {
-			limit: 10001,
+			limit: 200001,
 			percentage: document.querySelector('select option[value="4"]').dataset.percentage
 		},
 		5: {
-			limit: 30001,
+			limit: 500001,
 			percentage: document.querySelector('select option[value="5"]').dataset.percentage
 		},
 		6: {
