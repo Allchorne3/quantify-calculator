@@ -18,3 +18,5 @@ category: wdc
 6. Along the bottom you’ll see 5 tabs. Home, Team, Invest, Whitepaper and Mine. Click Invest. Now you should see a big blue button that says Start to quantify. Click this button. You can do this 5 times. 
 
 7. That’s it. You are setup to quantify and earn a profit. You can deposit more funds if you want to. Or you can just use the funds in your account. If you are interested in understanding what the app actually does then you can [click here to find out](/posts/about-wdc/).
+
+8. If you would like to join a support group with like-minded people then get in touch below. See you there!
