@@ -2,7 +2,7 @@
 title: How to deposit funds into COS
 date: 2023-11-11
 description: "This post will guide you through the process of withdrawing some or all of your Kraken balance into your COS account."
-category: cos
+category: co
 isCos: true
 ---
 
