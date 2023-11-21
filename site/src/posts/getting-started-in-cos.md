@@ -2,7 +2,7 @@
 title: Getting started with COS
 date: 2023-11-11
 description: "This post will get your started in COS, from the registration to your first quantification"
-category: cos
+category: co
 isCos: true
 ---
 
