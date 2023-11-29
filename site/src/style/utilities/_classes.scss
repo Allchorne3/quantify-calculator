@@ -64,6 +64,11 @@ p.subtitle {
     color: $dark-white;
 }
 
+.emph {
+    font-weight: $fw-semi-bold !important;
+    color: $gold;
+}
+
 .text {
     p {
         margin-bottom: 1.5rem !important;
