@@ -140,7 +140,7 @@ const init = () => {
 
 	const levelSelectOptions = {
 		1: {
-			limit: 501,
+			limit: 2001,
 			percentage: document.querySelector('select option[value="1"]').dataset.percentage
 		},
 		2: {
