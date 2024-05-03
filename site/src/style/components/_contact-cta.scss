@@ -8,6 +8,14 @@
     margin: 3rem auto 0;
     padding: 2.5rem;
 
+    &.tch {
+        background: $green;
+        
+        a {
+            color: $white !important;
+        }
+    }
+
     .title {
         font-size: $fs-2;
         margin-bottom: .5rem;
