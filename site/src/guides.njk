@@ -24,7 +24,7 @@ minisite: guides
                         <a href="#" data-target="kraken">Kraken</a>
                     </li>
                     <li>
-                        <a href="#" data-target="wdc">WDC Quantify</a>
+                        <a href="#" data-target="dsl">DSL</a>
                     </li>
                     <li>
                         <a href="#" data-target="common">Common Questions</a>
@@ -38,23 +38,25 @@ minisite: guides
             <ul role="list" class="posts">
                 <div class="content">
                     {% for post in collections.post | reverse%}
-                        {% if post.data.category === 'kraken' %}
+
+                        {% if 'kraken' in post.data.category  %}
                             <div id="kraken">
                                 {% include "posts/guide-item.njk" %}
                             </div>
                         {% endif %}
 
-                        {% if post.data.category === 'wdc' %}
-                            <div id="wdc">
+                        {% if 'dsl' in post.data.category %}
+                            <div id="dsl">
                                 {% include "posts/guide-item.njk" %}
                             </div>
                         {% endif %}
 
-                        {% if post.data.category === 'common' %}
+                        {% if 'common' in post.data.category  %}
                             <div id="common">
                                 {% include "posts/guide-item.njk" %}
                             </div>
                         {% endif %}
+
                     {% endfor %}
                 </div>
             </ul>

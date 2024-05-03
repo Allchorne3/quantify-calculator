@@ -65,3 +65,16 @@ main {
     }
   }
 }
+
+.notification-banner {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  color: $white;
+  font-weight: $fw-semi-bold;
+  padding: 1rem;
+  font-size: $fs-3;
+  border-radius: 10px;
+}

@@ -1,17 +1,19 @@
 ---
-title: How to withdraw WDC balance into Kraken
+title: How to withdraw DSL balance into Kraken
 date: 2023-08-02
-description: "This post will guide you through the process of withdrawing some or all of your WDC Quantify balance into your Kraken wallet."
-category: kraken
+description: "This post will guide you through the process of withdrawing some or all of your DSL balance into your Kraken wallet."
+category: 
+ - kraken
+ - dsl
 ---
 
-1. First go into WDC Quantify and click the **Mine** tab.
+1. First go into DSL and click the **Mine** tab.
 2. Click **Withdrawal** and then **Choose withdrawal account**.
 3. Click **Add digital currency wallet**. You will now be on the wallet details page.
 4. At this point, you will need to open **Kraken**. 
 5. Click the purple button in the bottom center and click **Deposit**.
 6. Find **Tether(USDT)** and select it. On the next section choose **Tron** (this is very important).
-7. This will then bring up your Kraken wallet address. Copy the **USDT deposit address** and head back to WDC Quantify.
+7. This will then bring up your Kraken wallet address. Copy the **USDT deposit address** and head back to DSL.
 8. You should be on the **Add digital currency wallet**. Paste the **USDT deposit address** into the **wallet address** field.
 9. Select **trc20-USDT** as the address type.
 10. Enter a password (you will need to remember this) and select **Continue**.
