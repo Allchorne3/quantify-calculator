@@ -5,11 +5,11 @@ description: Here, you will find a list of commonly asked questions.
 category: common
 ---
 
-###### What is WDC Quantify
-An explanation can be found in this [post](/posts/about-wdc/)
+###### What is DSL
+An explanation can be found in this [post](/posts/about-dsl/)
 
 ###### What exactly do I need to do?
-To begin, create a WDC Quantify account. This process is remarkably straightforward. Next, create  a Kraken account, which serves as your crypto wallet. This step is equally uncomplicated. (Note: Alternative crypto wallets are available; this website provides Kraken-specific instructions.) Following this, deposit funds into your Kraken account. Afterward, withdraw your Kraken balance into your WDC Quantify wallet, using the instructions in this [guide](/posts/kraken-to-wdc/).
+To begin, create a DSL account. This process is remarkably straightforward. Next, create  a Kraken account, which serves as your crypto wallet. This step is equally uncomplicated. (Note: Alternative crypto wallets are available; this website provides Kraken-specific instructions.) Following this, deposit funds into your Kraken account. Afterward, withdraw your Kraken balance into your DSL wallet, using the instructions in this [guide](/posts/kraken-to-dsl/).
 
 With these steps completed, you're now primed for quantification! A single action remains: press the prominently displayed "Start to quantify" button up to five times daily. Once pressed, the automated trading bot will undertake its responsibilities. While your initial earnings might be small, they possess the potential for substantial growth over time.
 
@@ -17,13 +17,13 @@ With these steps completed, you're now primed for quantification! A single actio
 Absolutely, it's entirely possible for you to stay at VIP1, and within a span of 30 days, your potential earnings could reach up to $345.
 
 ###### Can I withdraw my balance to my bank account?
-Certainly! You have the capability to achieve this. Initially, you need to transfer your balance to a cryptocurrency wallet like Kraken. Follow this [guide](/posts/wdc-to-kraken/) for step-by-step instructions. Once completed, you can convert the balance into GBP and withdrawal to your bank account.
+Certainly! You have the capability to achieve this. Initially, you need to transfer your balance to a cryptocurrency wallet like Kraken. Follow this [guide](/posts/dsl-to-kraken/) for step-by-step instructions. Once completed, you can convert the balance into GBP and withdrawal to your bank account.
 
 ###### How does the referral system work?
 Anyone who uses your referral code becomes your level 1 referral. If your referrals also refer someone using their codes, those new people become your level 2 referrals. This pattern continues, with each level representing the depth of referrals. For instance, if person A is the starting point and they refer person B, person B becomes a level 1 referral. If person B refers person C, then person C becomes a level 2 referral. If person C refers person D, person D becomes a level 3 referral, and so on. 
 
 ###### How do I progress to the next level?
-WDC Quantify operates primarily on a referral-based system, meaning that advancing through the VIP levels is based upon achieving a specific number of referrals. As you ascend the VIP ladder, your capacity to quantify (achieve this by pressing the big blue button) also increases. The list below explains the rules for moving forward:
+DSL operates primarily on a referral-based system, meaning that advancing through the VIP levels is based upon achieving a specific number of referrals. As you ascend the VIP ladder, your capacity to quantify (achieve this by pressing the big blue button) also increases. The list below explains the rules for moving forward:
 
 <ul class="first-level">
     <li>
