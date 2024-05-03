@@ -1,8 +1,8 @@
 ---
-title: How to deposit funds into DSL
+title: How to deposit funds into WDC Quantify
 date: 2023-07-30
-description: "This post will guide you through the process of depositing funds into your DSL account."
-category: dsl
+description: "This post will guide you through the process of depositing funds into your WDC Quantify account."
+category: wdc
 ---
 
 1. You can use any krypto wallet you want but I will be using Kraken. To start with, you will need to open a Kraken account. This will be your crypto wallet for all your deposits and withdrawals.
@@ -13,7 +13,7 @@ category: dsl
 
 4. Enter the name of your bank. Once you’ve selected your bank, enter the amount you want to deposit. If it is your first time you will need to enter at least £85 ($103).
 
-_**Note:** your bank may refuse this transaction as some banks have a policy against depositing into cryptocurrency due to high risk of fraud. If this is the case, then you will have to buy the tether cryptocurrency directly. However this will mean you will not be able to withdraw your tether into DSL for 72 hours (3 days). You can also skip to the withdrawal process in Step 9_
+_**Note:** your bank may refuse this transaction as some banks have a policy against depositing into cryptocurrency due to high risk of fraud. If this is the case, then you will have to buy the tether cryptocurrency directly. However this will mean you will not be able to withdraw your tether into WDC Quantify for 72 hours (3 days). You can also skip to the withdrawal process in Step 9_
 
 5. Once the money has reached your kraken account, you will then need to click the purple button in the bottom center of your screen and click **convert**
 
@@ -25,12 +25,12 @@ _**Note:** your bank may refuse this transaction as some banks have a policy aga
 
 9. Once this has been converted, you will then need to press the purple button in the bottom center and click **withdraw**.
 
-10. Click **Tether(USDT)** and enter the amount you want to deposit into DSL.
+10. Click **Tether(USDT)** and enter the amount you want to deposit into WDC Quantify.
  
 11. Then click **Add new address**, select the network as **Tron** (this is very important).
 
-12. You will now need to open DSL. On the home tab, click deposit. You should see a QR code on the screen and above it, a drop down menu. Make sure you select **trc20-USDT** from the drop down menu and then copy your wallet address.
+12. You will now need to open WDC Quantify. On the home tab, click deposit. You should see a QR code on the screen and above it, a drop down menu. Make sure you select **trc20-USDT** from the drop down menu and then copy your wallet address.
 
 13. Head back to Kraken and paste your wallet address, add your description, click review and slide to confirm.
 
-14. You are now done. Head back to DSL and you should see your deposit. (It may take a few minutes to appear.)
+14. You are now done. Head back to WDC Quantify and you should see your deposit. (It may take a few minutes to appear.)

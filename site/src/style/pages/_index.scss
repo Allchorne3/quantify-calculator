@@ -22,10 +22,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            
-            @include m.mobile-max {
-                margin-top: 90px;
-            }
 
             h1 {
                 font-size: $fs-giant;
