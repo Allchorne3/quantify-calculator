@@ -3,8 +3,9 @@
 
 .buttons {
     display: flex;
-    margin-bottom: 1.5rem;
+    justify-content: center;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 
     @include m.tablet-small-max {
         display: grid;
@@ -45,6 +46,11 @@ a.button {
     font-size: $fs-5;
     border: solid 1px rgba($white, .5);
     transition: all .3s ease-in-out;
+
+    &.is-gold {
+        background: $gold;
+        color: $black;
+    }
 
     &.button-small {
         border: none;

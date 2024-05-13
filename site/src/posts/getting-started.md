@@ -7,7 +7,7 @@ category: dsl
 
 1. Visit [https://dslvip.com/pc.html](https://dslvip.com/pc.html) and select any of the tabs along the bottom to prompt the register screen to appear to create your account. Alternatively, you can download the DSL app from the Google Play Store / Apple app store.
 
-2. Upon signup, you will need to enter an invite code. You can use this code 869723 or visit [https://dslvip.com/index.html#/register/869723](https://dslvip.com/index.html#/register/869723) to signup. Once your account is created, you should be logged in. If not, then simply log in with the account you have just created. You should find a free $8 welcome bonus in your account.
+2. Upon signup, you will need to enter an invite code. You can use this code 528374 or visit [https://dslvip.com/index.html#/register/528374](https://dslvip.com/index.html#/register/528374) to signup. Once your account is created, you should be logged in. If not, then simply log in with the account you have just created. You should find a free $8 welcome bonus in your account.
 
 3. To get started, you will need to deposit a minimum of $100 (£82) to activate your DSL account. For this, you will need a cryptocurrency wallet. I use Kraken because it is very well known and reliable.
 

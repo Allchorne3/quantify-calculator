@@ -12,7 +12,7 @@
         position: relative;
 
         @include m.mobile-max {
-            height: 70vh;
+            height: 100vh;
         }
         
         &-body {
@@ -46,10 +46,18 @@
                     font-size: 4vw;
                 }
             }
-            
-            a.button {
-                opacity: 0;
+
+            .buttons {
+                @include m.mobile-max {
+                    display: flex !important;
+                    flex-direction: column-reverse!important;
+                }
+
+                a.button {
+                    opacity: 0;
+                }
             }
+            
         }
 
         .wave {
